@@ -1800,10 +1800,15 @@ h2,h3 {line-height:1.7}
 }
 
 @media(max-width: 991px) {
+  .carousel-inner .item .carousel-statement {font-size:25px;}
   .services .operate ul {
     margin-top:0;
   }
 }
+
+/*@media(max-width: 885px) {
+  
+}*/
 
 
 /* MOBILE */
