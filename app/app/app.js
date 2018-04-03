@@ -108,6 +108,10 @@ myApp.config(function($stateProvider, $urlRouterProvider, $locationProvider){
         url: '/draft',
         templateUrl: 'views/draft.html'
       })
+      .state('civil-rights', {
+        url: '/civil-rights',
+        templateUrl: 'views/civil-rights.html'
+      })
 
   // default fall back route
   $urlRouterProvider.otherwise('/');
