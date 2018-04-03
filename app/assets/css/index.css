@@ -438,7 +438,8 @@ nav .dropdown-menu li.divider{
   padding-top: 75px;
   padding-bottom: 75px;
   background: #fcedea;
-  font-size:25px
+  font-size:25px;
+  color: #b95856;
 }
 .news .news-content h3 {
   font-size:30px;

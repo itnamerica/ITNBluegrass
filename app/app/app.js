@@ -19,7 +19,10 @@ myApp.config(function($stateProvider, $urlRouterProvider, $locationProvider){
       })
       .state('contact', {
         url: '/contact',
-        templateUrl: 'views/contact.html'
+        templateUrl: 'views/contact.html',
+        params: {
+          signup: false
+        }
       })
       .state('donate', {
         url: '/donate',
@@ -190,6 +193,13 @@ myApp.controller('MainController', ['$scope', '$transitions','$http', '$anchorSc
   $scope.catchAnchor = function(){
     console.log('stateparam is ', $stateParams, $stateParams.anchor);
     $scope.scrollTo($stateParams.anchor);
+  }
+  
+  $scope.catchSignup = function(){
+    if ($stateParams.signup){
+      $scope.formData.subject = "Please sign me up to your newsletter";
+      $scope.formData.messageBody = "Hello! Please sign me up to your newsletter. My email is <INSERT-EMAIL-HERE>";
+    }
   }
   
   $scope.resetFormData = function(){
