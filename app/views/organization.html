@@ -11,10 +11,10 @@
             <a class="nav-link active" ng-click="scrollTo('board')">Board of Directors</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" ng-click="scrollTo('start')">Start an ITN in your community</a>
+            <a class="nav-link disabled" ng-click="scrollTo('staff')">Staff</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link disabled" ng-click="scrollTo('staff')">Staff</a>
+            <a class="nav-link" ng-click="scrollTo('start')">Start an ITN in your community</a>
           </li>
         </ul>
       
@@ -154,6 +154,36 @@
           </div>
         </div><!--row-->
       </section>
+      
+      
+      
+      <section class="org-section" id="staff">
+        <h1>Staff</h1>
+        <div class="container">
+
+          <div class="row mb-100">
+            <div class="col-sm-4">
+              <img src="assets/images/board/Jennifer.jpg" alt="Jennifer Gripshover portrait"/>
+              <h2>Jennifer Gripshover</h2>
+              <p class="title"><strong>Executive Director</strong></p>
+              <button type="button" class="btn btn-lg" ng-click="showBoardBio11 = !showBoardBio11">READ MORE</button>
+              
+              <div class="showBoardBio" ng-show="showBoardBio11">
+                <p>Jennifer Gripshover joined ITNBluegrass as Executive Director in March of 2018.  Prior to ITN she had a 20 year career in education, including curriculum design, student affairs, records, academic administration, and management.  She found her passion when she became Dean of a career college.  Here she was able to help nontraditional students from under served populations to change their lives through education.</p>
+                <p>She later opened the ITT Technical Institute campus in Lexington in 2006 as its first College Director.  She grew that campus to over 600 students and oversaw the addition of the Breckinridge School of Nursing.</p>
+                <p>Jennifer attends Ohavay Zion Synagogue where she is the Co-Chair of the Social Action Committee.  She volunteers with Kentucky Refugee Ministries and Bluegrass Care Navigators.  Her heart turned to senior causes when her parents moved into a senior living community.  She saw how many challenges they faced in maintaining an active and meaningful life, so when she had the opportunity to enter the next phase of her career she committed herself to helping seniors.</p>
+                <p>Jennifer grew up in the Northeast and has lived overseas in France, Turkey and England.  She has a Bachelors’ degree from Tufts University in International Relations and a Masters’ from Lesley College in Intercultural Training and Development.  She came to Lexington 24 years ago after 2 years in England.  Jennifer lives in Lexington with her husband, two sons, and two dogs.  </p>
+              </div>
+            </div>
+        
+            <div class="col-sm-4"></div>
+
+            <div class="col-sm-4"></div><!--marginright 7% on showBoardBio for this one>
+          </div><!--row-->
+        </div><!--container-->  
+      </section>
+    
+    
     
       <section class="org-section" id="start">
         <img class="itn-icon" src="assets/images/icons/itn3.png" alt="ITN icon"/>
@@ -194,31 +224,7 @@
         </div> -->
           </section>
 
-          <section class="org-section" id="staff">
-            <h1>Staff</h1>
-            <div class="container">
-
-              <div class="row mb-100">
-                <div class="col-sm-4">
-                  <img src="assets/images/board/Jennifer.jpg" alt="Jennifer Gripshover portrait"/>
-                  <h2>Jennifer Gripshover</h2>
-                  <p class="title"><strong>Executive Director</strong></p>
-                  <button type="button" class="btn btn-lg" ng-click="showBoardBio11 = !showBoardBio11">READ MORE</button>
-                  
-                  <div class="showBoardBio" ng-show="showBoardBio11">
-                    <p>Jennifer Gripshover joined ITNBluegrass as Executive Director in March of 2018.  Prior to ITN she had a 20 year career in education, including curriculum design, student affairs, records, academic administration, and management.  She found her passion when she became Dean of a career college.  Here she was able to help nontraditional students from under served populations to change their lives through education.</p>
-                    <p>She later opened the ITT Technical Institute campus in Lexington in 2006 as its first College Director.  She grew that campus to over 600 students and oversaw the addition of the Breckinridge School of Nursing.</p>
-                    <p>Jennifer attends Ohavay Zion Synagogue where she is the Co-Chair of the Social Action Committee.  She volunteers with Kentucky Refugee Ministries and Bluegrass Care Navigators.  Her heart turned to senior causes when her parents moved into a senior living community.  She saw how many challenges they faced in maintaining an active and meaningful life, so when she had the opportunity to enter the next phase of her career she committed herself to helping seniors.</p>
-                    <p>Jennifer grew up in the Northeast and has lived overseas in France, Turkey and England.  She has a Bachelors’ degree from Tufts University in International Relations and a Masters’ from Lesley College in Intercultural Training and Development.  She came to Lexington 24 years ago after 2 years in England.  Jennifer lives in Lexington with her husband, two sons, and two dogs.  </p>
-                  </div>
-                </div>
-            
-                <div class="col-sm-4"></div>
-
-                <div class="col-sm-4"></div><!--marginright 7% on showBoardBio for this one>
-              </div><!--row-->
-        </div><!--container-->  
-      </section>
+      
     
       </div><!--lightgreen div-->
     </div><!--organization-->
