@@ -1455,6 +1455,10 @@ form textarea.form-control {font-size:25px}
 .member-app #pdfVersion, .volunteer-app #pdfVersion {
   font-size: 12px !important;
 } 
+
+.first-hero h1 {
+  font-family: Tahoma !important;
+}
     
 #footer {
     width:100%;
