@@ -809,7 +809,7 @@ nav .dropdown-menu li.divider{
  .faq .questions-list ul li a {
    font-weight:bold;
    color:black;
-   text-decoration:underline
+   /*text-decoration:underline;*/
  }
  .faq .qa-wrapper {
    background-image: url('../images/backgrounds/background-faq.jpg');
@@ -1372,7 +1372,7 @@ form textarea.form-control {font-size:25px}
 .volunteer-drive .benefits-volunteer {
   font-weight:bold;
   font-size:25px;
-  border-top: 5px dashed white;
+  border-top: 5px solid white;
 }
 .volunteer-drive .benefits-volunteer h2 {
   text-align: center;
@@ -1405,11 +1405,12 @@ form textarea.form-control {font-size:25px}
   background-size: cover !important;
   background-repeat: no-repeat !important;
   height: 300px !important;
-  border: 5px dashed white;
+  border: 5px solid white;
   opacity:0.8;
 }
 .volunteer-drive .description {
-  background-image: url('../images/itn-people-images/aa-couple-reverse.jpg');
+  /*background-image: url('../images/itn-people-images/aa-couple-reverse.jpg');*/
+  background: #afcace;
   background-attachment: fixed;
   background-position: center top;
   background-size: cover;
