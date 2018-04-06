@@ -1093,7 +1093,7 @@ nav .dropdown-menu li.divider{
   align-items:center;
 }
 .family .text-carousel2 {
-  margin-top: 100px;
+  /*margin-top: 100px;*/
 }
 .family .text-carousel p {
   color:#399eaa;
@@ -1735,10 +1735,12 @@ h2,h3 {line-height:1.7}
   background-size: cover;
 }
 .carousel-wrap2 {
-  background-image: url('../images/backgrounds/gift-certificate2.png');
-  background-size: 95% 500px;
-  height: 500px;
-}
+    background-position: 90% 47%;
+    margin-right: 10% !important;
+    background-image: url(../images/ribbon.jpg);
+    background-size: 20% 200px;
+    height: auto;
+  }
 .slick-slide {
   width: 60%;
   text-align: center;
@@ -1962,7 +1964,7 @@ h2,h3 {line-height:1.7}
     background-image:none;
   }
   .carousel-wrap2 {
-    height: 1000px !important;
+    height: 1000px;
   }
 
   #footer .search {display:none}
