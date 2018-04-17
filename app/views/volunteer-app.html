@@ -1,4 +1,4 @@
-<div class="volunteer-app" ng-init="resetFormData()">
+<div class="volunteer-app" >
       
     <div class="jumbotron section first-hero" id="first-hero-volunteer-app">
       <h1>Online Volunteer Form</h1>
@@ -510,8 +510,8 @@
                         
                             <div class="row">
                               <div class="form-group col-sm-6">
-                                <label for="serve community">Help eldery people:</label>
-                                <select ng-model="formData.reasons.helpEldery" class="form-control" id="help">
+                                <label for="serve community">Help elderly people:</label>
+                                <select ng-model="formData.reasons.helpElderly" class="form-control" id="help">
                                   <option ng-repeat="rating in ratings"  value="{{rating}}">{{rating}}</option>
                                 </select>
                               </div>
@@ -533,8 +533,8 @@
                               </div>
                               
                               <div class="form-group col-sm-6">
-                                <label for="serve community">Enjoy eldery people:</label>
-                                <select ng-model="formData.reasons.enjoyEldery" class="form-control" id="enjoy">
+                                <label for="serve community">Enjoy elderly people:</label>
+                                <select ng-model="formData.reasons.enjoyElderly" class="form-control" id="enjoy">
                                   <option ng-repeat="rating in ratings"  value="{{rating}}">{{rating}}</option>
                                 </select>
                               </div>
@@ -570,7 +570,7 @@
 
 
                 <h2 class="mt-25">Civic Engagement</h2>
-          www      
+
                 <div class="form-group ta-center">
                   <label for="member of any organization">Are you a member of any of the following organizations?:</label><br>
                   <label class="checkbox-inline"><input ng-model="formData.memberOfOrganization.aaa" type="checkbox" value="aaa">AAA</label>
@@ -601,7 +601,7 @@
                 
                 <h3>Volunteer Driver Weekly Schedule</h3>
                 
-                <p>ITN{{affiliate}} will work with your schedule.</p>
+                <p>ITN<em>{{affiliate}}</em> will work with your schedule.</p>
                 <p>We provide transportation 24 hours a day 7 days a week.</p>
                 
                 <div class="form-group">
@@ -689,7 +689,7 @@
                             </div>
                             
                             <div class="form-group" ng-class="{ 'has-error' : itnForm.drivingRecordState.$invalid && !itnForm.drivingRecordState.$pristine }">
-                              <label for="license number">I authorize ITN{{affiliate}} to request and receive my Driving Record from *:</label>
+                              <label for="license number">I authorize ITN<em>{{affiliate}}</em> to request and receive my Driving Record from *:</label>
                               <select ng-model="formData.requestDriverRecord.authorize" class="form-control" name="drivingRecordState" id="state">
                                  <option ng-repeat="state in states" value="{{state}}">{{state}}</option>
                               </select>
@@ -1333,14 +1333,14 @@
   {{formData.reasons.serveCommunity}}
   <br><label for="serve community">Enjoy driving:</label><br>
   {{formData.reasons.enjoyDriving}}
-  <br><label for="serve community">Help eldery people:</label>
-  {{formData.reasons.helpEldery}}
+  <br><label for="serve community">Help elderly people:</label>
+  {{formData.reasons.helpElderly}}
   <br><label for="serve community">Additional Income:</label>
   {{formData.reasons.additionalIncome}}
   <br><label for="serve community">Occupy your time:</label>
   {{formData.reasons.occupyTime}}
-  <br><label for="serve community">Enjoy eldery people:</label>
-  {{formData.reasons.enjoyEldery}}
+  <br><label for="serve community">Enjoy elderly people:</label>
+  {{formData.reasons.enjoyElderly}}
   
   <h3>Education</h3>
   <br><label for="learn about ITN">Highest grade/degree completed:</label><br>
@@ -1362,7 +1362,7 @@
   
   
   <h4>Volunteer Driver Weekly Schedule</h4>
-  <p>ITN{{affiliate}} will work with your schedule.</p>
+  <p>ITN<em>{{affiliate}}</em> will work with your schedule.</p>
   <p>We provide transportation 24 hours a day 7 days a week.</p>
   
   <br><label for="hours available">What hours are you available on these days? <br>
@@ -1393,7 +1393,7 @@
   {{formData.requestDriverRecord.dob}}
   <br><label for="license number">Driver's License Number *:</label><br>
   {{formData.requestDriverRecord.licenseNumber}}
-  <br><label for="license number">I authorize ITN{{affiliate}} to request and receive my Driving Record from *:</label>
+  <br><label for="license number">I authorize ITN<em>{{affiliate}}</em> to request and receive my Driving Record from *:</label>
   {{formData.requestDriverRecord.authorize}}
   
   <p><strong>I certify that I have not been convicted or forfeited bond or collateral because of a moving violation during the last three years.</strong></p>
