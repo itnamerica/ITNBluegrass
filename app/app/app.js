@@ -2,87 +2,88 @@ var myApp = angular.module('myApp', ['ui.router', 'ngAnimate']);
 
 myApp.config(function($stateProvider, $urlRouterProvider, $locationProvider){
   console.log('inside of config block');
+  var viewsPath = "views/";
+  if (location.hostname === "localhost"){
+    viewsPath = "app/views/";
+  };
 
   $stateProvider
     
       .state('home', {
         url: '/',
-        templateUrl: 'views/home.html'
+        templateUrl: viewsPath + 'home.html'
       })
       .state('become-member', {
         url: '/become-member',
-        templateUrl: 'views/become-member.html'
+        templateUrl: viewsPath + 'become-member.html'
       })
       .state('community', {
         url: '/community',
-        templateUrl: 'views/community.html'
+        templateUrl: viewsPath + 'community.html'
       })
       .state('contact', {
         url: '/contact',
-        templateUrl: 'views/contact.html',
-        params: {
-          signup: false
-        }
+        templateUrl: viewsPath + 'contact.html'
       })
       .state('donate', {
         url: '/donate',
-        templateUrl: 'views/donate.html'
+        templateUrl: viewsPath + 'donate.html'
       })
       .state('faces', {
         url: '/faces-of-our-members',
-        templateUrl: 'views/faces.html'
+        templateUrl: viewsPath + 'faces.html'
       })
       .state('family', {
         url: '/family-involvement',
-        templateUrl: 'views/family.html'
+        templateUrl: viewsPath + 'family.html'
       })
       .state('faq', {
         url: '/faq',
-        templateUrl: 'views/faq.html'
+        templateUrl: viewsPath + 'faq.html'
       })
       .state('member-app', {
         url: '/member-application',
-        templateUrl: 'views/member-app.html'
+        templateUrl: viewsPath + 'member-app.html'
       })
       .state('member-programs', {
         url: '/member-programs',
-        templateUrl: 'views/member-programs.html'
+        templateUrl: viewsPath + 'member-programs.html'
       })
       .state('news', {
         url: '/news',
-        templateUrl: 'views/news.html'
+        templateUrl: viewsPath + 'news.html'
       })
       .state('non-rider-member', {
         url: '/non-rider-member',
-        templateUrl: 'views/non-rider-member.html'
+        templateUrl: viewsPath + 'non-rider-member.html'
       })
       .state('organization', {
         url: '/organization',
-        templateUrl: 'views/organization.html'
+        templateUrl: viewsPath + 'organization.html'
       })
       .state('pay-online', {
         url: '/pay-online',
-        templateUrl: 'views/pay-online.html'
+        templateUrl: viewsPath + 'pay-online.html'
       })
       .state('rider-stories', {
         url: '/rider-stories',
-        templateUrl: 'views/rider-stories.html'
+        templateUrl: viewsPath + 'rider-stories.html'
       })
       .state('what-we-do', {
         url: '/what-we-do',
-        templateUrl: 'views/what-we-do.html'
+        templateUrl: viewsPath + 'what-we-do.html'
       })
       .state('corporate', {
         url: '/corporate',
-        templateUrl: 'views/corporate.html'
+        templateUrl: viewsPath + 'corporate.html'
       })
       .state('volunteer-to-drive', {
         url: '/volunteer-to-drive',
-        templateUrl: 'views/volunteer-to-drive.html'
+        templateUrl: viewsPath + 'volunteer-to-drive.html'
       })
       .state('volunteer-app', {
         url: '/volunteer-app',
-        templateUrl: 'views/volunteer-app.html'
+        templateUrl: viewsPath + 'volunteer-app.html'
             // resolve: {
             //     formData: function ($scope) {
             //         $scope.formData = {};
@@ -91,30 +92,39 @@ myApp.config(function($stateProvider, $urlRouterProvider, $locationProvider){
       })
       .state('newsletters', {
         url: '/newsletters',
-        templateUrl: 'views/newsletters.html',
+        templateUrl: viewsPath + 'newsletters.html',
         params: {
           anchor: null
         }
       })
       .state('add-pta-credit', {
         url: '/add-pta-credit',
-        templateUrl: 'views/add-pta-credit.html'
+        templateUrl: viewsPath + 'add-pta-credit.html'
       })
       .state('services-map', {
         url: '/services-map',
-        templateUrl: 'views/services-map.html'
+        templateUrl: viewsPath + 'services-map.html'
       })
-      .state('draft', {
-        url: '/draft',
-        templateUrl: 'views/draft.html'
+      .state('keyword-pages', {
+        url: '/keyword-pages',
+        templateUrl: viewsPath + 'keyword-pages.html'
       })
       .state('civil-rights', {
         url: '/civil-rights',
-        templateUrl: 'views/civil-rights.html'
+        templateUrl: viewsPath + 'civil-rights.html'
+      })
+      .state('draft', {
+        url: '/draft',
+        templateUrl: viewsPath + 'draft.html'
+      })
+      .state('wildcard', {
+        url: '/*',
+        templateUrl: viewsPath + 'home.html'
       })
 
   // default fall back route
   $urlRouterProvider.otherwise('/');
+  $locationProvider.html5Mode(true).hashPrefix('');
 
   // enable HTML5 Mode for SEO
   // $locationProvider.html5Mode(true);
@@ -123,8 +133,8 @@ myApp.config(function($stateProvider, $urlRouterProvider, $locationProvider){
 
 
 
-  myApp.run(['$rootScope', '$location', '$window',
-    function($rootScope, $location, $window) {
+  myApp.run(['$rootScope', '$location', '$window', '$state', '$stateParams', 
+    function($rootScope, $location, $window, $state, $stateParams) {      
       $rootScope.$on('$routeChangeSuccess',
         function(event) {
           if (!$window.ga) {
@@ -137,10 +147,17 @@ myApp.config(function($stateProvider, $urlRouterProvider, $locationProvider){
     }
   ]);
 
-
-
-myApp.controller('MainController', ['$scope', '$transitions','$http', '$anchorScroll', '$location', '$stateParams', '$timeout', function ($scope, $transitions, $http, $anchorScroll, $location, $stateParams, $timeout)  {
+myApp.controller('MainController', ['$scope', '$transitions','$http', '$anchorScroll', '$location', '$stateParams', '$timeout', '$state', '$rootScope', '$window', function ($scope, $transitions, $http, $anchorScroll, $location, $stateParams, $timeout, $state, $rootScope, $window)  {
   console.log('inside main controller');
+
+  $scope.assetsPath = "assets";
+  $scope.viewsPath = "../views";
+  
+  if (location.hostname === "localhost"){
+    console.log("localhost server, staging env");
+    $scope.assetsPath = "app/assets";
+    $scope.viewsPath = "../app/views";
+  };
   
   $scope.affiliate = "Bluegrass";
   $scope.zoomLevel = 1;
@@ -178,13 +195,44 @@ myApp.controller('MainController', ['$scope', '$transitions','$http', '$anchorSc
   $scope.itnSources = ['Family','Friend','Speaker','Doctor','Radio','Television','Flier','Book','Phone','Agency on Aging', 'Social Worker','Internet','Referred by Current Member'];
   $scope.ratings = ['None',1,2,3,4,5,6];
   $scope.keyword = '';
-
+  $scope.keywordPages = '';
+  $scope.urlsWithKeyword = [];
+  $scope.listOfUrls = [
+    {name: 'Home', state: 'home', url: $scope.viewsPath + '/home.html'},
+    {name: 'What We Do', state: 'what-we-do', url: $scope.viewsPath + '/what-we-do.html'},
+    {name: 'Our Organization', state: 'organization', url: $scope.viewsPath + '/organization.html'},
+    {name: 'Faces of our Members', state: 'faces', url: $scope.viewsPath + '/faq.html'},
+    {name: 'FAQ', state: 'faq', url: $scope.viewsPath + '/what-we-do.html'},
+    {name: 'News', state: 'news', url: $scope.viewsPath + '/news.html'},
+    {name: 'Contact Us', state: 'contact', url: $scope.viewsPath + '/contact.html'},
+    {name: 'Become a Member', state: 'become-member', url: $scope.viewsPath + '/become-member.html'},
+    {name: 'Online Membership Application', state: 'member-app', url: $scope.viewsPath + '/member-app.html'},
+    {name: 'Volunteer To Drive', state: 'volunteer-to-drive', url: $scope.viewsPath + '/volunteer-to-drive.html'},
+    {name: 'Online Volunteer Application', state: 'volunteer-app', url: $scope.viewsPath + '/volunteer-app.html'},
+    {name: 'Family Involvement', state: 'family', url: $scope.viewsPath + '/family.html'},
+    {name: 'Member Programs', state: 'member-programs', url: $scope.viewsPath + '/member-programs.html'},
+    {name: 'Pay Online', state: 'pay-online', url: $scope.viewsPath + '/pay-online.html'},
+    {name: 'Donate', state: 'donate', url: $scope.viewsPath + '/donate.html'},
+    {name: 'Corporate Partnership', state: 'corporate', url: $scope.viewsPath + '/corporate.html'}
+  ];
   
-  // $transitions.onStart({}, function($transition, $scope){
-  //     console.log('changing state');
-  //     $scope.formData = {};
-  //     $scope.tab = 1;
-  // });
+
+  $transitions.onSuccess({}, function(transition){
+      $scope.resetFormData();
+      if (transition.from().name === 'keyword-pages'){
+        angular.element(document).ready(function () {
+          $scope.searchKeyword();
+          $scope.scrollToTop();
+          $scope.urlsWithKeyword = [];
+          // $scope.keyword = '';
+        });
+      }
+  });
+  
+  //use this function instead of ng-href as ng-href is not compatible with html5mode
+  $scope.redirectToURL = function(url){
+    $window.location.href = url;    
+  }
   
   $scope.scrollTo = function(id) {
     var old = $location.hash();
@@ -197,13 +245,6 @@ myApp.controller('MainController', ['$scope', '$transitions','$http', '$anchorSc
   $scope.catchAnchor = function(){
     console.log('stateparam is ', $stateParams, $stateParams.anchor);
     $scope.scrollTo($stateParams.anchor);
-  }
-  
-  $scope.catchSignup = function(){
-    if ($stateParams.signup){
-      $scope.formData.subject = "Please sign me up to your newsletter";
-      $scope.formData.messageBody = "Hello! Please sign me up to your newsletter. My email is <INSERT-EMAIL-HERE>";
-    }
   }
   
   $scope.resetFormData = function(){
@@ -245,15 +286,40 @@ myApp.controller('MainController', ['$scope', '$transitions','$http', '$anchorSc
     }
     else if (direction == 'less') {
       $scope.zoomLevel -= 1;
-    }
-    
+    }    
+  }
+
+  $scope.searchKeyword = function(){
+    var myHilitor = new Hilitor("main-content");
+    myHilitor.apply($scope.keyword);
   }
   
-  $scope.searchKeyword = function(){
-    console.log("inside searchKeyword");
-    var myHilitor = new Hilitor("wrapper-content");
-    myHilitor.apply($scope.keyword);
-    console.log('my hilitor', myHilitor);
+  $scope.searchKeywordInApp = function(){
+    var x;
+    for (x=0; x < $scope.listOfUrls.length; x++){
+      apiCallToUrls(x)
+    }
+    $state.go('keyword-pages');
+  }
+  
+  function apiCallToUrls(x){
+    $http.get($scope.listOfUrls[x].url)
+    .then(function(data){
+      var matchWord = findWord($scope.keyword, data.data);
+      if (matchWord){
+        $scope.urlsWithKeyword.push($scope.listOfUrls[x])
+      }
+    })
+  }
+  
+  function findWord(keyword, str) {
+    var text = str.split(' ');
+    for (var word=0; word < text.length; word++){
+      if (text[word].toLowerCase().indexOf(keyword.toLowerCase()) !== -1 ){
+        return keyword
+      }
+    }
+    return false;
   }
   
   $scope.animateValue = function(id, start, end, duration)  {
@@ -394,23 +460,25 @@ myApp.filter('inputSelected', function(){
   return function(formData){
     var keyArr = [];
     var word = [];
-    Object.keys(formData).forEach(function(key){
-    if (formData[key]){
-    	var keyCap = key.charAt(0).toUpperCase() + key.slice(1);
-      for (var char = 0; char<keyCap.length; char++ ) {
-      	if (keyCap[char] == keyCap[char].toUpperCase()){
-          var spacedLetter = ' '+ keyCap[char];
-          word.push(spacedLetter);
-        }
-        else {
-          word.push(keyCap[char]);
+    if (formData){
+      Object.keys(formData).forEach(function(key){
+      if (formData[key]){
+      	var keyCap = key.charAt(0).toUpperCase() + key.slice(1);
+        for (var char = 0; char<keyCap.length; char++ ) {
+        	if (keyCap[char] == keyCap[char].toUpperCase()){
+            var spacedLetter = ' '+ keyCap[char];
+            word.push(spacedLetter);
+          }
+          else {
+            word.push(keyCap[char]);
+          }
         }
       }
+      keyArr.push(word.join(''))
+      word = [];
+      })
+      return keyArr.toString();
     }
-    keyArr.push(word.join(''))
-    word = [];
-    })
-    return keyArr.toString();
   }
 })
 

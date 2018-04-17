@@ -24,17 +24,17 @@
         <div class="membership-btns row ta-center">
           <a class="btn btn-primary btn-lg" ui-sref="member-app" role="button">Online Member Application</a>
           <a class="btn btn-primary btn-lg" 
-             href="assets/images/docs/MemberRiderApplication.pdf"  
+             ng-click="redirectToURL(assetsPath + '/images/docs/MemberRiderApplication.pdf')"  
              role="download member app" download>Download PDF Member Application</a>
         </div>
         <div class="row ta-center mt-50">
           <p>Before you complete your application, make sure to review the instructions and rates</p>
           <a class="btn btn-primary btn-lg"
             style="background: #fc6d6d"
-            href="assets/images/docs/MembershipApplicationInstructions.pdf" 
+            ng-click="redirectToURL(assetsPath + '/images/docs/MembershipApplicationInstructions.pdf')" 
             role="membership instructions">Instructions and rates</a>
             
-            <p><small>If you need the Adobe Acrobat Reader you can <a href="http://www.adobe.com/products/acrobat/readstep2.html" target="_blank">download it by clicking here. <img alt="Adobe Acrobat Reader Download" src="assets/images/icons/acrobat_reader-20x20.jpg" style="width: 20px; height: 20px;" /></a></small></p>
+            <p><small>If you need the Adobe Acrobat Reader you can <a href="http://www.adobe.com/products/acrobat/readstep2.html" target="_blank">download it by clicking here. <img alt="Adobe Acrobat Reader Download" ng-src="{{assetsPath}}/images/icons/acrobat_reader-20x20.jpg" style="width: 20px; height: 20px;" /></a></small></p>
         </div>
         </div><!--container-->  
       </div><!--jumbo-->
