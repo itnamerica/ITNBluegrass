@@ -9,8 +9,11 @@ var gmail_pass = env.gmail_pass;
 app.use(express.json()); //convert req to json
 app.use(express.static(__dirname + '/app'));
 
-app.use(function (req, res) {
-    res.sendfile(__dirname + '/app/index.html');
+
+var allPages = ['/home','/what-we-do','/organization','/faces','/faq','/news','/contact','/become-member','/member-app','/volunteer-to-drive','/volunteer-app','/family','/member-programs','/pay-online','/donate','/corporate'];
+
+app.use(allPages, function(req, res){
+  res.sendFile(__dirname + '/app/index.html');
 });
 
 app.post('/sendmail', function(req, res){
