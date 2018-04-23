@@ -47,8 +47,8 @@
                       
                         <div class="form-group ta-center" ng-class="{ 'has-error' : itnForm.membership.$invalid }">
                           <label for="Membership Type">Membership Type: *</label><br>
-                          <label class="radio-inline"><input type="radio" value="individual" name="membership" ng-model="formData.membership">Individual</label>
-                          <label class="radio-inline"><input type="radio" name="membership" value="family" ng-model="formData.membership" required>Family</label>
+                          <label class="radio-inline"><input type="radio" value="individual" name="membership" ng-model="formData.membership" ng-click="familyMembership = false">Individual</label>
+                          <label class="radio-inline"><input type="radio" name="membership" value="family" ng-model="formData.membership" ng-click="familyMembership = true" required>Family</label>
                           <span ng-if="itnForm.membership.$error.required && !itnForm.membership.$pristine" class="help-block">{{errorMessages.required}}</span>
                         </div>
                         
