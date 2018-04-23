@@ -1341,6 +1341,7 @@ form textarea.form-control {font-size:25px}
 #pdfVersion {
   display:none;
   padding: 5%;
+  font-size:14px;
 };
 #pdfVersion label {margin-right: 15px;}
 .volunteer-drive {

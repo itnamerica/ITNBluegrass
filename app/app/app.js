@@ -227,6 +227,9 @@ myApp.controller('MainController', ['$scope', '$transitions','$http', '$anchorSc
           // $scope.keyword = '';
         });
       }
+      if (!$stateParams.anchor) {
+        $scope.scrollToTop();
+      }
   });
   
   //use this function instead of ng-href as ng-href is not compatible with html5mode

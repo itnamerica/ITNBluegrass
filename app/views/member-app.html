@@ -140,6 +140,46 @@
                           <input type="email" class="form-control" id="email" name="email" placeholder="Example: test@example.com" ng-model="formData.email" ng-pattern="emailPattern">
                           <span ng-if="itnForm.email.$error.pattern" class="help-block">{{errorMessages.email}}</span>
                         </div> 
+                        
+                        <div ng-if="familyMembership">
+  
+                          <h2 class="mt-50 mb-25">Additional Information for Family Membership Only</h2>
+                          
+                          <div class="form-group" ng-class="{ 'has-error' : itnForm.secondRiderName.$invalid && !itnForm.secondRiderName.$pristine }">
+                            <label for="second rider name">Second Rider's Name: *</label><br>
+                            <input type="text" class="form-control" id="secondRiderName" name="secondRiderName" ng-model="formData.secondRiderName" ng-minlength="minlength" ng-maxlength="maxlength" required>
+                            <span ng-if="itnForm.secondRiderName.$error.required && !itnForm.secondRiderName.$pristine" class="help-block">{{errorMessages.required}}</span>
+                            <span ng-if="itnForm.riderName.$error.minlength" class="help-block">{{errorMessages.minlength}}</span>
+                            <span ng-if="itnForm.riderName.$error.maxlength" class="help-block">{{errorMessages.maxlength}}</span>
+                          </div>
+                          
+                          <div class="form-group" ng-class="{ 'has-error' : itnForm.secondRiderDob.$invalid && !itnForm.secondRiderDob.$pristine }">
+                            <label for="second rider date of birth">Second Rider's Date of Birth: * - </label><br>
+                            <input type="text" class="form-control" id="secondRiderDob" name="secondRiderDob" placeholder="Example: mm/dd/yyyy" ng-model="formData.secondRiderDob" ng-pattern="dobPattern" required>
+                            <span ng-if="itnForm.secondRiderDob.$error.required && !itnForm.secondRiderDob.$pristine" class="help-block">{{errorMessages.required}}</span>
+                            <span ng-if="itnForm.secondRiderDob.$error.pattern" class="help-block">{{errorMessages.dob}}</span>
+                          </div>
+                          
+                          <div class="form-group ta-center">
+                            <label for="second rider special needs">Second Rider's Special Needs and Mobility Assistance: *</label><br>
+                            <label class="checkbox-inline"><input ng-model="formData.secondRiderSpecialNeeds.cane" type="checkbox" value="cane">Cane</label>
+                            <label class="checkbox-inline"><input ng-model="formData.secondRiderSpecialNeeds.wheelchair" type="checkbox" value="wheelchair">Wheelchair (< 22lbs) </label>
+                            <label class="checkbox-inline"><input ng-model="formData.secondRiderSpecialNeeds.blind" type="checkbox" value="blind"> Blind/Seeing Eye</label>
+                            <label class="checkbox-inline"><input ng-model="formData.secondRiderSpecialNeeds.visuallyImpaired" type="checkbox" value="impaired">Visually Challenged</label>
+                            <label class="checkbox-inline"><input ng-model="formData.secondRiderSpecialNeeds.seeingEye" type="checkbox" value="seeingEye">Seeing Eye</label>
+                            <label class="checkbox-inline"><input ng-model="formData.secondRiderSpecialNeeds.anxietyDisorder" type="checkbox" value="anxiety">Anxiety Disorder</label>
+                            <label class="checkbox-inline"><input ng-model="formData.secondRiderSpecialNeeds.driverAssistanceRequired" type="checkbox" value="driver">Driver Assistance Required</label>
+                            <label class="checkbox-inline"><input ng-model="formData.secondRiderSpecialNeeds.personalAssistant" type="checkbox" value="personal">Personal Assistant</label>
+                            <label class="checkbox-inline"><input ng-model="formData.secondRiderSpecialNeeds.fullSizedVehicleRequired" type="checkbox" value="vehicle">Full-Sized Vehicle Required</label>
+                            <label class="checkbox-inline"><input ng-model="formData.secondRiderSpecialNeeds.walker" type="checkbox" value="walker">Walker</label>
+                            <label class="checkbox-inline"><input ng-model="formData.secondRiderSpecialNeeds.alzheimerOrDementia" type="checkbox" value="alzheimer"> Alzheimer's/Dementia</label>
+                            <label class="checkbox-inline"><input ng-model="formData.secondRiderSpecialNeeds.bladderOrBowerControlProblems" type="checkbox" value="bladder"> Bladder/Bowel Control Problems</label>
+                            <label class="checkbox-inline"><input ng-model="formData.secondRiderSpecialNeeds.deaf" type="checkbox" value="deaf">Deaf</label>
+                            <label class="checkbox-inline"><input ng-model="formData.secondRiderSpecialNeeds.noHighVehicle" type="checkbox" value="no-high">No High Vehicle</label>
+                            <label class="checkbox-inline"><input ng-model="formData.secondRiderSpecialNeeds.none" type="checkbox" value="none">None of the above</label>
+                          </div>
+                            
+                          </div>
 
                         <button type="button" ng-click="nextTabMemberApp()" class="next-tab btn btn-lg btn-primary pull-right itn-green-bg"  style="margin-left:2%">Next</button>
 
@@ -1002,6 +1042,18 @@
     {{formData.secondaryPhone}}
     <br><label for="email">Email: </label><br>
     {{formData.email}}
+    
+    <div ng-if="familyMembership">
+      <h3>Second Rider Information</h3>
+      
+      <br><label for="second rider name">Second Rider's Name: *</label><br>
+      {{formData.secondRiderName}}
+      <br><label for="second rider name">Second Rider's Date of Birth: *</label><br>
+      {{formData.secondRiderDob}}
+      <br><label for="second rider special needs">Second Rider's Special Needs and Mobility Assistance: *</label><br>
+      {{formData.secondRiderSpecialNeeds | inputSelected}}
+      
+    </div>
     
     <h3>First Emergency Contact</h3>
     
