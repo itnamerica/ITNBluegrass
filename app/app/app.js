@@ -3,7 +3,7 @@ var myApp = angular.module('myApp', ['ui.router', 'ngAnimate']);
 myApp.config(function($stateProvider, $urlRouterProvider, $locationProvider){
   console.log('inside of config block');
   var viewsPath = "views/";
-  if (location.hostname === "localhost"){
+  if (location.host === "localhost:8080"){
     viewsPath = "app/views/";
   };
 
@@ -23,7 +23,10 @@ myApp.config(function($stateProvider, $urlRouterProvider, $locationProvider){
       })
       .state('contact', {
         url: '/contact',
-        templateUrl: viewsPath + 'contact.html'
+        templateUrl: viewsPath + 'contact.html',
+        params : {
+          signup:false
+        }
       })
       .state('donate', {
         url: '/donate',
@@ -42,7 +45,7 @@ myApp.config(function($stateProvider, $urlRouterProvider, $locationProvider){
         templateUrl: viewsPath + 'faq.html'
       })
       .state('member-app', {
-        url: '/member-application',
+        url: '/member-app',
         templateUrl: viewsPath + 'member-app.html'
       })
       .state('member-programs', {
@@ -84,11 +87,6 @@ myApp.config(function($stateProvider, $urlRouterProvider, $locationProvider){
       .state('volunteer-app', {
         url: '/volunteer-app',
         templateUrl: viewsPath + 'volunteer-app.html'
-            // resolve: {
-            //     formData: function ($scope) {
-            //         $scope.formData = {};
-            //     },
-            //   }
       })
       .state('newsletters', {
         url: '/newsletters',
@@ -153,7 +151,7 @@ myApp.controller('MainController', ['$scope', '$transitions','$http', '$anchorSc
   $scope.assetsPath = "assets";
   $scope.viewsPath = "../views";
   
-  if (location.hostname === "localhost"){
+  if (location.host === "localhost:8080"){
     console.log("localhost server, staging env");
     $scope.assetsPath = "app/assets";
     $scope.viewsPath = "../app/views";
@@ -234,7 +232,7 @@ myApp.controller('MainController', ['$scope', '$transitions','$http', '$anchorSc
   
   //use this function instead of ng-href as ng-href is not compatible with html5mode
   $scope.redirectToURL = function(url){
-    $window.location.href = url;    
+    $window.open(url, '_blank'); 
   }
   
   $scope.scrollTo = function(id) {
@@ -248,6 +246,13 @@ myApp.controller('MainController', ['$scope', '$transitions','$http', '$anchorSc
   $scope.catchAnchor = function(){
     console.log('stateparam is ', $stateParams, $stateParams.anchor);
     $scope.scrollTo($stateParams.anchor);
+  }
+  
+  $scope.catchSignup = function(){
+    if ($stateParams.signup){
+      $scope.formData.subject = "Please sign me up to your newsletter";
+      $scope.formData.messageBody = "Hello! Please sign me up to your newsletter. My email is <INSERT-EMAIL-HERE>";
+    }
   }
   
   $scope.resetFormData = function(){
