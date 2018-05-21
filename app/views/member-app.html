@@ -920,7 +920,7 @@
                           
                           <div class="form-group" ng-class="{ 'has-error' : itnForm.name1.$invalid && !itnForm.name1.$pristine }">
                             <label for="name">Name: *</label>
-                            <input ng-model="formData.agreement.name" type="text" class="form-control" id="name" name="name1" placeholder="please print name"  ng-minlength="minlength" ng-maxlength="maxlength" ng-model="formData.agreement.name1" required>
+                            <input type="text" class="form-control" id="name" name="name1" placeholder="please print name"  ng-minlength="minlength" ng-maxlength="maxlength" ng-model="formData.agreement.name1" required>
                             <span ng-if="itnForm.name1.$error.required && !itnForm.name1.$pristine" class="help-block">{{errorMessages.required}}</span>
                             <span ng-if="itnForm.name1.$error.minlength" class="help-block">{{errorMessages.minlength}}</span>
                             <span ng-if="itnForm.name1.$error.maxlength" class="help-block">{{errorMessages.maxlength}}</span>
@@ -960,7 +960,7 @@
                           
                           <div class="form-group" ng-class="{ 'has-error' : itnForm.name2.$invalid && !itnForm.name2.$pristine }">
                             <label for="name">Name: *</label>
-                            <input ng-model="formData.agreement.name2" type="text" class="form-control" id="name" name="name2" placeholder="please print name"  ng-minlength="minlength" ng-maxlength="maxlength" ng-model="formData.agreement.name2" match="formData.agreement.name1" required>
+                            <input ng-model="formData.agreement.name2" type="text" class="form-control" id="name" name="name2" placeholder="please print name"  ng-minlength="minlength" ng-maxlength="maxlength" match="formData.agreement.name1" required>
                             <span ng-if="itnForm.name2.$error.required && !itnForm.name2.$pristine" class="help-block">{{errorMessages.required}}</span>
                             <span ng-if="itnForm.name2.$error.minlength" class="help-block">{{errorMessages.minlength}}</span>
                             <span ng-if="itnForm.name2.$error.maxlength" class="help-block">{{errorMessages.maxlength}}</span>
@@ -969,7 +969,7 @@
                           
                           <div class="form-group" ng-class="{ 'has-error' : itnForm.signature2.$invalid && !itnForm.signature2.$pristine }">
                             <label for="signature">Signature: *</label>
-                            <input ng-model="formData.agreement.signature2" type="text" class="form-control" id="signature" name="signature2" placeholder="Signature of customer or legal representative: *" ng-minlength="minlength" ng-maxlength="maxlength" ng-model="formData.agreement.signature2" match="formData.agreement.signature1" required>
+                            <input ng-model="formData.agreement.signature2" type="text" class="form-control" id="signature" name="signature2" placeholder="Signature of customer or legal representative: *" ng-minlength="minlength" ng-maxlength="maxlength" match="formData.agreement.signature1" required>
                             <span ng-if="itnForm.signature2.$error.required && !itnForm.signature2.$pristine" class="help-block">{{errorMessages.required}}</span>
                             <span ng-if="itnForm.signature2.$error.minlength" class="help-block">{{errorMessages.minlength}}</span>
                             <span ng-if="itnForm.signature2.$error.maxlength" class="help-block">{{errorMessages.maxlength}}</span>
@@ -1134,7 +1134,7 @@
     <br><label for="living">Living Arrangements: * </label><br>
     {{formData.customerInfo.livingArrangement}}
     <br><label for="dwelling">Dwelling Arrangements: * </label><br>
-    {{formData.customerInfo.dwellingArrangement}}
+    {{formData.customerInfo.dwellingArrangement | inputSelected}}
     <br><label for="languages">Languages Spoken: *</label><br>
     {{formData.customerInfo.languages | inputSelected}}
     <br><label for="transportation means">Current primary means of getting around: * </label><br>
@@ -1254,8 +1254,8 @@
     <div class="page-template">
       <div class="header">
       </div>
-      <div class="watermark"><img ng-src="{{assetsPath}}/images/icons/itnlanier_white_bg.png" style="margin:auto;display:block" alt="main logo"/></div>
-      <div class="watermark"><img ng-src="{{assetsPath}}/images/icons/itnlanier_white_bg.png" style="margin:auto;display:block" alt="main logo"/></div>
+      <div class="watermark"><img src="assets/images/icons/itnlanier_white_bg.png" style="margin:auto;display:block" alt="main logo"/></div>
+      <div class="watermark"><img src="assets/images/icons/itnlanier_white_bg.png" style="margin:auto;display:block" alt="main logo"/></div>
       <div class="footer">
         Page #: pageNum # of #: totalPages #
       </div>
