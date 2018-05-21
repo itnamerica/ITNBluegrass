@@ -136,35 +136,14 @@
   <!--CONTAINER-->
 </div><!-- PROGRESS-->
 
-<!-- <div class="jumbotron section rider-stories">
-  <div class="container section-content">
-    <h1>Rider Stories</h1>
-      <div class="col-lg-5 rider-stories-text">            
-        <h4>Ellie wants to know how much she should tip the driver, who says "No thank you. You owe me nothing." <br>
-        Initially Ellie tries to argue because she just tipped the "girl" who did her hair, but the driver reassures her that no tip is required.</h4>
-        <h5>-Written by Nancy McCormick <br>
-        (ITNCoastalCT)<h5>
-        <p><a ui-sref="rider-stories" class="btn btn-primary btn-lg mt-25">READ MORE</a></p>
-      </div>
-      <div class="col-lg-5 rider-stories-text">
-        <h4>Recently, ITNMontereyCounty had a member sign on who needed the service only for a couple of months while he recovered from open heart surgery. <br>
-        Robert needed us three times a week to get to and from his cardiac rehab appointments. Though this was a temporary thing for him, he was moved by how much it impacted his life.</h4>
-          <h5>-Written by Samantha Kelley <br>
-        (ITNMontereyCounty)</h5>
-        <p>
-          <a ui-sref="rider-stories" class="btn btn-primary btn-lg mt-25">READ MORE</a>
-        </p>
-      </div>
-  </div>
-</div> -->
 
 <div class="jumbotron section regeneron">
   <div class="container section-content">
     <h2>Regeneron and ITN<em>America</em></h2>
     <!-- <div class="row"> -->
       <div class="col-sm-9 reg-text">
-        ITN<em>{{affiliate}}</em> is part of the nationwide network of ITN<em>America</em> affiliates.
-        ITN<em>America</em> is proud to recognize Regeneron Pharmaceuticals, Inc. as a corporate sponsor committed to helping raise awareness of the challenges associated with vision impairment, low vision, senior mobility issues and the shortage of locally-available transportation options for seniors. As the National Pharmaceutical Eye-care Services Sponsor for ITN<em>America</em> and our affiliate communities, Regeneron Pharmaceuticals is proud to support ITN's mission to promote safe senior mobility. 
+        <strong>ITN<em>{{affiliate}}</em> is part of the nationwide network of ITN<em>America</em> affiliates.
+        ITN<em>America</em> is proud to recognize Regeneron Pharmaceuticals, Inc. as a corporate sponsor committed to helping raise awareness of the challenges associated with vision impairment, low vision, senior mobility issues and the shortage of locally-available transportation options for seniors. As the National Pharmaceutical Eye-care Services Sponsor for ITN<em>America</em> and our affiliate communities, Regeneron Pharmaceuticals is proud to support ITN's mission to promote safe senior mobility. </strong>
       </div>
       <div class="col-sm-3 reg-img">
         <img ng-src="{{assetsPath}}/images/regeneron_logo.jpg" alt="regeneron logo" style="width: 300px"/>
@@ -177,6 +156,8 @@
 </div><!--home-->
 
 <script type="text/javascript">
+  new WOW().init();
+
   $(document).ready(function() {
     $('.carousel').carousel({
       interval: 3500
@@ -205,12 +186,6 @@
          }
        }
     });
-    
-    
-  
-  });
-</script>
 
-<script>
-new WOW().init();
+  });
 </script>
