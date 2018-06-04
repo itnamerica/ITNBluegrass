@@ -572,8 +572,8 @@
                               <label class="radio-inline" required><input ng-model="formData.customerInfo.dwellingArrangement" type="radio" value="private-home">Private Home</label>
                               <label class="radio-inline"><input ng-model="formData.customerInfo.dwellingArrangement" type="radio" value="assisted-living"> Assisted Living Facility</label>
                               <label class="radio-inline"><input ng-model="formData.customerInfo.dwellingArrangement" type="radio" value="retirement-community"> Independent Living Retirement Community</label>
-                              <label class="radio-inline"><input type="radio" value="other-dwelling" ng-click="otherDwelling = !otherDwelling">Other (specify)</label>
-                                <input type="text" ng-model="formData.customerInfo.dwellingArrangement.other" class="form-control" id="other-dwelling" name="other-dwelling" placeholder="other (specify)" ng-if="otherDwelling">
+                              <label class="radio-inline"><input ng-model="formData.customerInfo.dwellingArrangement" type="radio" value="other-dwelling" ng-click="otherDwelling = !otherDwelling">Other (specify)</label>
+                                <input type="text" ng-model="formData.customerInfo.otherDwellingArrangement" class="form-control" id="other-dwelling" name="other-dwelling" placeholder="other (specify)" ng-if="otherDwelling">
                             </div>
                             
                             <div class="form-group ta-center">
@@ -1134,7 +1134,7 @@
     <br><label for="living">Living Arrangements: * </label><br>
     {{formData.customerInfo.livingArrangement}}
     <br><label for="dwelling">Dwelling Arrangements: * </label><br>
-    {{formData.customerInfo.dwellingArrangement | inputSelected}}
+    {{formData.customerInfo.dwellingArrangement}} {{formData.customerInfo.otherDwellingArrangement}}
     <br><label for="languages">Languages Spoken: *</label><br>
     {{formData.customerInfo.languages | inputSelected}}
     <br><label for="transportation means">Current primary means of getting around: * </label><br>
