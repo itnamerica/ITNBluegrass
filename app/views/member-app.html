@@ -1,4 +1,4 @@
-<div class="member-app" >
+<div class="member-app">
       
     <div class="jumbotron section first-hero" id="first-hero-online-app">
       <h1>Online Membership Form</h1>
@@ -8,52 +8,64 @@
       
       <div class="container">
         <p class="ta-center"><em>Once you have completed the application we will send you a confirmation email. <br>
-          You can book your first ride by calling us on (859) 252-8665.</em></p>
+          You can book your first ride by calling us at (859) 252-8665.</em></p>
+          <p><strong>All fields with an asterisk (<span style="color:red">*</span>) are required</strong></p>
         <hr align="center">
         <div class="col-sm-12">
             <div class="form-area" id="formConfirmation" style="background: #c7dfe4;border:none">  
-                  <form name="itnForm" novalidate ng-submit="submitFormWithPDF('membership')" role="membership form" ng-model="formData">
+                  <form name="itnForm" novalidate ng-submit="submitFormWithPDF('membership')" role="membership form" ng-model="formData" ng-hide="submitted">
                     <br style="clear:both">
                     <h2 class="app-title">Application for Transportation Service</h2>
                     
                     <div class="member-tabs" ng-if="tab===1 || tab===99" id="tab1">
                       
-                      <img ng-src="{{assetsPath}}/images/icons/itnlanier_white_bg.png" style="margin:auto;display:block;text-align:center" alt="main logo"/>
+                      <img ng-src="{{assetsPath}}/images/icons/itnlanier_white_bg.png" style="margin:auto;display:block" alt="main logo"/>
                       
-                      <ol class="steps">
-                        <li class="step active">
-                          <a href="#tab1">Step 1</a>
-                        </li>
-                        <li class="step">
-                          <a href="#tab2" tabindex="-1">Step 2</a>
-                        </li>
-                        <li class="step">
-                          <a href="#tab3" tabindex="-1">Step 3</a>
-                        </li>
-                        <li class="step">
-                          <a href="#tab4" tabindex="-1">Step 4</a>
-                        </li>
-                        <li class="step">
-                          <a href="#tab5" tabindex="-1">Step 5</a>
-                        </li>
-                        <li class="step">
-                          <a href="#tab6" tabindex="-1">Step 6</a>
-                        </li>
-                        <li class="step">
-                          <a href="#tab7" tabindex="-1">Step 7</a>
-                        </li>
-                      </ol>
+                      <div class="s-stepper">
+                        <div data-target="#stage1" id="stage-1-step" class="s-step active">
+                          <span class="s-step-counter"></span>
+                          <small>Membership Information</small>
+                        </div>
+                        <div data-target="#stage2" id="stage-2-step" class="s-step">
+                          <span class="s-step-counter"></span>
+                          <small>Emergency Contacts</small>
+                        </div>
+                        <div data-target="#stage3" id="stage-3-step" class="s-step">
+                          <span class="s-step-counter"></span>
+                          <small>Word of Mouth</small>
+                        </div>
+                        <div data-target="#stage4" id="stage-4-step" class="s-step">
+                          <span class="s-step-counter"></span>
+                          <small>Customer Information</small>
+                        </div>
+                        <div data-target="#stage5" id="stage-5-step" class="s-step">
+                          <span class="s-step-counter"></span>
+                          <small>Civic Engagement</small>
+                        </div>
+                        <div data-target="#stage6" id="stage-6-step" class="s-step">
+                          <span class="s-step-counter"></span>
+                          <small>Driving Information</small>
+                        </div>
+                        <div data-target="#stage7" id="stage-7-step" class="s-step">
+                          <span class="s-step-counter"></span>
+                          <small>Agreement & Consent</small>
+                        </div>
+                      </div>
+                      
+                      <button type="button" ng-click="nextTabMemberApp()" class="next-tab btn btn-lg btn-primary pull-right itn-green-bg"  style="margin:-50px 0 30px 2%">Next</button>
+                      
+
                   
                       
                         <div class="form-group ta-center" ng-class="{ 'has-error' : itnForm.membership.$invalid }">
-                          <label for="Membership Type">Membership Type: *</label><br>
+                          <label for="Membership Type">Membership Type: <span style="color:red">*</span></label><br>
                           <label class="radio-inline"><input type="radio" value="individual" name="membership" ng-model="formData.membership" ng-click="familyMembership = false">Individual</label>
                           <label class="radio-inline"><input type="radio" name="membership" value="family" ng-model="formData.membership" ng-click="familyMembership = true" required>Family</label>
                           <span ng-if="itnForm.membership.$error.required && !itnForm.membership.$pristine" class="help-block">{{errorMessages.required}}</span>
                         </div>
                         
                         <div class="form-group" ng-class="{ 'has-error' : itnForm.riderName.$invalid && !itnForm.riderName.$pristine }">
-                          <label for="rider name">Rider's Name: *</label><br>
+                          <label for="rider name">Rider's Name: <span style="color:red">*</span></label><br>
                           <input type="text" class="form-control" id="riderName" name="riderName" ng-model="formData.riderName" ng-minlength="minlength" ng-maxlength="maxlength" required>
                           <span ng-if="itnForm.riderName.$error.required && !itnForm.riderName.$pristine" class="help-block">{{errorMessages.required}}</span>
                           <span ng-if="itnForm.riderName.$error.minlength" class="help-block">{{errorMessages.minlength}}</span>
@@ -61,7 +73,7 @@
                         </div>
 
                         <div class="form-group" ng-class="{ 'has-error' : itnForm.street.$invalid && !itnForm.street.$pristine }">
-                          <label for="street">Street Address: *</label><br>
+                          <label for="street">Street Address: <span style="color:red">*</span></label><br>
                           <input type="text" class="form-control" id="street" name="street" ng-model="formData.streetAddress" ng-minlength="minlength" ng-maxlength="maxlength" required>
                           <span ng-if="itnForm.street.$error.required && !itnForm.street.$pristine" class="help-block">{{errorMessages.required}}</span>
                           <span ng-if="itnForm.street.$error.minlength" class="help-block">{{errorMessages.minlength}}</span>
@@ -70,7 +82,7 @@
                         
                         <div class="row">
                           <div class="form-group col-sm-6" ng-class="{ 'has-error' : itnForm.city.$invalid && !itnForm.city.$pristine }">
-                            <label for="street">City: *</label><br>
+                            <label for="street">City: <span style="color:red">*</span></label><br>
                             <input type="text" class="form-control" id="city" name="city" ng-model="formData.city" ng-minlength="minlength" ng-maxlength="maxlength" required>
                             <span ng-if="itnForm.city.$error.required && !itnForm.city.$pristine" class="help-block">{{errorMessages.required}}</span>
                             <span ng-if="itnForm.city.$error.minlength" class="help-block">{{errorMessages.minlength}}</span>
@@ -78,7 +90,7 @@
                           </div>
                           
                           <div class="form-group col-sm-6" ng-class="{ 'has-error' : itnForm.state.$invalid && !itnForm.state.$pristine }">
-                            <label for="state">State: *</label><br>
+                            <label for="state">State: <span style="color:red">*</span></label><br>
                             <select ng-model="formData.state" class="form-control" name="state" id="state">
                                <option ng-repeat="state in states" value="{{state}}">{{state}}</option>
                             </select>
@@ -89,40 +101,43 @@
                         
                         <div class="row">
                           <div class="form-group col-sm-6" ng-class="{ 'has-error' : itnForm.zip.$invalid && !itnForm.zip.$pristine }">
-                            <label for="zip">Zip Code: *</label><br>
+                            <label for="zip">Zip Code: <span style="color:red">*</span></label><br>
                             <input type="text" class="form-control" id="zip" name="zip" ng-model="formData.zip" ng-pattern="zipPattern" required>
                             <span ng-if="itnForm.zip.$error.required && !itnForm.zip.$pristine" class="help-block">{{errorMessages.required}}</span>
                             <span ng-if="itnForm.zip.$error.pattern" class="help-block">{{errorMessages.zip}}</span>
                           </div>
                           
                           <div class="form-group col-sm-6" ng-class="{ 'has-error' : itnForm.years.$invalid && !itnForm.years.$pristine }">
-                            <label for="years at address">Years at Address: *</label><br>
+                            <label for="years at address">Years at Address: <span style="color:red">*</span></label><br>
                             <input type="text" class="form-control" id="years" name="years" ng-model="formData.yearsAtAddress" required>
                             <span ng-if="itnForm.years.$error.required && !itnForm.years.$pristine" class="help-block">{{errorMessages.required}}</span>
                           </div>
                         </div><!--row-->
 
-                        <div class="form-group ta-center">
-                          <label for="Mailing Adress Yes or No">Is this your Mailing Address?*:  </label><br>
-                          <label class="radio-inline"><input type="radio" value="yes" ng-model="formData.isMailingAddress">Yes</label>
-                          <label class="radio-inline"><input type="radio" value="no" ng-model="formData.isMailingAddress" required>No</label>
+                        <div class="form-group ta-center" ng-class="{ 'has-error' : itnForm.isMailingAddress.$invalid && !itnForm.isMailingAddress.$pristine }">
+                          <label for="Mailing Adress Yes or No">Is this your Mailing Address?<span style="color:red">*</span>:  </label><br>
+                          <label class="radio-inline"><input type="radio" value="yes" name="isMailingAddress" ng-model="formData.isMailingAddress">Yes</label>
+                          <label class="radio-inline"><input type="radio" value="no" name="isMailingAddress" ng-model="formData.isMailingAddress" required>No</label>
+                          <span ng-if="itnForm.isMailingAddress.$error.required && !itnForm.isMailingAddress.$pristine" class="help-block">{{errorMessages.required}}</span>
                         </div>
                         
-                        <div class="form-group ta-center">
-                          <label for="Billing Adress Yes or No">Is this your Billing Address?*:  </label><br>
-                          <label class="radio-inline"><input type="radio" value="yes" ng-model="formData.isBillingAddress">Yes</label>
-                          <label class="radio-inline"><input type="radio" value="no" ng-model="formData.isBillingAddress" required>No</label>
+                        <div class="form-group ta-center"  ng-class="{ 'has-error' : itnForm.isBillingAddress.$invalid && !itnForm.isBillingAddress.$pristine }">
+                          <label for="Billing Adress Yes or No">Is this your Billing Address?<span style="color:red">*</span>:  </label><br>
+                          <label class="radio-inline"><input type="radio" value="yes" name="isBillingAddress" ng-model="formData.isBillingAddress">Yes</label>
+                          <label class="radio-inline"><input type="radio" value="no"  name="isBillingAddress"ng-model="formData.isBillingAddress" required>No</label>
+                          <span ng-if="itnForm.isBillingAddress.$error.required && !itnForm.isBillingAddress.$pristine" class="help-block">{{errorMessages.required}}</span>
                         </div>
                         
-                        <div class="form-group ta-center">
-                          <label for="Year-round Residence Yes or No">Is this your Year-round Residence?*:  </label><br>
-                          <label class="radio-inline"><input type="radio" value="yes" ng-model="formData.isYearRoundResidence">Yes</label>
-                          <label class="radio-inline"><input type="radio" value="no" ng-model="formData.isYearRoundResidence" required>No</label>
+                        <div class="form-group ta-center" ng-class="{ 'has-error' : itnForm.isYearRoundResidence.$invalid && !itnForm.isYearRoundResidence.$pristine }">
+                          <label for="Year-round Residence Yes or No">Is this your Year-round Residence?<span style="color:red">*</span>:  </label><br>
+                          <label class="radio-inline"><input type="radio" value="yes" name="isYearRoundResidence" ng-model="formData.isYearRoundResidence">Yes</label>
+                          <label class="radio-inline"><input type="radio" value="no" name="isYearRoundResidence" ng-model="formData.isYearRoundResidence" required>No</label>
+                          <span ng-if="itnForm.isYearRoundResidence.$error.required && !itnForm.isYearRoundResidence.$pristine" class="help-block">{{errorMessages.required}}</span>
                         </div>
 
                         <div class="row">
                           <div class="form-group col-sm-6" ng-class="{ 'has-error' : itnForm.primaryPhone.$invalid && !itnForm.primaryPhone.$pristine }">
-                            <label for="primary phone">Primary Phone: *</label><br>
+                            <label for="primary phone">Primary Phone: <span style="color:red">*</span></label><br>
                             <input type="text" class="form-control" id="primary-phone" name="primaryPhone" placeholder="Example: xxx-xxx-xxxx"  ng-model="formData.primaryPhone" ng-pattern="phonePattern" required>
                             <span ng-if="itnForm.primaryPhone.$error.required && !itnForm.primaryPhone.$pristine" class="help-block">{{errorMessages.required}}</span>
                             <span ng-if="itnForm.primaryPhone.$error.pattern" class="help-block">{{errorMessages.phone}}</span>
@@ -146,7 +161,7 @@
                           <h2 class="mt-50 mb-25">Additional Information for Family Membership Only</h2>
                           
                           <div class="form-group" ng-class="{ 'has-error' : itnForm.secondRiderName.$invalid && !itnForm.secondRiderName.$pristine }">
-                            <label for="second rider name">Second Rider's Name: *</label><br>
+                            <label for="second rider name">Second Rider's Name: <span style="color:red">*</span></label><br>
                             <input type="text" class="form-control" id="secondRiderName" name="secondRiderName" ng-model="formData.secondRiderName" ng-minlength="minlength" ng-maxlength="maxlength" required>
                             <span ng-if="itnForm.secondRiderName.$error.required && !itnForm.secondRiderName.$pristine" class="help-block">{{errorMessages.required}}</span>
                             <span ng-if="itnForm.riderName.$error.minlength" class="help-block">{{errorMessages.minlength}}</span>
@@ -154,32 +169,33 @@
                           </div>
                           
                           <div class="form-group" ng-class="{ 'has-error' : itnForm.secondRiderDob.$invalid && !itnForm.secondRiderDob.$pristine }">
-                            <label for="second rider date of birth">Second Rider's Date of Birth: * - </label><br>
+                            <label for="second rider date of birth">Second Rider's Date of Birth: <span style="color:red">*</span> - </label><br>
                             <input type="text" class="form-control" id="secondRiderDob" name="secondRiderDob" placeholder="Example: mm/dd/yyyy" ng-model="formData.secondRiderDob" ng-pattern="dobPattern" required>
                             <span ng-if="itnForm.secondRiderDob.$error.required && !itnForm.secondRiderDob.$pristine" class="help-block">{{errorMessages.required}}</span>
                             <span ng-if="itnForm.secondRiderDob.$error.pattern" class="help-block">{{errorMessages.dob}}</span>
                           </div>
                           
-                          <div class="form-group ta-center">
-                            <label for="second rider special needs">Second Rider's Special Needs and Mobility Assistance: *</label><br>
-                            <label class="checkbox-inline"><input ng-model="formData.secondRiderSpecialNeeds.cane" type="checkbox" value="cane">Cane</label>
-                            <label class="checkbox-inline"><input ng-model="formData.secondRiderSpecialNeeds.wheelchair" type="checkbox" value="wheelchair">Wheelchair (< 22lbs) </label>
-                            <label class="checkbox-inline"><input ng-model="formData.secondRiderSpecialNeeds.blind" type="checkbox" value="blind"> Blind/Seeing Eye</label>
-                            <label class="checkbox-inline"><input ng-model="formData.secondRiderSpecialNeeds.visuallyImpaired" type="checkbox" value="impaired">Visually Challenged</label>
-                            <label class="checkbox-inline"><input ng-model="formData.secondRiderSpecialNeeds.seeingEye" type="checkbox" value="seeingEye">Seeing Eye</label>
-                            <label class="checkbox-inline"><input ng-model="formData.secondRiderSpecialNeeds.anxietyDisorder" type="checkbox" value="anxiety">Anxiety Disorder</label>
-                            <label class="checkbox-inline"><input ng-model="formData.secondRiderSpecialNeeds.driverAssistanceRequired" type="checkbox" value="driver">Driver Assistance Required</label>
-                            <label class="checkbox-inline"><input ng-model="formData.secondRiderSpecialNeeds.personalAssistant" type="checkbox" value="personal">Personal Assistant</label>
-                            <label class="checkbox-inline"><input ng-model="formData.secondRiderSpecialNeeds.fullSizedVehicleRequired" type="checkbox" value="vehicle">Full-Sized Vehicle Required</label>
-                            <label class="checkbox-inline"><input ng-model="formData.secondRiderSpecialNeeds.walker" type="checkbox" value="walker">Walker</label>
-                            <label class="checkbox-inline"><input ng-model="formData.secondRiderSpecialNeeds.alzheimerOrDementia" type="checkbox" value="alzheimer"> Alzheimer's/Dementia</label>
-                            <label class="checkbox-inline"><input ng-model="formData.secondRiderSpecialNeeds.bladderOrBowerControlProblems" type="checkbox" value="bladder"> Bladder/Bowel Control Problems</label>
-                            <label class="checkbox-inline"><input ng-model="formData.secondRiderSpecialNeeds.deaf" type="checkbox" value="deaf">Deaf</label>
-                            <label class="checkbox-inline"><input ng-model="formData.secondRiderSpecialNeeds.noHighVehicle" type="checkbox" value="no-high">No High Vehicle</label>
-                            <label class="checkbox-inline"><input ng-model="formData.secondRiderSpecialNeeds.none" type="checkbox" value="none">None of the above</label>
+                          <div class="form-group ta-center"  ng-class="{ 'has-error' : itnForm.secondRiderSpecialNeeds.$invalid && !itnForm.secondRiderSpecialNeeds.$pristine }">
+                            <label for="second rider special needs">Second Rider's Special Needs and Mobility Assistance: <span style="color:red">*</span></label><br>
+                            <label class="checkbox-inline"><input ng-model="formData.secondRiderSpecialNeeds.cane" type="checkbox" name="secondRiderSpecialNeeds" value="cane">Cane</label>
+                            <label class="checkbox-inline"><input ng-model="formData.secondRiderSpecialNeeds.wheelchair" type="checkbox" name="secondRiderSpecialNeeds" value="wheelchair">Wheelchair (< 22lbs) </label>
+                            <label class="checkbox-inline"><input ng-model="formData.secondRiderSpecialNeeds.blind" type="checkbox" name="secondRiderSpecialNeeds" value="blind"> Blind/Seeing Eye</label>
+                            <label class="checkbox-inline"><input ng-model="formData.secondRiderSpecialNeeds.visuallyImpaired" type="checkbox" name="secondRiderSpecialNeeds" value="impaired">Visually Challenged</label>
+                            <label class="checkbox-inline"><input ng-model="formData.secondRiderSpecialNeeds.seeingEye" type="checkbox" name="secondRiderSpecialNeeds" value="seeingEye">Seeing Eye</label>
+                            <label class="checkbox-inline"><input ng-model="formData.secondRiderSpecialNeeds.anxietyDisorder" type="checkbox" name="secondRiderSpecialNeeds" value="anxiety">Anxiety Disorder</label>
+                            <label class="checkbox-inline"><input ng-model="formData.secondRiderSpecialNeeds.driverAssistanceRequired" type="checkbox" name="secondRiderSpecialNeeds" value="driver">Driver Assistance Required</label>
+                            <label class="checkbox-inline"><input ng-model="formData.secondRiderSpecialNeeds.personalAssistant" type="checkbox" name="secondRiderSpecialNeeds" value="personal">Personal Assistant</label>
+                            <label class="checkbox-inline"><input ng-model="formData.secondRiderSpecialNeeds.fullSizedVehicleRequired" type="checkbox" name="secondRiderSpecialNeeds" value="vehicle">Full-Sized Vehicle Required</label>
+                            <label class="checkbox-inline"><input ng-model="formData.secondRiderSpecialNeeds.walker" type="checkbox" name="secondRiderSpecialNeeds" value="walker">Walker</label>
+                            <label class="checkbox-inline"><input ng-model="formData.secondRiderSpecialNeeds.alzheimerOrDementia" type="checkbox" name="secondRiderSpecialNeeds" value="alzheimer"> Alzheimer's/Dementia</label>
+                            <label class="checkbox-inline"><input ng-model="formData.secondRiderSpecialNeeds.bladderOrBowerControlProblems" type="checkbox" name="secondRiderSpecialNeeds" value="bladder"> Bladder/Bowel Control Problems</label>
+                            <label class="checkbox-inline"><input ng-model="formData.secondRiderSpecialNeeds.deaf" type="checkbox" name="secondRiderSpecialNeeds" value="deaf">Deaf</label>
+                            <label class="checkbox-inline"><input ng-model="formData.secondRiderSpecialNeeds.noHighVehicle" type="checkbox" name="secondRiderSpecialNeeds" value="no-high">No High Vehicle</label>
+                            <label class="checkbox-inline"><input ng-model="formData.secondRiderSpecialNeeds.none" type="checkbox" name="secondRiderSpecialNeeds" value="none">None of the above</label>
+                            <span ng-if="itnForm.secondRiderSpecialNeeds.$error.required && !itnForm.secondRiderSpecialNeeds.$pristine" class="help-block">{{errorMessages.required}}</span>
                           </div>
-                            
-                          </div>
+                          
+                        </div>
 
                         <button type="button" ng-click="nextTabMemberApp()" class="next-tab btn btn-lg btn-primary pull-right itn-green-bg"  style="margin-left:2%">Next</button>
 
@@ -190,38 +206,49 @@
 
                         <div class="member-tabs" ng-if="tab===2 || tab===99" id="tab2">
                           
-                        <img ng-src="{{assetsPath}}/images/icons/itnlanier_white_bg.png" style="margin:auto;display:block;text-align:center" alt="main logo"/>
+                        <img ng-src="{{assetsPath}}/images/icons/itnlanier_white_bg.png" style="margin:auto;display:block;margin-left:33% !important" alt="main logo"/>
 
-                        <ol class="steps">
-                        <li class="step previous complete">
-                          <a href="">Step 1</a>
-                        </li>
-                        <li class="step active">
-                          <a href="">Step 2</a>
-                        </li>
-                        <li class="step">
-                          <a href="" tabindex="-1">Step 3</a>
-                        </li>
-                        <li class="step">
-                          <a href="" tabindex="-1">Step 4</a>
-                        </li>
-                        <li class="step">
-                          <a href="" tabindex="-1">Step 5</a>
-                        </li>
-                        <li class="step">
-                          <a href="" tabindex="-1">Step 6</a>
-                        </li>
-                        <li class="step">
-                          <a href="" tabindex="-1">Step 7</a>
-                        </li>
-                        </ol>
+                        <div class="s-stepper">
+                          <div data-target="#stage1" id="stage-1-step" class="s-step">
+                            <span class="s-step-counter"></span>
+                            <small>Membership Information</small>
+                          </div>
+                          <div data-target="#stage2" id="stage-2-step" class="s-step active">
+                            <span class="s-step-counter"></span>
+                            <small>Emergency Contacts</small>
+                          </div>
+                          <div data-target="#stage3" id="stage-3-step" class="s-step">
+                            <span class="s-step-counter"></span>
+                            <small>Word of Mouth</small>
+                          </div>
+                          <div data-target="#stage4" id="stage-4-step" class="s-step">
+                            <span class="s-step-counter"></span>
+                            <small>Customer Information</small>
+                          </div>
+                          <div data-target="#stage5" id="stage-5-step" class="s-step">
+                            <span class="s-step-counter"></span>
+                            <small>Civic Engagement</small>
+                          </div>
+                          <div data-target="#stage6" id="stage-6-step" class="s-step">
+                            <span class="s-step-counter"></span>
+                            <small>Driving Information</small>
+                          </div>
+                          <div data-target="#stage7" id="stage-7-step" class="s-step">
+                            <span class="s-step-counter"></span>
+                            <small>Agreement & Consent</small>
+                          </div>
+                        </div>
+                        
+                        <button type="button" ng-click="nextTabMemberApp()" class="next-tab btn btn-lg btn-primary pull-right itn-green-bg"  style="margin:-50px 0 30px 2%">Next</button>
+                        <button type="button" ng-click="nextTabMemberApp('prev')" class="next-tab btn btn-lg btn-primary pull-right itn-green-bg"  style="margin:-50px 0 30px 2%">Previous</button>  
+
 
                         <div id="first-emergency">
                           
                           <h2>First Emergency Contact</h2>
                           
                             <div class="form-group" ng-class="{ 'has-error' : itnForm.firstEmName.$invalid && !itnForm.firstEmName.$pristine }">
-                              <label for="name">Name: *</label><br>
+                              <label for="name">Name: <span style="color:red">*</span></label><br>
                               <input type="text" class="form-control" id="name" name="firstEmName" ng-model="formData.firstEmergencyContact.name" ng-minlength="minlength" ng-maxlength="maxlength" required>
                               <span ng-if="itnForm.firstEmName.$error.required && !itnForm.firstEmName.$pristine" class="help-block">{{errorMessages.required}}</span>
                               <span ng-if="itnForm.firstEmName.$error.minlength" class="help-block">{{errorMessages.minlength}}</span>
@@ -229,7 +256,7 @@
                             </div>
                             
                             <div class="form-group" ng-class="{ 'has-error' : itnForm.firstEmRelationship.$invalid && !itnForm.firstEmRelationship.$pristine }">
-                              <label for="relationship">Relationship: *</label><br>
+                              <label for="relationship">Relationship: <span style="color:red">*</span></label><br>
                               <input type="text" class="form-control" id="relationship" name="firstEmRelationship" placeholder="Example: Daughter" ng-model="formData.firstEmergencyContact.relationship" ng-minlength="minlength" ng-maxlength="maxlength" required>
                               <span ng-if="itnForm.firstEmRelationship.$error.required && !itnForm.firstEmRelationship.$pristine" class="help-block">{{errorMessages.required}}</span>
                               <span ng-if="itnForm.firstEmRelationship.$error.minlength" class="help-block">{{errorMessages.minlength}}</span>
@@ -238,7 +265,7 @@
                             
                             <div class="row">
                               <div class="form-group col-sm-6" ng-class="{ 'has-error' : itnForm.firstEmStreet.$invalid && !itnForm.firstEmStreet.$pristine }">
-                                <label for="street">Street Address: *</label><br>
+                                <label for="street">Street Address: <span style="color:red">*</span></label><br>
                                 <input type="text" class="form-control" id="street" name="firstEmStreet" ng-model="formData.firstEmergencyContact.street" ng-minlength="minlength" ng-maxlength="maxlength" required>
                                 <span ng-if="itnForm.firstEmStreet.$error.required && !itnForm.firstEmStreet.$pristine" class="help-block">{{errorMessages.required}}</span>
                                 <span ng-if="itnForm.firstEmStreet.$error.minlength" class="help-block">{{errorMessages.minlength}}</span>
@@ -246,7 +273,7 @@
                               </div>
                               
                               <div class="form-group col-sm-6" ng-class="{ 'has-error' : itnForm.firstEmCity.$invalid && !itnForm.firstEmCity.$pristine }">
-                                <label for="city">City: *</label><br>
+                                <label for="city">City: <span style="color:red">*</span></label><br>
                                 <input type="text" class="form-control" id="city" name="firtEmCity"  ng-model="formData.firstEmergencyContact.city" ng-minlength="minlength" ng-maxlength="maxlength" required>
                                 <span ng-if="itnForm.firstEmCity.$error.required && !itnForm.firstEmCity.$pristine" class="help-block">{{errorMessages.required}}</span>
                                 <span ng-if="itnForm.firstEmCity.$error.minlength" class="help-block">{{errorMessages.minlength}}</span>
@@ -256,7 +283,7 @@
                             
                             <div class="row">
                               <div class="form-group col-sm-6" ng-class="{ 'has-error' : itnForm.firstEmState.$invalid && !itnForm.firstEmState.$pristine }">
-                                <label for="state">State: *</label><br>
+                                <label for="state">State: <span style="color:red">*</span></label><br>
                                 <select ng-model="formData.firstEmergencyContact.state" class="form-control" name="firstEmState" id="state">
                                    <option ng-repeat="state in states" value="{{state}}">{{state}}</option>
                                 </select>
@@ -264,7 +291,7 @@
                               </div>
                             
                             <div class="form-group col-sm-6" ng-class="{ 'has-error' : itnForm.firstEmZip.$invalid && !itnForm.firstEmZip.$pristine }">
-                              <label for="zip">Zip Code: *</label><br>
+                              <label for="zip">Zip Code: <span style="color:red">*</span></label><br>
                               <input type="text" class="form-control" id="zip" name="firstEmZip" ng-model="formData.firstEmergencyContact.zip"  ng-pattern="zipPattern" required>
                               <span ng-if="itnForm.firstEmZip.$error.required && !itnForm.firstEmZip.$pristine" class="help-block">{{errorMessages.required}}</span>
                               <span ng-if="itnForm.firstEmZip.$error.pattern" class="help-block">{{errorMessages.zip}}</span>
@@ -273,15 +300,15 @@
                             
                             <div class="row">
                             <div class="form-group col-sm-6" ng-class="{ 'has-error' : itnForm.firstEmHomePhone.$invalid && !itnForm.firstEmHomePhone.$pristine }">
-                              <label for="home phone">Home Phone: *</label><br>
-                              <input type="text" class="form-control" id="home-phone" name="firstEmHomePhone" placeholder="Example: xxx-xxx-xxxx" ng-model="formData.firstEmergencyContact.homePhone" ng-pattern="phonePattern" required>
+                              <label for="best phone">Best phone number: <span style="color:red">*</span></label><br>
+                              <input type="text" class="form-control" id="home-phone" name="firstEmHomePhone" placeholder="Example: xxx-xxx-xxxx" ng-model="formData.firstEmergencyContact.bestPhone" ng-pattern="phonePattern" required>
                               <span ng-if="itnForm.firstEmHomePhone.$error.required && !itnForm.firstEmHomePhone.$pristine" class="help-block">{{errorMessages.required}}</span>
                               <span ng-if="itnForm.firstEmHomePhone.$error.pattern" class="help-block">{{errorMessages.phone}}</span>
                             </div>
                             
                             <div class="form-group col-sm-6" ng-class="{ 'has-error' : itnForm.firstEmCellphone.$invalid && !itnForm.firstEmCellphone.$pristine }">
-                              <label for="cell phone">Cell Phone: </label><br>
-                              <input type="text" class="form-control" id="cellphone" name="firstEmCellphone" placeholder="Example: xxx-xxx-xxxx" ng-model="formData.firstEmergencyContact.cellPhone" ng-pattern="phonePattern" required>
+                              <label for="other phone">Additional phone number: </label><br>
+                              <input type="text" class="form-control" id="cellphone" name="firstEmCellphone" placeholder="Example: xxx-xxx-xxxx" ng-model="formData.firstEmergencyContact.otherPhone" ng-pattern="phonePattern" required>
                               <span ng-if="itnForm.firstEmCellphone.$error.required && !itnForm.firstEmCellphone.$pristine" class="help-block">{{errorMessages.required}}</span>
                               <span ng-if="itnForm.firstEmCellphone.$error.pattern" class="help-block">{{errorMessages.phone}}</span>
                             </div>
@@ -302,7 +329,7 @@
                             <h2>Second Emergency Contact</h2>
                             
                             <div class="form-group" ng-class="{ 'has-error' : itnForm.secondEmName.$invalid && !itnForm.secondEmName.$pristine }">
-                              <label for="name">Name: *</label><br>
+                              <label for="name">Name: <span style="color:red">*</span></label><br>
                               <input type="text" class="form-control" id="name" name="secondEmName" ng-model="formData.secondEmergencyContact.name" ng-minlength="minlength" ng-maxlength="maxlength" required>
                               <span ng-if="itnForm.secondEmName.$error.required && !itnForm.secondEmName.$pristine" class="help-block">{{errorMessages.required}}</span>
                               <span ng-if="itnForm.secondEmName.$error.minlength" class="help-block">{{errorMessages.minlength}}</span>
@@ -310,7 +337,7 @@
                             </div>
                             
                             <div class="form-group" ng-class="{ 'has-error' : itnForm.secondEmRelationship.$invalid && !itnForm.secondEmRelationship.$pristine }">
-                              <label for="relationship">Relationship: *</label><br>
+                              <label for="relationship">Relationship: <span style="color:red">*</span></label><br>
                               <input type="text" class="form-control" id="relationship" name="secondEmRelationship" placeholder="Example: Daughter" ng-model="formData.secondEmergencyContact.relationship" ng-minlength="minlength" ng-maxlength="maxlength" required>
                               <span ng-if="itnForm.secondEmRelationship.$error.required && !itnForm.secondEmRelationship.$pristine" class="help-block">{{errorMessages.required}}</span>
                               <span ng-if="itnForm.secondEmRelationship.$error.minlength" class="help-block">{{errorMessages.minlength}}</span>
@@ -319,7 +346,7 @@
                             
                             <div class="row">
                               <div class="form-group col-sm-6" ng-class="{ 'has-error' : itnForm.secondEmStreet.$invalid && !itnForm.secondEmStreet.$pristine }">
-                                <label for="street">Street Address: *</label><br>
+                                <label for="street">Street Address: <span style="color:red">*</span></label><br>
                                 <input type="text" class="form-control" id="street" name="secondEmStreet" ng-model="formData.secondEmergencyContact.street" ng-minlength="minlength" ng-maxlength="maxlength" required>
                                 <span ng-if="itnForm.secondEmStreet.$error.required && !itnForm.secondEmStreet.$pristine" class="help-block">{{errorMessages.required}}</span>
                                 <span ng-if="itnForm.secondEmStreet.$error.minlength" class="help-block">{{errorMessages.minlength}}</span>
@@ -327,7 +354,7 @@
                               </div>
                               
                               <div class="form-group col-sm-6" ng-class="{ 'has-error' : itnForm.secondEmCity.$invalid && !itnForm.secondEmCity.$pristine }">
-                                <label for="city">City: *</label><br>
+                                <label for="city">City: <span style="color:red">*</span></label><br>
                                 <input type="text" class="form-control" id="city" name="secondEmCity"  ng-model="formData.secondEmergencyContact.city" ng-minlength="minlength" ng-maxlength="maxlength" required>
                                 <span ng-if="itnForm.secondEmCity.$error.required && !itnForm.secondEmCity.$pristine" class="help-block">{{errorMessages.required}}</span>
                                 <span ng-if="itnForm.secondEmCity.$error.minlength" class="help-block">{{errorMessages.minlength}}</span>
@@ -337,7 +364,7 @@
                             
                             <div class="row">
                               <div class="form-group col-sm-6" ng-class="{ 'has-error' : itnForm.secondEmState.$invalid && !itnForm.secondEmState.$pristine }">
-                                <label for="state">State: *</label><br>
+                                <label for="state">State: <span style="color:red">*</span></label><br>
                                 <select ng-model="formData.secondEmergencyContact.state" class="form-control" name="secondEmState" id="state">
                                    <option ng-repeat="state in states" value="{{state}}">{{state}}</option>
                                 </select>
@@ -345,7 +372,7 @@
                               </div>
                             
                             <div class="form-group col-sm-6" ng-class="{ 'has-error' : itnForm.secondEmZip.$invalid && !itnForm.secondEmZip.$pristine }">
-                              <label for="zip">Zip Code: *</label><br>
+                              <label for="zip">Zip Code: <span style="color:red">*</span></label><br>
                               <input type="text" class="form-control" id="zip" name="secondEmZip" ng-model="formData.secondEmergencyContact.zip" ng-model="formData.secondEmergencyContact.zip" ng-pattern="zipPattern" required>
                               <span ng-if="itnForm.secondEmZip.$error.required && !itnForm.secondEmZip.$pristine" class="help-block">{{errorMessages.required}}</span>
                               <span ng-if="itnForm.secondEmZip.$error.pattern" class="help-block">{{errorMessages.zip}}</span>
@@ -354,15 +381,15 @@
                             
                             <div class="row">
                             <div class="form-group col-sm-6" ng-class="{ 'has-error' : itnForm.secondEmHomePhone.$invalid && !itnForm.secondEmHomePhone.$pristine }">
-                              <label for="home phone">Home Phone: *</label><br>
-                              <input type="text" class="form-control" id="home-phone" name="secondEmHomePhone" placeholder="Example: xxx-xxx-xxxx" ng-model="formData.secondEmergencyContact.homePhone" ng-pattern="phonePattern" required>
+                              <label for="best phone">Best phone number: <span style="color:red">*</span></label><br>
+                              <input type="text" class="form-control" id="home-phone" name="secondEmHomePhone" placeholder="Example: xxx-xxx-xxxx" ng-model="formData.secondEmergencyContact.bestPhone" ng-pattern="phonePattern" required>
                               <span ng-if="itnForm.secondEmHomePhone.$error.required && !itnForm.secondEmHomePhone.$pristine" class="help-block">{{errorMessages.required}}</span>
                               <span ng-if="itnForm.secondEmHomePhone.$error.pattern" class="help-block">{{errorMessages.phone}}</span>
                             </div>
                             
                             <div class="form-group col-sm-6" ng-class="{ 'has-error' : itnForm.secondEmCellphone.$invalid && !itnForm.secondEmCellphone.$pristine }">
-                              <label for="cell phone">Cell Phone: </label><br>
-                              <input type="text" class="form-control" id="cellphone" name="secondEmCellphone" placeholder="Example: xxx-xxx-xxxx" ng-model="formData.secondEmergencyContact.cellPhone" ng-pattern="phonePattern" required>
+                              <label for="other phone">Other Number: </label><br>
+                              <input type="text" class="form-control" id="cellphone" name="secondEmCellphone" placeholder="Example: xxx-xxx-xxxx" ng-model="formData.secondEmergencyContact.otherPhone" ng-pattern="phonePattern" required>
                               <span ng-if="itnForm.secondEmCellphone.$error.required && !itnForm.secondEmCellphone.$pristine" class="help-block">{{errorMessages.required}}</span>
                               <span ng-if="itnForm.secondEmCellphone.$error.pattern" class="help-block">{{errorMessages.phone}}</span>
                             </div>
@@ -386,59 +413,71 @@
 
                           <div class="member-tabs" ng-if="tab===3 || tab===99" id="tab3">
                             
-                            <img ng-src="{{assetsPath}}/images/icons/itnlanier_white_bg.png" style="margin:auto;display:block;text-align:center" alt="main logo"/>
+                            <img ng-src="{{assetsPath}}/images/icons/itnlanier_white_bg.png" style="margin:auto;display:block;text-align:center;margin-left:33% !important" alt="main logo"/>
                             
-                            <ol class="steps">
-                              <li class="step previous complete">
-                                <a href="">Step 1</a>
-                              </li>
-                              <li class="step previous complete">
-                                <a href="">Step 2</a>
-                              </li>
-                              <li class="step active">
-                                <a href="">Step 3</a>
-                              </li>
-                              <li class="step">
-                                <a href="" tabindex="-1">Step 4</a>
-                              </li>
-                              <li class="step">
-                                <a href="" tabindex="-1">Step 5</a>
-                              </li>
-                              <li class="step">
-                                <a href="" tabindex="-1">Step 6</a>
-                              </li>
-                              <li class="step">
-                                <a href="" tabindex="-1">Step 7</a>
-                              </li>
-                            </ol>
-                            
-                            <div class="form-group ta-center">
-                              <label for="Heard about ITN">How did you hear about ITN?: *</label><br>
-                              <label class="checkbox-inline"><input ng-model="formData.heardAboutItn.family" type="checkbox" value="family">Family</label>
-                              <label class="checkbox-inline"><input ng-model="formData.heardAboutItn.friend" type="checkbox" value="friend">Friend</label>
-                              <label class="checkbox-inline"><input ng-model="formData.heardAboutItn.speaker" type="checkbox" value="speaker">Speaker</label>
-                              <label class="checkbox-inline"><input ng-model="formData.heardAboutItn.doctor" type="checkbox" value="doctor">Doctor</label>
-                              <label class="checkbox-inline"><input ng-model="formData.heardAboutItn.radio" type="checkbox" value="radio">Radio</label>
-                              <label class="checkbox-inline"><input ng-model="formData.heardAboutItn.tv" type="checkbox" value="television">Television</label><br>
-                              <label class="checkbox-inline"><input ng-model="formData.heardAboutItn.flier" type="checkbox" value="flier">Flier</label>
-                              <label class="checkbox-inline"><input ng-model="formData.heardAboutItn.phone" type="checkbox" value="phone">Phone</label>
-                              <label class="checkbox-inline"><input ng-model="formData.heardAboutItn.book" type="checkbox" value="book">Book</label>
-                              <label class="checkbox-inline"><input ng-model="formData.heardAboutItn.agencyOnAging" type="checkbox" value="agency">Agency on Aging</label>
-                              <label class="checkbox-inline"><input ng-model="formData.heardAboutItn.socialWorker" type="checkbox" value="social-worker">Social Worker</label>
-                              <label class="checkbox-inline"><input ng-model="formData.heardAboutItn.internet" type="checkbox" value="Internet">Internet</label>
-                              <label class="checkbox-inline"><input ng-model="formData.heardAboutItn.currentMember" type="checkbox" value="current-member" required>Were you referred by a current member?</label>
+                            <div class="s-stepper">
+                              <div data-target="#stage1" id="stage-1-step" class="s-step">
+                                <span class="s-step-counter"></span>
+                                <small>Membership Information</small>
+                              </div>
+                              <div data-target="#stage2" id="stage-2-step" class="s-step">
+                                <span class="s-step-counter"></span>
+                                <small>Emergency Contacts</small>
+                              </div>
+                              <div data-target="#stage3" id="stage-3-step" class="s-step active">
+                                <span class="s-step-counter"></span>
+                                <small>Word of Mouth</small>
+                              </div>
+                              <div data-target="#stage4" id="stage-4-step" class="s-step">
+                                <span class="s-step-counter"></span>
+                                <small>Customer Information</small>
+                              </div>
+                              <div data-target="#stage5" id="stage-5-step" class="s-step">
+                                <span class="s-step-counter"></span>
+                                <small>Civic Engagement</small>
+                              </div>
+                              <div data-target="#stage6" id="stage-6-step" class="s-step">
+                                <span class="s-step-counter"></span>
+                                <small>Driving Information</small>
+                              </div>
+                              <div data-target="#stage7" id="stage-7-step" class="s-step">
+                                <span class="s-step-counter"></span>
+                                <small>Agreement & Consent</small>
+                              </div>
                             </div>
                             
-                            <div class="form-group ta-center">
-                              <label for="send info">Would you like us to send information about ITN to a relative, friend, or business? * </label><br>
-                              <label class="radio-inline"><input ng-model="formData.sendInfoToRelativeFriendBiz" type="radio" value="yes" ng-click="sendInfo = true">Yes</label>
-                              <label class="radio-inline"><input ng-model="formData.sendInfoToRelativeFriendBiz" type="radio" value="no" ng-click="sendInfo = false">No</label>
+                            <button type="button" ng-click="nextTabMemberApp()" class="next-tab btn btn-lg btn-primary pull-right itn-green-bg"  style="margin:-50px 0 30px 2%">Next</button>
+                            <button type="button" ng-click="nextTabMemberApp('prev')" class="next-tab btn btn-lg btn-primary pull-right itn-green-bg"  style="margin:-50px 0 30px 2%">Previous</button>  
+                            
+                            <div class="form-group ta-center"  ng-class="{ 'has-error' : itnForm.heardAboutItn.$invalid && !itnForm.heardAboutItn.$pristine }">
+                              <label for="Heard about ITN">How did you hear about ITN?: <span style="color:red">*</span></label><br>
+                              <label class="checkbox-inline"><input ng-model="formData.heardAboutItn.family" type="checkbox" name="heardAboutItn" value="family">Family</label>
+                              <label class="checkbox-inline"><input ng-model="formData.heardAboutItn.friend" type="checkbox" name="heardAboutItn" value="friend">Friend</label>
+                              <label class="checkbox-inline"><input ng-model="formData.heardAboutItn.speaker" type="checkbox" name="heardAboutItn" value="speaker">Speaker</label>
+                              <label class="checkbox-inline"><input ng-model="formData.heardAboutItn.doctor" type="checkbox" name="heardAboutItn" value="doctor">Doctor</label>
+                              <label class="checkbox-inline"><input ng-model="formData.heardAboutItn.radio" type="checkbox" name="heardAboutItn" value="radio">Radio</label>
+                              <label class="checkbox-inline"><input ng-model="formData.heardAboutItn.tv" type="checkbox" name="heardAboutItn" value="television">Television</label><br>
+                              <label class="checkbox-inline"><input ng-model="formData.heardAboutItn.flier" type="checkbox" name="heardAboutItn" value="flier">Flier</label>
+                              <label class="checkbox-inline"><input ng-model="formData.heardAboutItn.phone" type="checkbox" name="heardAboutItn" value="phone">Phone</label>
+                              <label class="checkbox-inline"><input ng-model="formData.heardAboutItn.book" type="checkbox" name="heardAboutItn" value="book">Book</label>
+                              <label class="checkbox-inline"><input ng-model="formData.heardAboutItn.agencyOnAging" type="checkbox" name="heardAboutItn" value="agency">Agency on Aging</label>
+                              <label class="checkbox-inline"><input ng-model="formData.heardAboutItn.socialWorker" type="checkbox" name="heardAboutItn" value="social-worker">Social Worker</label>
+                              <label class="checkbox-inline"><input ng-model="formData.heardAboutItn.internet" type="checkbox" name="heardAboutItn" value="Internet">Internet</label>
+                              <label class="checkbox-inline"><input ng-model="formData.heardAboutItn.currentMember" type="checkbox" name="heardAboutItn" value="current-member" required>Were you referred by a current member?</label>
+                              <span ng-if="itnForm.heardAboutItn.$error.required && !itnForm.heardAboutItn.$pristine" class="help-block">{{errorMessages.required}}</span>
+                            </div>
+                            
+                            <div class="form-group ta-center" ng-class="{ 'has-error' : itnForm.sendInfoToRelativeFriendBiz.$invalid && !itnForm.sendInfoToRelativeFriendBiz.$pristine }">
+                              <label for="send info">Would you like us to send information about ITN to a relative, friend, or business? <span style="color:red">*</span> </label><br>
+                              <label class="radio-inline"><input ng-model="formData.sendInfoToRelativeFriendBiz" type="radio" value="yes" name="sendInfoToRelativeFriendBiz" ng-click="sendInfo = true">Yes</label>
+                              <label class="radio-inline"><input ng-model="formData.sendInfoToRelativeFriendBiz" type="radio" value="no" name="sendInfoToRelativeFriendBiz" ng-click="sendInfo = false">No</label>
+                              <span ng-if="itnForm.sendInfoToRelativeFriendBiz.$error.required && !itnForm.sendInfoToRelativeFriendBiz.$pristine" class="help-block">{{errorMessages.required}}</span>
                             </div>
                             
                             <div ng-if="sendInfo">
                               
                               <div class="form-group" ng-class="{ 'has-error' : itnForm.name.$invalid && !itnForm.name.$pristine }">
-                                <label for="name">Name: *</label><br>
+                                <label for="name">Name: <span style="color:red">*</span></label><br>
                                 <input ng-model="formData.sendInfoTo.name" type="text" class="form-control" id="name" name="name" ng-minlength="minlength" ng-maxlength="maxlength">
                                 <span ng-if="itnForm.name.$error.required && !itnForm.name.$pristine" class="help-block">{{errorMessages.required}}</span>
                                 <span ng-if="itnForm.name.$error.minlength" class="help-block">{{errorMessages.minlength}}</span>
@@ -447,7 +486,7 @@
                               
                               <div class="row">
                               <div class="form-group col-sm-6" ng-class="{ 'has-error' : itnForm.relationship.$invalid && !itnForm.relationship.$pristine }">
-                                <label for="relationship">Relationship: *</label><br>
+                                <label for="relationship">Relationship: <span style="color:red">*</span></label><br>
                                 <input ng-model="formData.sendInfoTo.relationship" type="text" class="form-control" id="relationship" name="relationship" ng-minlength="minlength" ng-maxlength="maxlength" required>
                                 <span ng-if="itnForm.relationship.$error.required && !itnForm.relationship.$pristine" class="help-block">{{errorMessages.required}}</span>
                                 <span ng-if="itnForm.relationship.$error.minlength" class="help-block">{{errorMessages.minlength}}</span>
@@ -456,7 +495,7 @@
                               
                               
                               <div class="form-group col-sm-6" ng-class="{ 'has-error' : itnForm.street.$invalid && !itnForm.street.$pristine }">
-                                <label for="street">Street Address: *</label><br>
+                                <label for="street">Street Address: <span style="color:red">*</span></label><br>
                                 <input ng-model="formData.sendInfoTo.street" type="text" class="form-control" id="street" name="street" ng-minlength="minlength" ng-maxlength="maxlength" required>
                                 <span ng-if="itnForm.street.$error.required && !itnForm.street.$pristine" class="help-block">{{errorMessages.required}}</span>
                                 <span ng-if="itnForm.street.$error.minlength" class="help-block">{{errorMessages.minlength}}</span>
@@ -466,7 +505,7 @@
                               
                               <div class="row">
                                 <div class="form-group col-sm-6" ng-class="{ 'has-error' : itnForm.state.$invalid && !itnForm.state.$pristine }">
-                                  <label for="state">State: *</label><br>
+                                  <label for="state">State: <span style="color:red">*</span></label><br>
                                   <select ng-model="formData.sendInfoTo.state" class="form-control" name="state" id="state">
                                      <option ng-repeat="state in states" value="{{state}}">{{state}}</option>
                                   </select>
@@ -474,7 +513,7 @@
                                 </div>
                               
                               <div class="form-group col-sm-6" ng-class="{ 'has-error' : itnForm.zip.$invalid && !itnForm.zip.$pristine }">
-                                <label for="zip">Zip Code: *</label><br>
+                                <label for="zip">Zip Code: <span style="color:red">*</span></label><br>
                                 <input type="text" class="form-control" id="zip" name="zip" ng-model="formData.sendInfoTo.zip" ng-pattern="zipPattern" required>
                                 <span ng-if="itnForm.zip.$error.required && !itnForm.zip.$pristine" class="help-block">{{errorMessages.required}}</span>
                                 <span ng-if="itnForm.zip.$error.pattern" class="help-block">{{errorMessages.zip}}</span>
@@ -483,7 +522,7 @@
                               
                               <div class="row">
                               <div class="form-group col-sm-6" ng-class="{ 'has-error' : itnForm.phone.$invalid && !itnForm.phone.$pristine }">
-                                <label for="phone">Phone: *</label><br>
+                                <label for="phone">Phone: <span style="color:red">*</span></label><br>
                                 <input type="text" class="form-control" id="phone" name="phone" placeholder="Example: xxx-xxx-xxxx"  ng-model="formData.sendInfoTo.phone" ng-pattern="phonePattern" required>
                                 <span ng-if="itnForm.phone.$error.required && !itnForm.phone.$pristine" class="help-block">{{errorMessages.required}}</span>
                                 <span ng-if="itnForm.phone.$error.pattern" class="help-block">{{errorMessages.phone}}</span>
@@ -506,95 +545,111 @@
                           
                           <div class="member-tabs" ng-if="tab===4 || tab===99" id="tab4">
                             
-                            <img ng-src="{{assetsPath}}/images/icons/itnlanier_white_bg.png" style="margin:auto;display:block;text-align:center" alt="main logo"/>
+                            <img ng-src="{{assetsPath}}/images/icons/itnlanier_white_bg.png" style="margin:auto;display:block;text-align:center;margin-left:33% !important" alt="main logo"/>
                             
-                            <ol class="steps">
-                              <li class="step previous complete">
-                                <a href="">Step 1</a>
-                              </li>
-                              <li class="step previous complete">
-                                <a href="">Step 2</a>
-                              </li>
-                              <li class="step previous complete">
-                                <a href="">Step 3</a>
-                              </li>
-                              <li class="step active">
-                                <a href="">Step 4</a>
-                              </li>
-                              <li class="step">
-                                <a href="" tabindex="-1">Step 5</a>
-                              </li>
-                              <li class="step">
-                                <a href="" tabindex="-1">Step 6</a>
-                              </li>
-                              <li class="step">
-                                <a href="" tabindex="-1">Step 7</a>
-                              </li>
-                            </ol>
+                            <div class="s-stepper">
+                              <div data-target="#stage1" id="stage-1-step" class="s-step">
+                                <span class="s-step-counter"></span>
+                                <small>Membership Information</small>
+                              </div>
+                              <div data-target="#stage2" id="stage-2-step" class="s-step">
+                                <span class="s-step-counter"></span>
+                                <small>Emergency Contacts</small>
+                              </div>
+                              <div data-target="#stage3" id="stage-3-step" class="s-step">
+                                <span class="s-step-counter"></span>
+                                <small>Word of Mouth</small>
+                              </div>
+                              <div data-target="#stage4" id="stage-4-step" class="s-step active">
+                                <span class="s-step-counter"></span>
+                                <small>Customer Information</small>
+                              </div>
+                              <div data-target="#stage5" id="stage-5-step" class="s-step">
+                                <span class="s-step-counter"></span>
+                                <small>Civic Engagement</small>
+                              </div>
+                              <div data-target="#stage6" id="stage-6-step" class="s-step">
+                                <span class="s-step-counter"></span>
+                                <small>Driving Information</small>
+                              </div>
+                              <div data-target="#stage7" id="stage-7-step" class="s-step">
+                                <span class="s-step-counter"></span>
+                                <small>Agreement & Consent</small>
+                              </div>
+                            </div>
+                            
+                            <button type="button" ng-click="nextTabMemberApp()" class="next-tab btn btn-lg btn-primary pull-right itn-green-bg"  style="margin:-50px 0 30px 2%">Next</button>
+                            <button type="button" ng-click="nextTabMemberApp('prev')" class="next-tab btn btn-lg btn-primary pull-right itn-green-bg"  style="margin:-50px 0 30px 2%">Previous</button>  
                             
                             <p><em>ITNAmerica respects your privacy and will keep all customer information confidential. The following information allows us to provide better service to our customers, and helps us better understand the circumstances that customers face when they apply to use the ITN for rides.</em></p>
                             
                             <h2>Customer Information</h2>
                             
-                            <div class="form-group ta-center">
-                              <label for="gender">Gender: * </label><br>
-                              <label class="radio-inline"><input type="radio" value="female" ng-model="formData.customerInfo.gender">Female</label>
-                              <label class="radio-inline"><input type="radio" value="male" ng-model="formData.customerInfo.gender" required>Male</label>
+                            <div class="form-group ta-center"  ng-class="{ 'has-error' : itnForm.customerInfoGender.$invalid && !itnForm.customerInfoGender.$pristine }">
+                              <label for="gender">Gender: <span style="color:red">*</span> </label><br>
+                              <label class="radio-inline"><input type="radio" value="female" name="customerInfoGender" ng-model="formData.customerInfo.gender">Female</label>
+                              <label class="radio-inline"><input type="radio" value="male" name="customerInfoGender" ng-model="formData.customerInfo.gender" required>Male</label>
+                              <span ng-if="itnForm.customerInfoGender.$error.required && !itnForm.customerInfoGender.$pristine" class="help-block">{{errorMessages.required}}</span>
                             </div>
                             
                             <div class="form-group" ng-class="{ 'has-error' : itnForm.dob.$invalid && !itnForm.dob.$pristine }">
-                              <label for="dob">Date of Birth: * - </label><br>
+                              <label for="dob">Date of Birth: <span style="color:red">*</span> - </label><br>
                               <input type="text" class="form-control" id="dob" name="dob" placeholder="Example: mm/dd/yyyy" ng-model="formData.customerInfo.dateOfBirth" ng-pattern="dobPattern" required>
                               <span ng-if="itnForm.dob.$error.required && !itnForm.dob.$pristine" class="help-block">{{errorMessages.required}}</span>
                               <span ng-if="itnForm.dob.$error.pattern" class="help-block">{{errorMessages.dob}}</span>
                             </div>
                             
-                            <div class="form-group ta-center">
-                              <label for="marital status">Marital Status: * </label><br>
-                              <label class="radio-inline"><input ng-model="formData.customerInfo.maritalStatus" type="radio" value="married">Married</label>
-                              <label class="radio-inline"><input ng-model="formData.customerInfo.maritalStatus" type="radio" value="single">Single</label>
-                              <label class="radio-inline"><input ng-model="formData.customerInfo.maritalStatus" type="radio" value="partnered">Partnered</label>
-                              <label class="radio-inline"><input ng-model="formData.customerInfo.maritalStatus" type="radio" value="divorced">Divorced</label>
-                              <label class="radio-inline"><input ng-model="formData.customerInfo.maritalStatus" type="radio" value="widowed" required>Widowed</label>
+                            <div class="form-group ta-center"  ng-class="{ 'has-error' : itnForm.maritalStatus.$invalid && !itnForm.maritalStatus.$pristine }">
+                              <label for="marital status">Marital Status: <span style="color:red">*</span> </label><br>
+                              <label class="radio-inline"><input ng-model="formData.customerInfo.maritalStatus" type="radio" name="maritalStatus" value="married">Married</label>
+                              <label class="radio-inline"><input ng-model="formData.customerInfo.maritalStatus" type="radio" name="maritalStatus" value="single">Single</label>
+                              <label class="radio-inline"><input ng-model="formData.customerInfo.maritalStatus" type="radio" name="maritalStatus" value="partnered">Partnered</label>
+                              <label class="radio-inline"><input ng-model="formData.customerInfo.maritalStatus" type="radio" name="maritalStatus" value="divorced">Divorced</label>
+                              <label class="radio-inline"><input ng-model="formData.customerInfo.maritalStatus" type="radio" name="maritalStatus" value="widowed" required>Widowed</label>
+                              <span ng-if="itnForm.maritalStatus.$error.required && !itnForm.maritalStatus.$pristine" class="help-block">{{errorMessages.required}}</span>
                             </div>
                             
-                            <div class="form-group ta-center">
-                              <label for="living">Living Arrangements: * </label><br>
-                              <label class="radio-inline"><input ng-model="formData.customerInfo.livingArrangement" type="radio" value="alone">Live Alone</label>
-                              <label class="radio-inline"><input ng-model="formData.customerInfo.livingArrangement" type="radio" value="spouse">Live with Spouse</label>
-                              <label class="radio-inline"><input ng-model="formData.customerInfo.livingArrangement" type="radio" value="children">Live with Children</label>
-                              <label class="radio-inline"><input ng-model="formData.customerInfo.livingArrangement" type="radio" value="friend">Live with Friend</label>
-                              <label class="radio-inline"><input ng-model="formData.customerInfo.livingArrangement" type="radio" value="other-family" required>Live with Other Family</label>
+                            <div class="form-group ta-center" ng-class="{ 'has-error' : itnForm.livingArrangement.$invalid && !itnForm.livingArrangement.$pristine }">
+                              <label for="living">Living Arrangements: <span style="color:red">*</span> </label><br>
+                              <label class="radio-inline"><input ng-model="formData.customerInfo.livingArrangement" type="radio" name="livingArrangement" value="alone">Live Alone</label>
+                              <label class="radio-inline"><input ng-model="formData.customerInfo.livingArrangement" type="radio" name="livingArrangement" value="spouse">Live with Spouse</label>
+                              <label class="radio-inline"><input ng-model="formData.customerInfo.livingArrangement" type="radio" name="livingArrangement" value="children">Live with Children</label>
+                              <label class="radio-inline"><input ng-model="formData.customerInfo.livingArrangement" type="radio" name="livingArrangement" value="friend">Live with Friend</label>
+                              <label class="radio-inline"><input ng-model="formData.customerInfo.livingArrangement" type="radio" name="livingArrangement" value="other-family" required>Live with Other Family</label>
+                              <span ng-if="itnForm.livingArrangement.$error.required && !itnForm.livingArrangement.$pristine" class="help-block">{{errorMessages.required}}</span>
                             </div>
                             
-                            <div class="form-group ta-center">
-                              <label for="dwelling">Dwelling Arrangements: * </label><br>
-                              <label class="radio-inline" required><input ng-model="formData.customerInfo.dwellingArrangement" type="radio" value="private-home">Private Home</label>
-                              <label class="radio-inline"><input ng-model="formData.customerInfo.dwellingArrangement" type="radio" value="assisted-living"> Assisted Living Facility</label>
-                              <label class="radio-inline"><input ng-model="formData.customerInfo.dwellingArrangement" type="radio" value="retirement-community"> Independent Living Retirement Community</label>
-                              <label class="radio-inline"><input ng-model="formData.customerInfo.dwellingArrangement" type="radio" value="other-dwelling" ng-click="otherDwelling = !otherDwelling">Other (specify)</label>
+                            <div class="form-group ta-center" ng-class="{ 'has-error' : itnForm.dwellingArrangement.$invalid && !itnForm.dwellingArrangement.$pristine }">
+                              <label for="dwelling">Dwelling Arrangements: <span style="color:red">*</span> </label><br>
+                              <label class="radio-inline" required><input ng-model="formData.customerInfo.dwellingArrangement" type="radio" name="dwellingArrangement" value="private-home">Private Home</label>
+                              <label class="radio-inline"><input ng-model="formData.customerInfo.dwellingArrangement" type="radio" name="dwellingArrangement" value="assisted-living"> Assisted Living Facility</label>
+                              <label class="radio-inline"><input ng-model="formData.customerInfo.dwellingArrangement" type="radio" name="dwellingArrangement" value="retirement-community"> Independent Living Retirement Community</label>
+                              <label class="radio-inline"><input ng-model="formData.customerInfo.dwellingArrangement" type="radio" name="dwellingArrangement" value="other-dwelling" ng-click="otherDwelling = !otherDwelling">Other (specify)</label>
                                 <input type="text" ng-model="formData.customerInfo.otherDwellingArrangement" class="form-control" id="other-dwelling" name="other-dwelling" placeholder="other (specify)" ng-if="otherDwelling">
+                                <span ng-if="itnForm.dwellingArrangement.$error.required && !itnForm.dwellingArrangement.$pristine" class="help-block">{{errorMessages.required}}</span>
                             </div>
                             
-                            <div class="form-group ta-center">
-                              <label for="languages">Languages : *</label><br>
-                              <label class="checkbox-inline"><input ng-model="formData.customerInfo.languages.english" type="checkbox" value="english">English</label>
-                              <label class="checkbox-inline"><input ng-model="formData.customerInfo.languages.french" type="checkbox" value="french">French</label>
-                              <label class="checkbox-inline"><input ng-model="formData.customerInfo.languages.spanish" type="checkbox" value="spanish">Spanish</label>
-                              <label class="checkbox-inline"><input type="checkbox" value="other-language" ng-click="otherLanguage = !otherLanguage">Other (specify)</label>
+                            <div class="form-group ta-center" ng-class="{ 'has-error' : itnForm.languages.$invalid && !itnForm.languages.$pristine }">
+                              <label for="languages">Languages : <span style="color:red">*</span></label><br>
+                              <label class="checkbox-inline"><input ng-model="formData.customerInfo.languages.english" type="checkbox" name="languages" value="english">English</label>
+                              <label class="checkbox-inline"><input ng-model="formData.customerInfo.languages.french" type="checkbox" name="languages" value="french">French</label>
+                              <label class="checkbox-inline"><input ng-model="formData.customerInfo.languages.spanish" type="checkbox" name="languages" value="spanish">Spanish</label>
+                              <label class="checkbox-inline"><input type="checkbox" name="languages" value="other-language" ng-click="otherLanguage = !otherLanguage">Other (specify)</label>
                                 <input type="text" ng-model="formData.customerInfo.languages.other" class="form-control" id="other-language" name="other-language" placeholder="other (specify)" ng-if="otherLanguage">
+                                <span ng-if="itnForm.languages.$error.required && !itnForm.languages.$pristine" class="help-block">{{errorMessages.required}}</span>
                             </div>
                             
-                            <div class="form-group ta-center">
-                              <label for="transportation means">Current primary means of getting around: * </label><br>
-                              <label class="radio-inline"><input ng-model="formData.customerInfo.currentTransportationMeans" type="radio" value="drive">Drive</label>
-                              <label class="radio-inline"><input ng-model="formData.customerInfo.currentTransportationMeans" type="radio" value="walk">Walk</label>
-                              <label class="radio-inline"><input ng-model="formData.customerInfo.currentTransportationMeans" type="radio" value="fam-friend">Ride with Family or Friend</label>
-                              <label class="radio-inline"><input ng-model="formData.customerInfo.currentTransportationMeans" type="radio" value="public-transportation">Public Transportation</label>
-                              <label class="radio-inline"><input ng-model="formData.customerInfo.currentTransportationMeans" type="radio" value="taxi">Taxi</label>
-                              <label class="radio-inline"><input ng-model="formData.customerInfo.currentTransportationMeans" type="radio" value="private-service">Private Service</label>
+                            <div class="form-group ta-center" ng-class="{ 'has-error' : itnForm.currentTransportationMeans.$invalid && !itnForm.currentTransportationMeans.$pristine }">
+                              <label for="transportation means">Current primary means of getting around: <span style="color:red">*</span> </label><br>
+                              <label class="radio-inline"><input ng-model="formData.customerInfo.currentTransportationMeans" type="radio" name="currentTransportationMeans" value="drive">Drive</label>
+                              <label class="radio-inline"><input ng-model="formData.customerInfo.currentTransportationMeans" type="radio" name="currentTransportationMeans" value="walk">Walk</label>
+                              <label class="radio-inline"><input ng-model="formData.customerInfo.currentTransportationMeans" type="radio" name="currentTransportationMeans" value="fam-friend">Ride with Family or Friend</label>
+                              <label class="radio-inline"><input ng-model="formData.customerInfo.currentTransportationMeans" type="radio" name="currentTransportationMeans" value="public-transportation">Public Transportation</label>
+                              <label class="radio-inline"><input ng-model="formData.customerInfo.currentTransportationMeans" type="radio" name="currentTransportationMeans" value="taxi">Taxi</label>
+                              <label class="radio-inline"><input ng-model="formData.customerInfo.currentTransportationMeans" type="radio" name="currentTransportationMeans" value="private-service">Private Service</label>
                               <label class="radio-inline"><input type="radio" ng-click="otherTransportation = !otherTransportation">Other (specify)</label>
                                 <input ng-model="formData.customerInfo.currentTransportationMeans.other" type="text" class="form-control" id="other-transportation" name="other-transportation" placeholder="other (specify)" ng-if="otherTransportation">
+                                <span ng-if="itnForm.currentTransportationMeans.$error.required && !itnForm.currentTransportationMeans.$pristine" class="help-block">{{errorMessages.required}}</span>
                             </div>
                           
                             <button type="button" ng-click="nextTabMemberApp()" class="next-tab btn btn-lg btn-primary pull-right itn-green-bg"  style="margin-left:2%">Next</button>
@@ -604,31 +659,41 @@
 
                         <div class="member-tabs" ng-if="tab===5 || tab===99" id="tab5">
                           
-                          <img ng-src="{{assetsPath}}/images/icons/itnlanier_white_bg.png" style="margin:auto;display:block;text-align:center" alt="main logo"/>
+                          <img ng-src="{{assetsPath}}/images/icons/itnlanier_white_bg.png" style="margin:auto;display:block;text-align:center;margin-left:33% !important"  alt="main logo"/>
                           
-                          <ol class="steps">
-                            <li class="step previous complete">
-                              <a href="">Step 1</a>
-                            </li>
-                            <li class="step previous complete">
-                              <a href="">Step 2</a>
-                            </li>
-                            <li class="step previous complete">
-                              <a href="">Step 3</a>
-                            </li>
-                            <li class="step previous complete">
-                              <a href="">Step 4</a>
-                            </li>
-                            <li class="step active">
-                              <a href="">Step 5</a>
-                            </li>
-                            <li class="step">
-                              <a href="" tabindex="-1">Step 6</a>
-                            </li>
-                            <li class="step">
-                              <a href="" tabindex="-1">Step 7</a>
-                            </li>
-                          </ol>
+                          <div class="s-stepper">
+                            <div data-target="#stage1" id="stage-1-step" class="s-step">
+                              <span class="s-step-counter"></span>
+                              <small>Membership Information</small>
+                            </div>
+                            <div data-target="#stage2" id="stage-2-step" class="s-step">
+                              <span class="s-step-counter"></span>
+                              <small>Emergency Contacts</small>
+                            </div>
+                            <div data-target="#stage3" id="stage-3-step" class="s-step">
+                              <span class="s-step-counter"></span>
+                              <small>Word of Mouth</small>
+                            </div>
+                            <div data-target="#stage4" id="stage-4-step" class="s-step">
+                              <span class="s-step-counter"></span>
+                              <small>Customer Information</small>
+                            </div>
+                            <div data-target="#stage5" id="stage-5-step" class="s-step active">
+                              <span class="s-step-counter"></span>
+                              <small>Civic Engagement</small>
+                            </div>
+                            <div data-target="#stage6" id="stage-6-step" class="s-step">
+                              <span class="s-step-counter"></span>
+                              <small>Driving Information</small>
+                            </div>
+                            <div data-target="#stage7" id="stage-7-step" class="s-step">
+                              <span class="s-step-counter"></span>
+                              <small>Agreement & Consent</small>
+                            </div>
+                          </div>
+                          
+                          <button type="button" ng-click="nextTabMemberApp()" class="next-tab btn btn-lg btn-primary pull-right itn-green-bg"  style="margin:-50px 0 30px 2%">Next</button>
+                          <button type="button" ng-click="nextTabMemberApp('prev')" class="next-tab btn btn-lg btn-primary pull-right itn-green-bg"  style="margin:-50px 0 30px 2%">Previous</button>  
                           
                           <h2>Civic Engagement</h2>
                           
@@ -646,35 +711,38 @@
                               <input ng-model="formData.customerInfo.memberOfOrganization.other" type="text" class="form-control" id="other" name="other" placeholder="other (specify)" ng-if="otherOrg">
                           </div>
                           
-                          <div class="form-group ta-center">
-                            <label for="professional organization or labor union">Are you part of any professional organizations or labor unions?: * </label><br>
-                            <label class="radio-inline"><input ng-model="formData.memberOfProfessionalOrgOrUnion" type="radio" value="yes" ng-click="specifyUnions = true">Yes</label>
-                            <label class="radio-inline"><input type="radio" value="no" ng-click="specifyUnions = false">No</label>
+                          <div class="form-group ta-center" ng-class="{ 'has-error' : itnForm.memberOfProfessionalOrgOrUnion.$invalid && !itnForm.memberOfProfessionalOrgOrUnion.$pristine }">
+                            <label for="professional organization or labor union">Are you part of any professional organizations or labor unions?: <span style="color:red">*</span> </label><br>
+                            <label class="radio-inline"><input ng-model="formData.memberOfProfessionalOrgOrUnion" type="radio" name="memberOfProfessionalOrgOrUnion" value="yes" ng-click="specifyUnions = true">Yes</label>
+                            <label class="radio-inline"><input ng-model="formData.memberOfProfessionalOrgOrUnion" type="radio" name="memberOfProfessionalOrgOrUnion" value="no" ng-click="specifyUnions = false">No</label>
                               <input ng-model="formData.memberOfProfessionalOrgOrUnions" type="text" class="form-control" id="unions" name="unions" placeholder="Please list:" ng-if="specifyUnions">
+                              <span ng-if="itnForm.memberOfProfessionalOrgOrUnion.$error.required && !itnForm.memberOfProfessionalOrgOrUnion.$pristine" class="help-block">{{errorMessages.required}}</span>
                           </div>
                           
-                          <div class="form-group ta-center">
-                            <label for="served in armed forces">Have you ever served on active duty in the U.S. Armed Forces, Military Reserves, or National Guard: *</label><br>
-                            <label class="radio-inline"><input ng-model="formData.customerInfo.servedInMilitary" type="radio" value="yes">Yes</label>
-                            <label class="radio-inline"><input ng-model="formData.customerInfo.servedInMilitary" type="radio" value="no">No</label>
+                          <div class="form-group ta-center" ng-class="{ 'has-error' : itnForm.servedInMilitary.$invalid && !itnForm.servedInMilitary.$pristine }">
+                            <label for="served in armed forces">Have you ever served on active duty in the U.S. Armed Forces, Military Reserves, or National Guard: <span style="color:red">*</span></label><br>
+                            <label class="radio-inline"><input ng-model="formData.customerInfo.servedInMilitary" type="radio" value="yes" name="servedInMilitary">Yes</label>
+                            <label class="radio-inline"><input ng-model="formData.customerInfo.servedInMilitary" type="radio" value="no" name="servedInMilitary">No</label>
+                            <span ng-if="itnForm.servedInMilitary.$error.required && !itnForm.servedInMilitary.$pristine" class="help-block">{{errorMessages.required}}</span>
                           </div>
                           
-                          <div class="form-group ta-center">
-                            <label for="special needs">Special Needs and Mobility Assistance: *</label><br>
-                            <label class="checkbox-inline"><input ng-model="formData.customerInfo.specialNeeds.cane" type="checkbox" value="cane">Cane</label>
-                            <label class="checkbox-inline"><input ng-model="formData.customerInfo.specialNeeds.wheelchair" type="checkbox" value="wheelchair">Wheelchair</label>
-                            <label class="checkbox-inline"><input ng-model="formData.customerInfo.specialNeeds.blindOrSeeingEye" type="checkbox" value="blind"> Blind/Seeing Eye</label>
-                            <label class="checkbox-inline"><input ng-model="formData.customerInfo.specialNeeds.anxietyDisorder" type="checkbox" value="anxiety">Anxiety Disorder</label>
-                            <label class="checkbox-inline"><input ng-model="formData.customerInfo.specialNeeds.driverAssistanceRequired" type="checkbox" value="driver">Driver Assistance Required</label>
-                            <label class="checkbox-inline"><input ng-model="formData.customerInfo.specialNeeds.personalAssistant" type="checkbox" value="personal">Personal Assistant</label>
-                            <label class="checkbox-inline"><input ng-model="formData.customerInfo.specialNeeds.fullSizedVehicleRequired" type="checkbox" value="vehicle">Full-Sized Vehicle Required</label>
-                            <label class="checkbox-inline"><input ng-model="formData.customerInfo.specialNeeds.visuallyImpaired" type="checkbox" value="impaired">Visually Challenged</label>
-                            <label class="checkbox-inline"><input ng-model="formData.customerInfo.specialNeeds.walker" type="checkbox" value="walker">Walker</label>
-                            <label class="checkbox-inline"><input ng-model="formData.customerInfo.specialNeeds.alzheimerOrDementia" type="checkbox" value="alzheimer"> Alzheimer's/Dementia</label>
-                            <label class="checkbox-inline"><input ng-model="formData.customerInfo.specialNeeds.bladderOrBowerControlProblems" type="checkbox" value="bladder"> Bladder/Bowel Control Problems</label>
-                            <label class="checkbox-inline"><input ng-model="formData.customerInfo.specialNeeds.deaf" type="checkbox" value="deaf">Deaf</label>
-                            <label class="checkbox-inline"><input ng-model="formData.customerInfo.specialNeeds.noHighVehicle" type="checkbox" value="no-high">No High Vehicle</label>
-                            <label class="checkbox-inline"><input ng-model="formData.customerInfo.specialNeeds.none" type="checkbox" value="none">None of the above</label>
+                          <div class="form-group ta-center" ng-class="{ 'has-error' : itnForm.specialNeeds.$invalid && !itnForm.specialNeeds.$pristine }">
+                            <label for="special needs">Special Needs and Mobility Assistance: <span style="color:red">*</span></label><br>
+                            <label class="checkbox-inline"><input ng-model="formData.customerInfo.specialNeeds.cane" type="checkbox" name="specialNeeds" value="cane">Cane</label>
+                            <label class="checkbox-inline"><input ng-model="formData.customerInfo.specialNeeds.wheelchair" type="checkbox" name="specialNeeds" value="wheelchair">Wheelchair</label>
+                            <label class="checkbox-inline"><input ng-model="formData.customerInfo.specialNeeds.blindOrSeeingEye" type="checkbox" name="specialNeeds" value="blind"> Blind/Seeing Eye</label>
+                            <label class="checkbox-inline"><input ng-model="formData.customerInfo.specialNeeds.anxietyDisorder" type="checkbox" name="specialNeeds" value="anxiety">Anxiety Disorder</label>
+                            <label class="checkbox-inline"><input ng-model="formData.customerInfo.specialNeeds.driverAssistanceRequired" type="checkbox" name="specialNeeds" value="driver">Driver Assistance Required</label>
+                            <label class="checkbox-inline"><input ng-model="formData.customerInfo.specialNeeds.personalAssistant" type="checkbox" name="specialNeeds" value="personal">Personal Assistant</label>
+                            <label class="checkbox-inline"><input ng-model="formData.customerInfo.specialNeeds.fullSizedVehicleRequired" type="checkbox" name="specialNeeds" value="vehicle">Full-Sized Vehicle Required</label>
+                            <label class="checkbox-inline"><input ng-model="formData.customerInfo.specialNeeds.visuallyImpaired" type="checkbox" name="specialNeeds" value="impaired">Visually Challenged</label>
+                            <label class="checkbox-inline"><input ng-model="formData.customerInfo.specialNeeds.walker" type="checkbox" name="specialNeeds" value="walker">Walker</label>
+                            <label class="checkbox-inline"><input ng-model="formData.customerInfo.specialNeeds.alzheimerOrDementia" type="checkbox" name="specialNeeds" value="alzheimer"> Alzheimer's/Dementia</label>
+                            <label class="checkbox-inline"><input ng-model="formData.customerInfo.specialNeeds.bladderOrBowerControlProblems" type="checkbox" name="specialNeeds" value="bladder"> Bladder/Bowel Control Problems</label>
+                            <label class="checkbox-inline"><input ng-model="formData.customerInfo.specialNeeds.deaf" type="checkbox" name="specialNeeds" value="deaf">Deaf</label>
+                            <label class="checkbox-inline"><input ng-model="formData.customerInfo.specialNeeds.noHighVehicle" type="checkbox" name="specialNeeds" value="no-high">No High Vehicle</label>
+                            <label class="checkbox-inline"><input ng-model="formData.customerInfo.specialNeeds.none" type="checkbox" name="specialNeeds" value="none">None of the above</label>
+                            <span ng-if="itnForm.specialNeeds.$error.required && !itnForm.specialNeeds.$pristine" class="help-block">{{errorMessages.required}}</span>
                           </div>
                           
                           <button type="button" ng-click="nextTabMemberApp()" class="next-tab btn btn-lg btn-primary pull-right itn-green-bg"  style="margin-left:2%">Next</button>
@@ -687,60 +755,75 @@
                           
                           <img ng-src="{{assetsPath}}/images/icons/itnlanier_white_bg.png" style="margin:auto;display:block;text-align:center" alt="main logo"/>
                           
-                          <ol class="steps">
-                            <li class="step previous complete">
-                              <a href="">Step 1</a>
-                            </li>
-                            <li class="step previous complete">
-                              <a href="">Step 2</a>
-                            </li>
-                            <li class="step previous complete">
-                              <a href="">Step 3</a>
-                            </li>
-                            <li class="step previous complete">
-                              <a href="">Step 4</a>
-                            </li>
-                            <li class="step previous complete">
-                              <a href="">Step 5</a>
-                            </li>
-                            <li class="step active">
-                              <a href="">Step 6</a>
-                            </li>
-                            <li class="step">
-                              <a href="" tabindex="-1">Step 7</a>
-                            </li>
-                          </ol>
+                          <div class="s-stepper">
+                            <div data-target="#stage1" id="stage-1-step" class="s-step">
+                              <span class="s-step-counter"></span>
+                              <small>Membership Information</small>
+                            </div>
+                            <div data-target="#stage2" id="stage-2-step" class="s-step">
+                              <span class="s-step-counter"></span>
+                              <small>Emergency Contacts</small>
+                            </div>
+                            <div data-target="#stage3" id="stage-3-step" class="s-step">
+                              <span class="s-step-counter"></span>
+                              <small>Word of Mouth</small>
+                            </div>
+                            <div data-target="#stage4" id="stage-4-step" class="s-step">
+                              <span class="s-step-counter"></span>
+                              <small>Customer Information</small>
+                            </div>
+                            <div data-target="#stage5" id="stage-5-step" class="s-step">
+                              <span class="s-step-counter"></span>
+                              <small>Civic Engagement</small>
+                            </div>
+                            <div data-target="#stage6" id="stage-6-step" class="s-step active">
+                              <span class="s-step-counter"></span>
+                              <small>Driving Information</small>
+                            </div>
+                            <div data-target="#stage7" id="stage-7-step" class="s-step">
+                              <span class="s-step-counter"></span>
+                              <small>Agreement & Consent</small>
+                            </div>
+                          </div>
+                          
+                          <button type="button" ng-click="nextTabMemberApp()" class="next-tab btn btn-lg btn-primary pull-right itn-green-bg"  style="margin:-50px 0 30px 2%">Next</button>
+                          <button type="button" ng-click="nextTabMemberApp('prev')" class="next-tab btn btn-lg btn-primary pull-right itn-green-bg"  style="margin:-50px 0 30px 2%">Previous</button>  
                           
                           <h2>Driving Information</h2>
                           
-                          <div class="form-group ta-center">
-                            <label for="license">Do you have a current driver's license?: *</label><br>
-                            <label class="radio-inline"><input ng-model="formData.drivingInfo.hasLicense" type="radio" value="yes">Yes</label>
-                            <label class="radio-inline"><input ng-model="formData.drivingInfo.hasLicense" type="radio" value="no">No</label>
+                          <div class="form-group ta-center" ng-class="{ 'has-error' : itnForm.hasLicense.$invalid && !itnForm.hasLicense.$pristine }">
+                            <label for="license">Do you have a current driver's license?: <span style="color:red">*</span></label><br>
+                            <label class="radio-inline"><input ng-model="formData.drivingInfo.hasLicense" type="radio" name="hasLicense" value="yes">Yes</label>
+                            <label class="radio-inline"><input ng-model="formData.drivingInfo.hasLicense" type="radio" name="hasLicense" value="no">No</label>
+                            <span ng-if="itnForm.hasLicense.$error.required && !itnForm.hasLicense.$pristine" class="help-block">{{errorMessages.required}}</span>
                           </div>
                           
-                          <div class="form-group ta-center">
-                            <label for="own vehicle">Do you own a vehicle?: *</label><br>
-                            <label class="radio-inline"><input ng-model="formData.drivingInfo.ownVehicle" type="radio" value="yes">Yes</label>
-                            <label class="radio-inline"><input ng-model="formData.drivingInfo.ownVehicle" type="radio" value="no">No</label>
+                          <div class="form-group ta-center" ng-class="{ 'has-error' : itnForm.ownVehicle.$invalid && !itnForm.ownVehicle.$pristine }">
+                            <label for="own vehicle">Do you own a vehicle?: <span style="color:red">*</span></label><br>
+                            <label class="radio-inline"><input ng-model="formData.drivingInfo.ownVehicle" type="radio" value="yes" name="ownVehicle">Yes</label>
+                            <label class="radio-inline"><input ng-model="formData.drivingInfo.ownVehicle" type="radio" value="no" name="ownVehicle">No</label>
+                            <span ng-if="itnForm.ownVehicle.$error.required && !itnForm.ownVehicle.$pristine" class="help-block">{{errorMessages.required}}</span>
                           </div>
                           
-                          <div class="form-group ta-center">
-                            <label for="driver improvement">Have you tried any driver improvement activities or classes to help you keep driving safely longer?: *</label><br>
-                            <label class="radio-inline"><input ng-model="formData.drivingInfo.driverImprovementClasses" type="radio" value="yes">Yes</label>
-                            <label class="radio-inline"><input ng-model="formData.drivingInfo.driverImprovementClasses" type="radio" value="no">No</label>
+                          <div class="form-group ta-center" ng-class="{ 'has-error' : itnForm.driverImprovementClasses.$invalid && !itnForm.driverImprovementClasses.$pristine }">
+                            <label for="driver improvement">Have you tried any driver improvement activities or classes to help you keep driving safely longer?: <span style="color:red">*</span></label><br>
+                            <label class="radio-inline"><input ng-model="formData.drivingInfo.driverImprovementClasses" type="radio" value="yes" name="driverImprovementClasses">Yes</label>
+                            <label class="radio-inline"><input ng-model="formData.drivingInfo.driverImprovementClasses" type="radio" value="no" name="driverImprovementClasses">No</label>
+                            <span ng-if="itnForm.driverImprovementClasses.$error.required && !itnForm.driverImprovementClasses.$pristine" class="help-block">{{errorMessages.required}}</span>
                           </div>
                           
-                          <div class="form-group ta-center">
-                            <label for="driven in last 10 years">Have you driven in the last ten years?: *</label><br>
-                            <label class="radio-inline"><input ng-model="formData.drivingInfo.drivenLast10Years" type="radio" value="yes">Yes</label>
-                            <label class="radio-inline"><input ng-model="formData.drivingInfo.drivenLast10Years" type="radio" value="no">No</label>
+                          <div class="form-group ta-center" ng-class="{ 'has-error' : itnForm.drivenLast10Years.$invalid && !itnForm.drivenLast10Years.$pristine }">
+                            <label for="driven in last 10 years">Have you driven in the last ten years?: <span style="color:red">*</span></label><br>
+                            <label class="radio-inline"><input ng-model="formData.drivingInfo.drivenLast10Years" type="radio" value="yes" name="drivenLast10Years">Yes</label>
+                            <label class="radio-inline"><input ng-model="formData.drivingInfo.drivenLast10Years" type="radio" value="no" name="drivenLast10Years">No</label>
+                            <span ng-if="itnForm.drivenLast10Years.$error.required && !itnForm.drivenLast10Years.$pristine" class="help-block">{{errorMessages.required}}</span>
                           </div>
                           
-                          <div class="form-group ta-center">
-                            <label for="currently driving">Do you currently drive?: *</label><br>
-                            <label class="radio-inline"><input ng-model="formData.drivingInfo.currentlyDrive" type="radio" value="yes" ng-click="currentDriver = true">Yes</label>
-                            <label class="radio-inline"><input ng-model="formData.drivingInfo.currentlyDrive" type="radio" value="no" ng-click="currentDriver = false">No</label>
+                          <div class="form-group ta-center" ng-class="{ 'has-error' : itnForm.currentlyDrive.$invalid && !itnForm.currentlyDrive.$pristine }">
+                            <label for="currently driving">Do you currently drive?: <span style="color:red">*</span></label><br>
+                            <label class="radio-inline"><input ng-model="formData.drivingInfo.currentlyDrive" type="radio" value="yes" name="currentlyDrive" ng-click="currentDriver = true">Yes</label>
+                            <label class="radio-inline"><input ng-model="formData.drivingInfo.currentlyDrive" type="radio" value="no" name="currentlyDrive" ng-click="currentDriver = false">No</label>
+                            <span ng-if="itnForm.currentlyDrive.$error.required && !itnForm.currentlyDrive.$pristine" class="help-block">{{errorMessages.required}}</span>
                           </div>
                           
                           <div ng-if="currentDriver">
@@ -846,10 +929,11 @@
                           
                           <h3>Rideshare</h3>
                           
-                          <div class="form-group ta-center">
-                            <label for="reduce ITN cost with rideshare">Would you like to reduce the cost of ITN trips by sharing rides with others when it's convenient?: *</label><br>
-                            <label class="radio-inline"><input ng-model="formData.drivingInfo.reduceCostWithRideshare" type="radio" value="yes">Yes</label>
-                            <label class="radio-inline"><input ng-model="formData.drivingInfo.reduceCostWithRideshare" type="radio" value="no">No</label>
+                          <div class="form-group ta-center" ng-class="{ 'has-error' : itnForm.reduceCostWithRideshare.$invalid && !itnForm.reduceCostWithRideshare.$pristine }">
+                            <label for="reduce ITN cost with rideshare">Would you like to reduce the cost of ITN trips by sharing rides with others when it's convenient?: <span style="color:red">*</span></label><br>
+                            <label class="radio-inline"><input ng-model="formData.drivingInfo.reduceCostWithRideshare" type="radio" value="yes" name="reduceCostWithRideshare">Yes</label>
+                            <label class="radio-inline"><input ng-model="formData.drivingInfo.reduceCostWithRideshare" type="radio" value="no" name="reduceCostWithRideshare">No</label>
+                            <span ng-if="itnForm.reduceCostWithRideshare.$error.required && !itnForm.reduceCostWithRideshare.$pristine" class="help-block">{{errorMessages.required}}</span>
                           </div>
                           
                           <h3>Programs</h3>
@@ -862,7 +946,6 @@
                             <label class="checkbox-inline"><input ng-model="formData.wantInfoOnPrograms.giftCertificate" type="checkbox" value="gift_certificate">Gift Certificate</label>
                           </div>
                           
-                          <!-- <button type="button" ng-click="nextTabMemberApp()" class="next-tab btn btn-lg btn-primary pull-right itn-green-bg"  style="margin-left:2%">Next</button> -->
                           <button type="button" ng-click="nextTabMemberApp()" class="next-tab btn btn-lg btn-primary pull-right itn-green-bg"  style="margin-left:2%">Next</button> 
                           <button type="button" ng-click="nextTabMemberApp('prev')" class="next-tab btn btn-lg btn-primary pull-right itn-green-bg"  style="margin-left:2%">Previous</button>  
                           
@@ -874,31 +957,40 @@
 
                         <div class="member-tabs" ng-if="tab===7 || tab===99" id="tab7">
                           
-                          <img ng-src="{{assetsPath}}/images/icons/itnlanier_white_bg.png" style="margin:auto;display:block;text-align:center" alt="main logo"/>
+                          <img ng-src="{{assetsPath}}/images/icons/itnlanier_white_bg.png" style="margin:auto;display:block;text-align:center;margin-left:33% !important" alt="main logo"/>
                           
-                          <ol class="steps">
-                            <li class="step previous complete">
-                              <a href="">Step 1</a>
-                            </li>
-                            <li class="step previous complete">
-                              <a href="">Step 2</a>
-                            </li>
-                            <li class="step previous complete">
-                              <a href="">Step 3</a>
-                            </li>
-                            <li class="step previous complete">
-                              <a href="">Step 4</a>
-                            </li>
-                            <li class="step previous complete">
-                              <a href="">Step 5</a>
-                            </li>
-                            <li class="step previous complete">
-                              <a href="">Step 6</a>
-                            </li>
-                            <li class="step active">
-                              <a href="">Step 7</a>
-                            </li>
-                          </ol>
+                          <div class="s-stepper">
+                            <div data-target="#stage1" id="stage-1-step" class="s-step">
+                              <span class="s-step-counter"></span>
+                              <small>Membership Information</small>
+                            </div>
+                            <div data-target="#stage2" id="stage-2-step" class="s-step">
+                              <span class="s-step-counter"></span>
+                              <small>Emergency Contacts</small>
+                            </div>
+                            <div data-target="#stage3" id="stage-3-step" class="s-step">
+                              <span class="s-step-counter"></span>
+                              <small>Word of Mouth</small>
+                            </div>
+                            <div data-target="#stage4" id="stage-4-step" class="s-step">
+                              <span class="s-step-counter"></span>
+                              <small>Customer Information</small>
+                            </div>
+                            <div data-target="#stage5" id="stage-5-step" class="s-step">
+                              <span class="s-step-counter"></span>
+                              <small>Civic Engagement</small>
+                            </div>
+                            <div data-target="#stage6" id="stage-6-step" class="s-step">
+                              <span class="s-step-counter"></span>
+                              <small>Driving Information</small>
+                            </div>
+                            <div data-target="#stage7" id="stage-7-step" class="s-step active">
+                              <span class="s-step-counter"></span>
+                              <small>Agreement & Consent</small>
+                            </div>
+                          </div>
+                          
+                          <button type="button" ng-click="nextTabMemberApp('prev')" class="next-tab btn btn-lg btn-primary pull-right itn-green-bg"  style="margin:-50px 0 30px 2%">Previous</button>  
                           
                           <h3 class="mt-50 mb-25">Personal Transportation Account Agreement</h3>
                           
@@ -917,78 +1009,67 @@
                               <li>Your contacts may receive a limited number of mailings (via regular mail or e-mail) for the ITN affiliate’s fundraising events/campaigns, as well as up to four quarterly ITN Newsletters. Their names will not be shared with any other party or organization.</li>
                             </ol>
                           </div>
-                          
-                          <div class="form-group" ng-class="{ 'has-error' : itnForm.name1.$invalid && !itnForm.name1.$pristine }">
-                            <label for="name">Name: *</label>
-                            <input type="text" class="form-control" id="name" name="name1" placeholder="please print name"  ng-minlength="minlength" ng-maxlength="maxlength" ng-model="formData.agreement.name1" required>
-                            <span ng-if="itnForm.name1.$error.required && !itnForm.name1.$pristine" class="help-block">{{errorMessages.required}}</span>
-                            <span ng-if="itnForm.name1.$error.minlength" class="help-block">{{errorMessages.minlength}}</span>
-                            <span ng-if="itnForm.name1.$error.maxlength" class="help-block">{{errorMessages.maxlength}}</span>
-                          </div>
+
+                          <div class="row">  
+                            <div class="form-group col-sm-8" ng-class="{ 'has-error' : itnForm.signature1.$invalid && !itnForm.signature1.$pristine }">
+                              <label for="signature">Agreement Signature: <span style="color:red">*</span></label>
+                              <input type="text" class="form-control" id="signature" name="signature1" placeholder="please print name" ng-minlength="minlength" ng-maxlength="maxlength" ng-model="formData.agreement.signature1" required>
+                              <span ng-if="itnForm.signature1.$error.required && !itnForm.signature1.$pristine" class="help-block">{{errorMessages.required}}</span>
+                              <span ng-if="itnForm.signature1.$error.minlength" class="help-block">{{errorMessages.minlength}}</span>
+                              <span ng-if="itnForm.signature1.$error.maxlength" class="help-block">{{errorMessages.maxlength}}</span>
+                            </div>
                             
-                          <div class="form-group" ng-class="{ 'has-error' : itnForm.signature1.$invalid && !itnForm.signature1.$pristine }">
-                            <label for="signature">Agreement Signature: *</label>
-                            <input type="text" class="form-control" id="signature" name="signature1" placeholder="please print name" ng-minlength="minlength" ng-maxlength="maxlength" ng-model="formData.agreement.signature1" required>
-                            <span ng-if="itnForm.signature1.$error.required && !itnForm.signature1.$pristine" class="help-block">{{errorMessages.required}}</span>
-                            <span ng-if="itnForm.signature1.$error.minlength" class="help-block">{{errorMessages.minlength}}</span>
-                            <span ng-if="itnForm.signature1.$error.maxlength" class="help-block">{{errorMessages.maxlength}}</span>
-                          </div>
-                          
-                          <div class="form-group" ng-class="{ 'has-error' : itnForm.date1.$invalid && !itnForm.date1.$pristine }">
-                            <label for="date">Agreement Date: *</label>
-                            <input type="text" class="form-control" id="date" name="date1" placeholder="Example: mm/dd/yyyy" ng-pattern="datePattern" ng-model="formData.agreement.date1" required>
-                            <span ng-if="itnForm.date1.$error.required && !itnForm.date1.$pristine" class="help-block">{{errorMessages.required}}</span>
-                            <span ng-if="itnForm.date1.$error.pattern" class="help-block">{{errorMessages.date}}</span>
-                          </div>
+                            <div class="form-group col-sm-4" ng-class="{ 'has-error' : itnForm.date1.$invalid && !itnForm.date1.$pristine }">
+                              <label for="date">Agreement Date: <span style="color:red">*</span></label>
+                              <input type="text" class="form-control" id="date" name="date1" placeholder="Example: mm/dd/yyyy" ng-pattern="datePattern" ng-model="formData.agreement.date1" required>
+                              <span ng-if="itnForm.date1.$error.required && !itnForm.date1.$pristine" class="help-block">{{errorMessages.required}}</span>
+                              <span ng-if="itnForm.date1.$error.pattern" class="help-block">{{errorMessages.date}}</span>
+                            </div>
+                          </div><!--row-->
                             
-                          <div class="form-group">  
-                            <label class="checkbox-inline"><input type="checkbox" value="agree" ng-model="formData.agree1" ng-click="" required>By checking this box and submitting this form, you agree that your digital signature will be considered your legal signature and represents your agreement to the terms and policies outlined above.</label>
+                          <div class="form-group"  ng-class="{ 'has-error' : itnForm.agree1.$invalid && !itnForm.agree1.$pristine }">  
+                            <label class="checkbox-inline"><input type="checkbox" value="agree" name="agree1" ng-model="formData.agree1" ng-click="" required>By checking this box and submitting this form, you agree that your digital signature will be considered your legal signature and represents your agreement to the terms and policies outlined above.</label>
+                            <span ng-if="itnForm.agree1.$error.required && !itnForm.agree1.$pristine" class="help-block">{{errorMessages.required}}</span>
                           </div>
                           
                           
                           <h3 class="mt-50 mb-25">Informed Consent</h3>
-                          
-                          <p>The Independent Transportation Network (ITN) is a nonprofit, community-based organization providing dignified, consumer-oriented transportation for seniors and people with visual impairments. </p>
 
-                          <p>As an ITNAmerica affiliate community, your ITN benefits from more than a decade of research to develop a model for economically sustainable transportation. Among the public and private organizations that have supported this research are the Federal Transit Administration, the Transportation Research Board (National Academies of Science), AARP, the Great Bay Foundation for Social Entrepreneurs, and the Atlantic Philanthropies. Thousands of private individuals and their families have participated in this research and development, without which, this service would not be possible.</p>
+                          <p>The Independent Transportation Network (ITN) is a nonprofit, community-based organization providing dignified, consumer-oriented transportation for seniors and people with visual impairments.</p>
 
-                          <p>In the spirit of this public/private effort, to continue the development and analysis that will allow ITNAmerica to better understand the mobility needs of older Americans, their families and their communities, and to continuously improve the quality and sustainability of the service, we routinely collect data about riders and the rides we deliver. The identity of our riders is kept entirely confidential in all reports we use for these purposes.</p>
+                          <p>As an ITNAmerica affiliate community, your ITN benefits from more than two decades of research to develop a model for economically sustainable transportation. Among the public and private organizations that have supported this research are the Federal Transit Administration, the Transportation Research Board (National Academies of Science), AARP, the Great Bay Foundation for Social Entrepreneurs,  the Atlantic Philanthropies, the Silver Century Foundation and the Centers for Disease Control[MJ1] . Thousands of private individuals and their families have participated in this research and development, without which, this service would not be possible.</p>
 
-                          <p>In addition to this routine data collection, ITNAmerica also conducts research. From time to time, we may ask you to participate in a research project. Your participation in the ITNAmerica research studies is voluntary and confidential. If you prefer not to participate in the research studies, your decision will not affect the quality of your service or your eligibility to use ITN for rides.</p>
+                          <p>In the spirit of this public/private effort, to continue the development and analysis that will allow ITNAmerica to better understand community  mobility needs, and to continuously improve the quality and sustainability of the service, we routinely collect data about riders, volunteers,  and the rides we deliver. The identity of our riders and volunteers is kept entirely confidential in all reports we use for these purposes.</p>
 
-                          <p>Your signature indicates that you understand that routinely-collected ITNAmerica data will be used to study and improve transportation for seniors, and that you may, from time to time, be asked questions about your use of the service. We will do our best to provide rides for you and we will always strive to inform you when we cannot provide a ride. However, we are not responsible for any costs or expenses you may incur when we are unable to provide a ride for a specific time and place.</p>
+                          <p>In addition to this routine data collection, ITNAmerica also conducts research. From time to time, we may ask you to participate in a research project. Your participation in the ITNAmerica research studies is voluntary and confidential. If you prefer not to participate in the research studies, your decision will not affect the quality of your service or your eligibility to participate in the ITN system. Your participation in research efforts may benefit you through improved services and programs.  There are no foreseeable risks to participating in ITN’s research collection efforts.</p>
+
+                          <p>Your signature indicates that you understand that routinely-collected ITNAmerica data will be used to study and improve transportation service and sustainability, and that you may, from time to time, be asked questions about your use of the service. We will do our best to provide rides for you and we will always strive to inform you when we cannot provide a ride. However, we are not responsible for any costs or expenses you may incur when we are unable to provide a ride for a specific time and place.</p>
                           
-                          <div class="form-group" ng-class="{ 'has-error' : itnForm.name2.$invalid && !itnForm.name2.$pristine }">
-                            <label for="name">Name: *</label>
-                            <input ng-model="formData.agreement.name2" type="text" class="form-control" id="name" name="name2" placeholder="please print name"  ng-minlength="minlength" ng-maxlength="maxlength" match="formData.agreement.name1" required>
-                            <span ng-if="itnForm.name2.$error.required && !itnForm.name2.$pristine" class="help-block">{{errorMessages.required}}</span>
-                            <span ng-if="itnForm.name2.$error.minlength" class="help-block">{{errorMessages.minlength}}</span>
-                            <span ng-if="itnForm.name2.$error.maxlength" class="help-block">{{errorMessages.maxlength}}</span>
-                            <span ng-if="itnForm.name2.$error.mismatch" class="help-block">{{errorMessages.mismatchName}}</span>
-                          </div>
-                          
-                          <div class="form-group" ng-class="{ 'has-error' : itnForm.signature2.$invalid && !itnForm.signature2.$pristine }">
-                            <label for="signature">Signature: *</label>
-                            <input ng-model="formData.agreement.signature2" type="text" class="form-control" id="signature" name="signature2" placeholder="Signature of customer or legal representative: *" ng-minlength="minlength" ng-maxlength="maxlength" match="formData.agreement.signature1" required>
-                            <span ng-if="itnForm.signature2.$error.required && !itnForm.signature2.$pristine" class="help-block">{{errorMessages.required}}</span>
-                            <span ng-if="itnForm.signature2.$error.minlength" class="help-block">{{errorMessages.minlength}}</span>
-                            <span ng-if="itnForm.signature2.$error.maxlength" class="help-block">{{errorMessages.maxlength}}</span>
-                            <span ng-if="itnForm.signature2.$error.mismatch" class="help-block">{{errorMessages.mismatchSignature}}</span>
-                          </div>
-                          
-                          <div class="form-group" ng-class="{ 'has-error' : itnForm.date2.$invalid && !itnForm.date2.$pristine }">
-                            <label for="date">Agreement Date: *</label>
-                            <input ng-model="formData.agreement.date2" type="text" class="form-control" id="date" name="date2" ng-pattern="datePattern" placeholder="Example: mm/dd/yyyy" match="formData.agreement.date1" required>
-                            <span ng-if="itnForm.date2.$error.required && !itnForm.date2.$pristine" class="help-block">{{errorMessages.required}}</span>
-                            <span ng-if="itnForm.date2.$error.pattern" class="help-block">{{errorMessages.date}}</span>
-                            <span ng-if="itnForm.date2.$error.mismatch" class="help-block">{{errorMessages.mismatchDate}}</span>
-                          </div>
+                          <div class="row">
+                            <div class="form-group col-sm-8" ng-class="{ 'has-error' : itnForm.signature2.$invalid && !itnForm.signature2.$pristine }">
+                              <label for="signature">Signature: <span style="color:red">*</span></label>
+                              <input ng-model="formData.agreement.signature2" type="text" class="form-control" id="signature" name="signature2" placeholder="please print name" ng-minlength="minlength" ng-maxlength="maxlength" match="formData.agreement.signature1" required>
+                              <span ng-if="itnForm.signature2.$error.required && !itnForm.signature2.$pristine" class="help-block">{{errorMessages.required}}</span>
+                              <span ng-if="itnForm.signature2.$error.minlength" class="help-block">{{errorMessages.minlength}}</span>
+                              <span ng-if="itnForm.signature2.$error.maxlength" class="help-block">{{errorMessages.maxlength}}</span>
+                              <span ng-if="itnForm.signature2.$error.mismatch && !itnForm.signature2.$pristine" class="help-block">{{errorMessages.mismatchSignature}}</span>
+                            </div>
                             
-                          <div class="form-group">
-                            <label class="checkbox-inline"><input type="checkbox" value="agree" ng-model="formData.agree2" required>By checking this box and submitting this form, you agree that your digital signature will be considered your legal signature and represents your agreement to the terms and policies outlined above.</label>
+                            <div class="form-group col-sm-4" ng-class="{ 'has-error' : itnForm.date2.$invalid && !itnForm.date2.$pristine }">
+                              <label for="date">Agreement Date: <span style="color:red">*</span></label>
+                              <input ng-model="formData.agreement.date2" type="text" class="form-control" id="date" name="date2" ng-pattern="datePattern" placeholder="Example: mm/dd/yyyy" match="formData.agreement.date1" required>
+                              <span ng-if="itnForm.date2.$error.required && !itnForm.date2.$pristine" class="help-block">{{errorMessages.required}}</span>
+                              <span ng-if="itnForm.date2.$error.pattern" class="help-block">{{errorMessages.date}}</span>
+                              <span ng-if="itnForm.date2.$error.mismatch && !itnForm.date2.$pristine" class="help-block">{{errorMessages.mismatchDate}}</span>
+                            </div>
+                          </div><!--row-->
+                            
+                          <div class="form-group"  ng-class="{ 'has-error' : itnForm.agree2.$invalid && !itnForm.agree2.$pristine }">
+                            <label class="checkbox-inline"><input type="checkbox" value="agree" name="agree2" ng-model="formData.agree2" required>By checking this box and submitting this form, you agree that your digital signature will be considered your legal signature and represents your agreement to the terms and policies outlined above.</label>
+                            <span ng-if="itnForm.agree2.$error.required && !itnForm.agree2.$pristine" class="help-block">{{errorMessages.required}}</span>
                           </div>
 
-                          <button type="submit" ng-hide="loading" class="btn btn-lg pull-right btn-danger" style="background:#e05944; margin-left:2%" ng-disabled="form.$invalid">Submit</button>
+                          <button type="submit" ng-disabled="itnForm.$invalid || loading" class="btn btn-lg pull-right btn-danger" style="background:#e05944; margin-left:2%">Submit</button>
                           <button type="button" ng-click="nextTabMemberApp('prev')" class="next-tab btn btn-lg btn-primary pull-right itn-green-bg"  style="margin-left:2%">Previous</button>  
                           
                         </div><!--tab7-->
@@ -1016,27 +1097,27 @@
     
     <h3 class="app-title">Application for Transportation Service</h3>
     
-    <br><label for="Membership Type">Membership Type: *</label><br>
+    <br><label for="Membership Type">Membership Type: <span style="color:red">*</span></label><br>
     {{formData.membership}}
-    <br><label for="rider name">Rider's Name: *</label><br>
+    <br><label for="rider name">Rider's Name: <span style="color:red">*</span></label><br>
     {{formData.riderName}}
-    <br><label for="street">Street Address: *</label><br>
+    <br><label for="street">Street Address: <span style="color:red">*</span></label><br>
     {{formData.streetAddress}}
-    <br><label for="street">City: *</label><br>
+    <br><label for="street">City: <span style="color:red">*</span></label><br>
     {{formData.city}}
-    <br><label for="state">State: *</label><br>
+    <br><label for="state">State: <span style="color:red">*</span></label><br>
     {{formData.state}}
-    <br><label for="zip">Zip Code: *</label><br>
+    <br><label for="zip">Zip Code: <span style="color:red">*</span></label><br>
     {{formData.zip}}
-    <br><label for="years at address">Years at Address: *</label><br>
+    <br><label for="years at address">Years at Address: <span style="color:red">*</span></label><br>
     {{formData.yearsAtAddress}}
-    <br><label for="Mailing Adress Yes or No">Is this your Mailing Address?*:  </label><br>
+    <br><label for="Mailing Adress Yes or No">Is this your Mailing Address?<span style="color:red">*</span>:  </label><br>
     {{formData.isMailingAddress}}
-    <br><label for="Billing Adress Yes or No">Is this your Billing Address?*:  </label><br>
+    <br><label for="Billing Adress Yes or No">Is this your Billing Address?<span style="color:red">*</span>:  </label><br>
     {{formData.isBillingAddress}}
-    <br><label for="Year-round Residence Yes or No">Is this your Year-round Residence?*:  </label><br>
+    <br><label for="Year-round Residence Yes or No">Is this your Year-round Residence?<span style="color:red">*</span>:  </label><br>
     {{formData.isYearRoundResidence}}
-    <br><label for="primary phone">Primary Phone: *</label><br>
+    <br><label for="primary phone">Primary Phone: <span style="color:red">*</span></label><br>
     {{formData.primaryPhone}}
     <br><label for="secondary phone">Secondary Phone: </label><br>
     {{formData.secondaryPhone}}
@@ -1046,76 +1127,76 @@
     <div ng-if="familyMembership">
       <h3>Second Rider Information</h3>
       
-      <br><label for="second rider name">Second Rider's Name: *</label><br>
+      <br><label for="second rider name">Second Rider's Name: <span style="color:red">*</span></label><br>
       {{formData.secondRiderName}}
-      <br><label for="second rider name">Second Rider's Date of Birth: *</label><br>
+      <br><label for="second rider name">Second Rider's Date of Birth: <span style="color:red">*</span></label><br>
       {{formData.secondRiderDob}}
-      <br><label for="second rider special needs">Second Rider's Special Needs and Mobility Assistance: *</label><br>
+      <br><label for="second rider special needs">Second Rider's Special Needs and Mobility Assistance: <span style="color:red">*</span></label><br>
       {{formData.secondRiderSpecialNeeds | inputSelected}}
       
     </div>
     
     <h3>First Emergency Contact</h3>
     
-    <br><label for="name">Name: *</label><br>
+    <br><label for="name">Name: <span style="color:red">*</span></label><br>
     {{formData.firstEmergencyContact.name}}
-    <br><label for="relationship">Relationship: *</label><br>
+    <br><label for="relationship">Relationship: <span style="color:red">*</span></label><br>
     {{formData.firstEmergencyContact.relationship}}
-    <br><label for="street">Street Address: *</label><br>
+    <br><label for="street">Street Address: <span style="color:red">*</span></label><br>
     {{formData.firstEmergencyContact.street}}
-    <br><label for="city">City: *</label><br>
+    <br><label for="city">City: <span style="color:red">*</span></label><br>
     {{formData.firstEmergencyContact.city}}
-    <br><label for="state">State: *</label><br>
+    <br><label for="state">State: <span style="color:red">*</span></label><br>
     {{formData.firstEmergencyContact.state}}
-    <br><label for="zip">Zip Code: *</label><br>
+    <br><label for="zip">Zip Code: <span style="color:red">*</span></label><br>
     {{formData.firstEmergencyContact.zip}}
-    <br><label for="home phone">Home Phone: *</label><br>
-    {{formData.firstEmergencyContact.homePhone}}
-    <br><label for="cell phone">Cell Phone: </label><br>
-    {{formData.firstEmergencyContact.cellPhone}}
+    <br><label for="home phone">Best Phone Number: <span style="color:red">*</span></label><br>
+    {{formData.firstEmergencyContact.bestPhone}}
+    <br><label for="cell phone">Other Phone Number: </label><br>
+    {{formData.firstEmergencyContact.otherPhone}}
     <br><label for="email">Email: </label><br>
     {{formData.firstEmergencyContact.email}}
     
     <h3>Second Emergency Contact</h3>
     
-    <br><label for="name">Name: *</label><br>
+    <br><label for="name">Name: <span style="color:red">*</span></label><br>
     {{formData.secondEmergencyContact.name}}
-    <br><label for="relationship">Relationship: *</label><br>
+    <br><label for="relationship">Relationship: <span style="color:red">*</span></label><br>
     {{formData.secondEmergencyContact.relationship}}
-    <br><label for="street">Street Address: *</label><br>
+    <br><label for="street">Street Address: <span style="color:red">*</span></label><br>
     {{formData.secondEmergencyContact.street}}
-    <br><label for="city">City: *</label><br>
+    <br><label for="city">City: <span style="color:red">*</span></label><br>
     {{formData.secondEmergencyContact.city}}
-    <br><label for="state">State: *</label><br>
+    <br><label for="state">State: <span style="color:red">*</span></label><br>
     {{formData.secondEmergencyContact.state}}
-    <br><label for="zip">Zip Code: *</label><br>
+    <br><label for="zip">Zip Code: <span style="color:red">*</span></label><br>
     {{formData.secondEmergencyContact.zip}}
-    <br><label for="home phone">Home Phone: *</label><br>
-    {{formData.secondEmergencyContact.homePhone}}
-    <br><label for="cell phone">Cell Phone: </label><br>
-    {{formData.secondEmergencyContact.cellPhone}}
+    <br><label for="best phone">Best Phone Number: <span style="color:red">*</span></label><br>
+    {{formData.secondEmergencyContact.bestPhone}}
+    <br><label for="other phone">Other Phone Number: </label><br>
+    {{formData.secondEmergencyContact.otherPhone}}
     <br><label for="email">Email: </label><br>
     {{formData.secondEmergencyContact.email}}
     
     
-    <br><label for="Heard about ITN">How did you hear about ITN?: *</label><br>
+    <br><label for="Heard about ITN">How did you hear about ITN?: <span style="color:red">*</span></label><br>
     {{formData.heardAboutItn | inputSelected }}
     
-    <br><label for="send info">Would you like us to send information about ITN to a relative, friend, or business? * </label><br>
+    <br><label for="send info">Would you like us to send information about ITN to a relative, friend, or business? <span style="color:red">*</span> </label><br>
     {{formData.sendInfoToRelativeFriendBiz}}
     
     <br><div ng-if="sendInfo">
-      <br><label for="name">Name: *</label><br>
+      <br><label for="name">Name: <span style="color:red">*</span></label><br>
       {{formData.sendInfoTo.name}}
-      <br><label for="relationship">Relationship: *</label><br>
+      <br><label for="relationship">Relationship: <span style="color:red">*</span></label><br>
       {{formData.sendInfoTo.relationship}}
-      <br><label for="street">Street Address: *</label><br>
+      <br><label for="street">Street Address: <span style="color:red">*</span></label><br>
       {{formData.sendInfoTo.street}}
-      <br><label for="state">State: *</label><br>
+      <br><label for="state">State: <span style="color:red">*</span></label><br>
       {{formData.sendInfoTo.state}}
-      <br><label for="zip">Zip Code: *</label><br>
+      <br><label for="zip">Zip Code: <span style="color:red">*</span></label><br>
       {{formData.sendInfoTo.zip}}
-      <br><label for="phone">Phone: *</label><br>
+      <br><label for="phone">Phone: <span style="color:red">*</span></label><br>
       {{formData.sendInfoTo.phone}}
       <br><label for="email">Email: </label><br>
       {{formData.sendInfoTo.email}}
@@ -1125,43 +1206,43 @@
     
     <h3>Customer Information</h3>
     
-    <br><label for="gender">Gender: * </label><br>
+    <br><label for="gender">Gender: <span style="color:red">*</span> </label><br>
     {{formData.customerInfo.gender}}
-    <br><label for="dob">Date of Birth: * - </label><br>
+    <br><label for="dob">Date of Birth: <span style="color:red">*</span> - </label><br>
     {{formData.customerInfo.dateOfBirth}}
-    <br><label for="marital status">Marital Status: * </label><br>
+    <br><label for="marital status">Marital Status: <span style="color:red">*</span> </label><br>
     {{formData.customerInfo.maritalStatus}}
-    <br><label for="living">Living Arrangements: * </label><br>
+    <br><label for="living">Living Arrangements: <span style="color:red">*</span> </label><br>
     {{formData.customerInfo.livingArrangement}}
-    <br><label for="dwelling">Dwelling Arrangements: * </label><br>
+    <br><label for="dwelling">Dwelling Arrangements: <span style="color:red">*</span> </label><br>
     {{formData.customerInfo.dwellingArrangement}} {{formData.customerInfo.otherDwellingArrangement}}
-    <br><label for="languages">Languages Spoken: *</label><br>
+    <br><label for="languages">Languages Spoken: <span style="color:red">*</span></label><br>
     {{formData.customerInfo.languages | inputSelected}}
-    <br><label for="transportation means">Current primary means of getting around: * </label><br>
+    <br><label for="transportation means">Current primary means of getting around: <span style="color:red">*</span> </label><br>
     {{formData.customerInfo.currentTransportationMeans}}
     
     <h3>Civic Engagement</h3>
     
     <br><label for="member of any organization">Are you a member of any of the following organizations?:</label><br>
     {{formData.customerInfo.memberOfOrganization | inputSelected}}
-    <br><label for="professional organization or labor union">Are you part of any professional organizations or labor unions?: * </label><br>
+    <br><label for="professional organization or labor union">Are you part of any professional organizations or labor unions?: <span style="color:red">*</span> </label><br>
     {{formData.memberOfProfessionalOrgOrUnion}} - {{formData.memberOfProfessionalOrgOrUnions}} 
-    <br><label for="served in armed forces">Have you ever served on active duty in the U.S. Armed Forces, Military Reserves, or National Guard: *</label><br>
+    <br><label for="served in armed forces">Have you ever served on active duty in the U.S. Armed Forces, Military Reserves, or National Guard: <span style="color:red">*</span></label><br>
     {{formData.customerInfo.servedInMilitary}}
-    <br><label for="special needs">Special Needs and Mobility Assistance: *</label><br>
+    <br><label for="special needs">Special Needs and Mobility Assistance: <span style="color:red">*</span></label><br>
     {{formData.customerInfo.specialNeeds | inputSelected }}
   
     <h3>Driving Information</h3>
     
-    <br><label for="license">Do you have a current driver's license?: *</label><br>
+    <br><label for="license">Do you have a current driver's license?: <span style="color:red">*</span></label><br>
     {{formData.drivingInfo.hasLicense}}
-    <br><label for="own vehicle">Do you own a vehicle?: *</label><br>
+    <br><label for="own vehicle">Do you own a vehicle?: <span style="color:red">*</span></label><br>
     {{formData.drivingInfo.ownVehicle}}
-    <br><label for="driver improvement">Have you tried any driver improvement activities or classes to help you keep driving safely longer?: *</label><br>
+    <br><label for="driver improvement">Have you tried any driver improvement activities or classes to help you keep driving safely longer?: <span style="color:red">*</span></label><br>
     {{formData.drivingInfo.driverImprovementClasses}}
-    <br><label for="driven in last 10 years">Have you driven in the last ten years?: *</label><br>
+    <br><label for="driven in last 10 years">Have you driven in the last ten years?: <span style="color:red">*</span></label><br>
     {{formData.drivingInfo.drivenLast10Years}}
-    <br><label for="currently driving">Do you currently drive?: *</label><br>
+    <br><label for="currently driving">Do you currently drive?: <span style="color:red">*</span></label><br>
     {{formData.drivingInfo.currentlyDrive}}
     
     <div ng-if="currentDriver">
@@ -1195,7 +1276,7 @@
         {{formData.drivingInfo.whyNoDrive | inputSelected }}  {{formData.drivingInfo.whyNoDrive.other }}
     </div>
     
-      <br><label for="reduce ITN cost with rideshare">Would you like to reduce the cost of ITN trips by sharing rides with others when it's convenient?: *</label><br>
+      <br><label for="reduce ITN cost with rideshare">Would you like to reduce the cost of ITN trips by sharing rides with others when it's convenient?: <span style="color:red">*</span></label><br>
       {{formData.drivingInfo.reduceCostWithRideshare}}
       <br><label for="info on programs">Would you like information on any of these ITN programs?:</label><br>
       {{formData.wantInfoOnPrograms | inputSelected}}
@@ -1219,11 +1300,11 @@
       </div>
       
       <label>By checking this box and submitting this form, you agree that your digital signature will be considered your legal signature and represents your agreement to the terms and policies outlined above.</label><br>
-      <br><label for="name">Name: *</label><br>
+      <br><label for="name">Name: <span style="color:red">*</span></label><br>
       {{formData.agreement.name1}}
-      <br><label for="signature">Agreement Signature: *</label><br>
+      <br><label for="signature">Agreement Signature: <span style="color:red">*</span></label><br>
       {{formData.agreement.signature1}}
-      <br><label for="date">Agreement Date: *</label><br>
+      <br><label for="date">Agreement Date: <span style="color:red">*</span></label><br>
       {{formData.agreement.date1}}
       
       
@@ -1240,11 +1321,9 @@
       <p>Your signature indicates that you understand that routinely-collected ITNAmerica data will be used to study and improve transportation for seniors, and that you may, from time to time, be asked questions about your use of the service. We will do our best to provide rides for you and we will always strive to inform you when we cannot provide a ride. However, we are not responsible for any costs or expenses you may incur when we are unable to provide a ride for a specific time and place.</p>
       
       <label>By checking this box and submitting this form, you agree that your digital signature will be considered your legal signature and represents your agreement to the terms and policies outlined above.</label><br>
-      <br><label for="name">Name: *</label><br>
-      {{formData.agreement.name2}}
-      <br><label for="signature">Agreement Signature: *</label><br>
+      <br><label for="signature">Agreement Signature: <span style="color:red">*</span></label><br>
       {{formData.agreement.signature2}}
-      <br><label for="date">Agreement Date: *</label><br>
+      <br><label for="date">Agreement Date: <span style="color:red">*</span></label><br>
       {{formData.agreement.date2}}
       
     
@@ -1254,8 +1333,8 @@
     <div class="page-template">
       <div class="header">
       </div>
-      <div class="watermark"><img src="assets/images/icons/itnlanier_white_bg.png" style="margin:auto;display:block" alt="main logo"/></div>
-      <div class="watermark"><img src="assets/images/icons/itnlanier_white_bg.png" style="margin:auto;display:block" alt="main logo"/></div>
+      <div class="watermark"><img src="assetsPath/images/icons/itnlanier_white_bg.png" style="margin:auto;display:block" alt="main logo"/></div>
+      <div class="watermark"><img src="assetsPath/images/icons/itnlanier_white_bg.png" style="margin:auto;display:block" alt="main logo"/></div>
       <div class="footer">
         Page #: pageNum # of #: totalPages #
       </div>
@@ -1286,179 +1365,112 @@
   </script>
   
   <style>
-  /* COPYRIGHT PROGRESS UI */
-  .switch-list, .list-unstyled, ul.dropdown-menu, .stat-board, .nav-tabs, .breadcrumbs, .pagination, .pagination .pages, .steps, .tabs {
-  line-height: inherit;
-  list-style: none;
-  margin: 0;
-  padding: 0; }
-  
-  
-.panel, .modal-content, .steps, .table-panel {
-  border: 1px solid transparent;
-  border-radius: 4px;
-  line-height: 24px;
-  margin-bottom: 12px;
-  padding: 24px;
-  position: relative; }
-  .panel.modal, .modal.modal-content, .modal.steps, .modal.table-panel {
-    max-width: 60vw; }
-    @media screen and (max-width: 64rem) {
-      .panel.modal, .modal.modal-content, .modal.steps, .modal.table-panel {
-        max-width: 94vw; } }
-        
-        .panel-default, .modal-content, .steps, .table-panel {
-  background: #fff;
-  border-color: #dee2e6;
-  border-bottom-color: #ced4da; }
-  .panel-default .panel-header, .modal-content .panel-header, .steps .panel-header, .table-panel .panel-header {
-    border-bottom: 1px solid #dee2e6;
-    padding-bottom: 12px; }
-    .panel-default .panel-header.no-border, .modal-content .panel-header.no-border, .steps .panel-header.no-border, .table-panel .panel-header.no-border {
-      border-bottom: none;
-      margin-bottom: 0;
-      padding-bottom: 12px; }
-    .panel-default .panel-header .panel-title-sub, .modal-content .panel-header .panel-title-sub, .steps .panel-header .panel-title-sub, .table-panel .panel-header .panel-title-sub {
-      padding-top: 18px; }
-      .panel-default .panel-header .panel-title-sub.no-padding, .modal-content .panel-header .panel-title-sub.no-padding, .steps .panel-header .panel-title-sub.no-padding, .table-panel .panel-header .panel-title-sub.no-padding {
-        padding-top: 0; }
-  
-  .steps {
-  display: -webkit-box;
-  display: -moz-box;
-  display: box;
-  display: -moz-flex;
-  display: -ms-flexbox;
-  display: flex;
-  counter-reset: step;
-  padding: 12px; }
-  @media screen and (max-width: 32rem) {
-    .steps {
-      overflow: auto; } }
-
-.step {
-  box-flex: 2;
-  -moz-flex: 2 1 auto;
-  -ms-flex: 2 1 auto;
-  flex: 2 1 auto;
-  color: #ced4da;
-  min-height: 28px;
-  overflow: hidden;
-  position: relative; }
-  .step a {
-    background: #fff;
-    color: #ced4da;
-    cursor: default;
-    display: block;
-    float: left;
-    margin: 0 12px;
-    outline: none;
-    overflow: hidden;
-    pointer-events: none;
-    text-overflow: ellipsis;
-    vertical-align: middle;
-    white-space: nowrap; }
-    .step a::before {
-      border: 2px solid #ced4da;
-      border-radius: 50%;
-      color: #ced4da;
-      content: counter(step);
-      counter-increment: step;
-      display: block;
-      float: left;
-      font-weight: bold;
-      height: 28px;
-      margin-right: 12px;
-      text-align: center;
-      vertical-align: middle;
-      width: 28px; }
-    .step a:focus, .step a:hover {
-      color: #ced4da; }
-  .can-skip .step a,
-  .step.active a, .radio-list.as-buttons .radio-unit .radio:checked + label.step a,
-  .step.complete a,
-  .step.previous a {
-    color: #228ae6; }
-    .can-skip .step a:focus,
-    .can-skip .step a a:focus, .can-skip .step a:hover,
-    .can-skip .step a a:hover,
-    .step.active a:focus, .radio-list.as-buttons .radio-unit .radio:checked + label.step a:focus,
-    .step.active a a:focus, .radio-list.as-buttons .radio-unit .radio:checked + label.step a a:focus,
-    .step.active a:hover, .radio-list.as-buttons .radio-unit .radio:checked + label.step a:hover,
-    .step.active a a:hover, .radio-list.as-buttons .radio-unit .radio:checked + label.step a a:hover,
-    .step.complete a:focus,
-    .step.complete a a:focus,
-    .step.complete a:hover,
-    .step.complete a a:hover,
-    .step.previous a:focus,
-    .step.previous a a:focus,
-    .step.previous a:hover,
-    .step.previous a a:hover {
-      color: #1c7cd6; }
-  .can-skip .step:not(.active):not(.radio-list.as-buttons .radio-unit .radio:checked + label) a,
-  .step.complete:not(.active):not(.radio-list.as-buttons .radio-unit .radio:checked + label) a,
-  .step.previous:not(.active):not(.radio-list.as-buttons .radio-unit .radio:checked + label) a {
-    cursor: pointer;
-    pointer-events: auto; }
-  .step.complete a::before {
-    background-color: #40c057;
-    border-color: #37b24d;
-    color: #fff;
-    content:  "\2713 ";
-    font-family: "Glyphicons Regular";
-    font-weight: normal; }
-  .step.active a::before, .radio-list.as-buttons .radio-unit .radio:checked + label.step a::before {
-    background-color: #228ae6;
-    border-color: #1c7cd6;
-    color: #fff;
-    content: counter(step);
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
-    font-weight: bold; }
-  .step.invalid a::before {
-    background-color: #fa5252;
-    border-color: #f03e3e;
-    color: #fff;
-    content: "!";
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
-    font-weight: 900; }
-  .step:last-child a {
-    border-right: 0; }
-  .step:last-of-type {
-    box-flex: 1;
-    -moz-flex: 1 auto;
-    -ms-flex: 1 auto;
-    flex: 1 auto;
-    margin-right: 0; }
-    .step:last-of-type a {
-      margin-right: 0; }
-  .step:not(:last-of-type)::after {
-    border-top: 1px solid #ced4da;
-    content: "";
-    height: 1px;
+  .s-stepper {
+    display: flex;
+    box-shadow: 0 2px 4px 0px #aaa;
+    counter-reset: section;
+    background-color: #fff;
+    margin-top:60px;
+    margin-bottom:70px;
+  }
+  .s-stepper small {
+    font-size:78%;
+  }
+    
+  .s-stepper .s-step {
+    display: flex;
+    flex: 1;
+    padding: 15px;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    cursor:default;
+    color: rgba(0, 0, 0, 0.6);
+    position: relative;
+  }
+  .s-stepper .s-step:first-child:before {
     position: absolute;
-    top: 50%;
-    width: 100%; }
-  @media screen and (max-width: 32rem) {
-    .step {
-      box-flex: 1;
-      -moz-flex: 1 100%;
-      -ms-flex: 1 100%;
-      flex: 1 100%;
-      content: "";
-      min-width: auto;
-      overflow: initial; }
-      .step a {
-        display: inline-block;
-        margin: 0;
-        padding-left: 12px;
-        text-indent: -9999em; }
-        .step a::before {
-          float: left;
-          text-indent: 0; }
-      .step::after {
-        left: calc(28px + (12px * 2)); }
-      .step:last-of-type {
-        margin-right: 0; } }
+    left: 0;
+    top: 0;
+    width: 0;
+    height: 0;
+    content: "";
+    border-top: none;
+    border-bottom: none;
+  }
+  .s-stepper .s-step.active, .s-stepper .s-step.done {
+    position: relative;
+    background-color: green;
+    color: rgba(255, 255, 255, 0.7);
+  }
+  .s-stepper .s-step.active:last-child:after {
+    border: none;
+  }
+  .s-stepper .s-step.active:after {
+    position: absolute;
+    right: 0;
+    top: 0;
+    margin-right: -50px;
+    width: 0;
+    height: 0;
+    content: "";
+    border-top: 50px solid transparent;
+    border-bottom: 50px solid transparent;
+    border-left: 50px solid green;
+    transition: all 900ms ease-in-out;
+  }
+  .s-stepper .s-step.active .s-step-counter:after {
+    content: "";
+    font-family: FontAwesome;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 45px;
+    height: 45px;
+    border-radius: 9999px;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    color: rgba(255, 255, 255, 0.6);
+  }
+  .s-stepper .s-step.done .s-step-counter:after {
+    content: "";
+    font-family: FontAwesome;
+    border-color: rgba(255, 255, 255, 0.6);
+    color: rgba(255, 255, 255, 0.6);
+  }
+  .s-stepper .s-step .s-step-counter:after {
+    counter-increment: section;
+    content: counter(section);
+    display: flex;
+    font-size: 18px;
+    border: 1px solid rgba(0, 0, 0, 0.6);
+    width: 45px;
+    height: 45px;
+    justify-content: center;
+    border-radius: 999px;
+    align-items: center;
+    margin-bottom: 5px;
+  }
+
+  @media screen and (max-width: 1024px) {
+    .s-step small {
+      display: none;
+    }
+    .s-step.active:after {
+      border-top: 41px solid transparent !important;
+      border-bottom: 41px solid transparent !important;
+      border-left: 40px solid green !important;
+      margin-right: -40px !important;
+    }
+    .s-step.active:last-child:after {
+      border: none !important;
+    }
+  }
+  @media screen and (max-width: 550px) {
+    .s-stepper {
+      display: none;
+    }
+  }
   
   </style>
 
