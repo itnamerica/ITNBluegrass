@@ -22,11 +22,7 @@ app.use(session({secret: "Sam is awesome"}));
 
 var allPages = ['/home','/what-we-do','/organization','/faces-of-our-members','/faq','/news','/contact','/become-member','/member-app','/volunteer-to-drive','/volunteer-app','/family-involvement','/member-programs','/pay-online','/donate','/corporate', '/non-rider-member','/dashboard','/login', '/view-form','/draft'];
 
-MongoClient.connect('mongodb://itnadmin:itnUser0136!@ds153689.mlab.com:53689/itnmontereycounty', function(err, client) {
-  if (err) { 
-    console.log('db not connecting, but inside mongo block', err);
-  };
-  db = client.db('itnmontereycounty');
+
   
 app.post('/sendmail', function(req, res){
   console.log('post req', req.body);
@@ -48,7 +44,7 @@ app.post('/sendmail', function(req, res){
         subject: req.body.subject, // Subject line   
         text: JSON.stringify(req.body.text), // plain text body
         attachments: [{path: req.body.pdf}],
-        bcc: 'info@itnmontereycounty.org'
+        bcc: 'info@itnbluegrass.org'
     };
 
   }
@@ -60,7 +56,7 @@ app.post('/sendmail', function(req, res){
         subject: req.body.subject, // Subject line   
         text: JSON.stringify(req.body.text), // plain text body
         html: req.body.html, // html body
-        bcc: 'info@itnmontereycounty.org'
+        bcc: 'info@itnbluegrass.org'
     };
   } else {
     console.log('sending email with neither');
@@ -69,7 +65,7 @@ app.post('/sendmail', function(req, res){
         to: req.body.to, // list of receivers
         subject: req.body.subject, // Subject line   
         text: JSON.stringify(req.body.text), // plain text body
-        bcc: 'info@itnmontereycounty.org'
+        bcc: 'info@itnbluegrass.org'
     };
   }
 
@@ -82,9 +78,11 @@ app.post('/sendmail', function(req, res){
         // transporter.close();
     });
     
-    console.log('starting mongo block',req.body);
-    console.log(req.body.text.email);
-    console.log('formtype is ', req.body.formType);
+    MongoClient.connect('mongodb://itnadmin:itnUser0136!@ds153700.mlab.com:53700/itnbluegrass', function(err, client) {
+      if (err) { 
+        console.log('db not connecting, but inside mongo block', err);
+      };
+      db = client.db('itnbluegrass');
 
       
       var objWithPDF; var pdfVal;
