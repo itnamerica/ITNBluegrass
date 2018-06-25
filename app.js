@@ -22,116 +22,12 @@ app.use(session({secret: "Sam is awesome"}));
 
 var allPages = ['/home','/what-we-do','/organization','/faces-of-our-members','/faq','/news','/contact','/become-member','/member-app','/volunteer-to-drive','/volunteer-app','/family-involvement','/member-programs','/pay-online','/donate','/corporate', '/non-rider-member','/dashboard','/login', '/view-form','/draft'];
 
-
+MongoClient.connect('mongodb://itnadmin:itnUser0136!@ds153700.mlab.com:53700/itnbluegrass', function(err, client) {
+  if (err) { 
+    console.log('db not connecting, but inside mongo block', err);
+  };
+  db = client.db('itnbluegrass');
   
-app.post('/sendmail', function(req, res){
-  console.log('post req', req.body);
-
-    let transporter = nodemailer.createTransport(smtpTransport({
-       service: "Gmail",  // sets automatically host, port and connection security settings
-       auth: {
-           user: gmail_login,
-           pass: gmail_pass
-       }
-    })
-  )
-  let mailOptions = {};
-  if (req.body && req.body.pdf){
-    console.log('sending email with pdf, membership, volunteer or non-rider forms');
-    mailOptions = {
-        from: req.body.from, // sender address
-        to: req.body.to, // list of receivers
-        subject: req.body.subject, // Subject line   
-        text: JSON.stringify(req.body.text), // plain text body
-        attachments: [{path: req.body.pdf}],
-        bcc: 'info@itnbluegrass.org'
-    };
-
-  }
-  else if (req.body && req.body.html){
-    console.log('sending email without pdf, contact form');
-    mailOptions = {
-        from: req.body.from, // sender address
-        to: req.body.to, // list of receivers
-        subject: req.body.subject, // Subject line   
-        text: JSON.stringify(req.body.text), // plain text body
-        html: req.body.html, // html body
-        bcc: 'info@itnbluegrass.org'
-    };
-  } else {
-    console.log('sending email with neither');
-    mailOptions = {
-        from: req.body.from, // sender address
-        to: req.body.to, // list of receivers
-        subject: req.body.subject, // Subject line   
-        text: JSON.stringify(req.body.text), // plain text body
-        bcc: 'info@itnbluegrass.org'
-    };
-  }
-
-    // send mail with defined transport object
-    transporter.sendMail(mailOptions, function(error, info) {
-        if (error) {
-            return console.log(error);
-        }
-        console.log('Message sent: %s', info.messageId);
-        // transporter.close();
-    });
-    
-    MongoClient.connect('mongodb://itnadmin:itnUser0136!@ds153700.mlab.com:53700/itnbluegrass', function(err, client) {
-      if (err) { 
-        console.log('db not connecting, but inside mongo block', err);
-      };
-      db = client.db('itnbluegrass');
-
-      
-      var objWithPDF; var pdfVal;
-      if ((req.body && req.body.pdf) && (req.body.formType === 'membership')) {
-        objWithPDF = req.body.text;
-        objWithPDF.pdf = req.body.pdf;
-        db.collection('memberapp').save(objWithPDF, function(err, result){
-          if (err) { return console.log('connecting to db, but not saving obj', err); }
-          console.log('member app saved to database', result);
-          res.redirect('/');
-        })
-      }
-      else if ((req.body && req.body.pdf) && (req.body.formType === 'volunteer')) {
-        objWithPDF = req.body.text;
-        objWithPDF.pdf = req.body.pdf;
-        db.collection('volunteerapp').save(objWithPDF, function(err, result){
-          if (err) { return console.log('connecting to db, but not saving obj', err);}
-          console.log('volunteer app saved to database', result);
-          res.redirect('/');
-        })
-      }
-      else if ((req.body && req.body.pdf) && (req.body.formType === 'nonrider')) {
-        objWithPDF = req.body.text;
-        objWithPDF.pdf = req.body.pdf;
-        db.collection('nonriderapp').save(objWithPDF, function(err, result){
-          if (err) { return console.log('connecting to db, but not saving obj', err);}
-          console.log('nonrider app saved to database', result);
-          res.redirect('/');
-        })
-      }
-      else if ((req.body && req.body.html) && (req.body.formType === 'contact')) {
-        db.collection('contactform').save(req.body.text, function(err, result){
-          if (err) { return console.log('connecting to db, but not saving obj', err);}
-          console.log('contact form saved to database', result);
-          res.redirect('/');
-        })
-      }
-      else if (req.body.text.email && (req.body.formType === 'newsletter')) {
-        console.log('inside newsletter backend block',req.body.text);
-        db.collection('newsletterform').save(req.body.text, function(err, result){
-          if (err) { return console.log('connecting to db, but not saving obj', err);}
-          console.log('newsletter form saved to database', result);
-          res.redirect('/');
-        })
-      }
-    
-    console.log('after mongo block');
-    res.end();
-  }); // end /sendmail post request
   
   app.get('/getMemberApps', function (req,res) {
       db.collection('memberapp').find().toArray(function (err, result) {
@@ -194,6 +90,121 @@ app.post('/sendmail', function(req, res){
   }); // end of delete request
   
 });//end of mongoclient
+
+
+
+app.post('/sendmail', function(req, res){
+  console.log('post req', req.body);
+
+    let transporter = nodemailer.createTransport(smtpTransport({
+       service: "Gmail",  // sets automatically host, port and connection security settings
+       auth: {
+           user: gmail_login,
+           pass: gmail_pass
+       }
+    })
+  )
+  
+  let mailOptions = {};
+  if (req.body && req.body.pdf){
+    console.log('sending email with pdf, membership, volunteer or non-rider forms');
+    mailOptions = {
+        from: req.body.from, // sender address
+        to: req.body.to, // list of receivers
+        subject: req.body.subject, // Subject line   
+        text: JSON.stringify(req.body.text), // plain text body
+        attachments: [{path: req.body.pdf}],
+        bcc: 'info@itnbluegrass.org'
+    };
+  }
+  else if (req.body && req.body.html){
+    console.log('sending email without pdf, contact form');
+    mailOptions = {
+        from: req.body.from, // sender address
+        to: req.body.to, // list of receivers
+        subject: req.body.subject, // Subject line   
+        text: JSON.stringify(req.body.text), // plain text body
+        html: req.body.html, // html body
+        bcc: 'info@itnbluegrass.org'
+    };
+  } else {
+    console.log('sending email with neither');
+    mailOptions = {
+        from: req.body.from, // sender address
+        to: req.body.to, // list of receivers
+        subject: req.body.subject, // Subject line   
+        text: JSON.stringify(req.body.text), // plain text body
+        bcc: 'info@itnbluegrass.org'
+    };
+  }
+
+    // send mail with defined transport object
+    transporter.sendMail(mailOptions, function(error, info) {
+        if (error) {
+            return console.log(error);
+        }
+        console.log('Message sent: %s', info.messageId);
+        transporter.close();
+    });
+    
+    MongoClient.connect('mongodb://itnadmin:itnUser0136!@ds153700.mlab.com:53700/itnbluegrass', function(err, client) {
+      if (err) { 
+        console.log('db not connecting, but inside mongo block', err);
+      };
+      db = client.db('itnbluegrass');
+
+      
+      var objWithPDF; var pdfVal;
+      if ((req.body && req.body.pdf) && (req.body.formType === 'membership')) {
+        objWithPDF = req.body.text;
+        objWithPDF.pdf = req.body.pdf;
+        db.collection('memberapp').save(objWithPDF, function(err, result){
+          if (err) { return console.log('connecting to db, but not saving obj', err); }
+          console.log('member app saved to database', result);
+          // res.redirect('/');
+        })
+      }
+      else if ((req.body && req.body.pdf) && (req.body.formType === 'volunteer')) {
+        objWithPDF = req.body.text;
+        objWithPDF.pdf = req.body.pdf;
+        db.collection('volunteerapp').save(objWithPDF, function(err, result){
+          if (err) { return console.log('connecting to db, but not saving obj', err);}
+          console.log('volunteer app saved to database', result);
+          // res.redirect('/');
+        })
+      }
+      else if ((req.body && req.body.pdf) && (req.body.formType === 'nonrider')) {
+        objWithPDF = req.body.text;
+        objWithPDF.pdf = req.body.pdf;
+        db.collection('nonriderapp').save(objWithPDF, function(err, result){
+          if (err) { return console.log('connecting to db, but not saving obj', err);}
+          console.log('nonrider app saved to database', result);
+          // res.redirect('/');
+        })
+      }
+      else if ((req.body && req.body.html) && (req.body.formType === 'contact')) {
+        db.collection('contactform').save(req.body.text, function(err, result){
+          if (err) { return console.log('connecting to db, but not saving obj', err);}
+          console.log('contact form saved to database', result);
+          // res.redirect('/');
+        })
+      }
+      else if (req.body.text.email && (req.body.formType === 'newsletter')) {
+        console.log('inside newsletter backend block',req.body.text);
+        db.collection('newsletterform').save(req.body.text, function(err, result){
+          if (err) { return console.log('connecting to db, but not saving obj', err);}
+          console.log('newsletter form saved to database', result);
+          // res.redirect('/');
+        })
+      }
+    
+    });//end of mongoclient
+    console.log('after mongo block');
+    res.end();
+  }); // end /sendmail post request
+
+
+
   
   app.use(allPages, function(req, res){
     res.sendFile(__dirname + '/app/index.html');
