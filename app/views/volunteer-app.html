@@ -668,7 +668,7 @@
                 
                 <h3>Volunteer Driver Weekly Schedule</h3>
                 
-                <p>ITN<em>Gateway</em> will work with your schedule.</p>
+                <p>ITN<em>{{affiliate}}</em> will work with your schedule.</p>
                 <p>We provide transportation 24 hours a day 7 days a week.</p>
                 
                 <div class="form-group">
@@ -767,7 +767,7 @@
                             </div>
                             
                             <div class="form-group" ng-class="{ 'has-error' : itnForm.drivingRecordState.$invalid && !itnForm.drivingRecordState.$pristine }">
-                              <label for="license number">I authorize ITN<em>Gateway</em> to request and receive my Driving Record from <span style="color:red">*</span>:</label>
+                              <label for="license number">I authorize ITN<em>{{affiliate}}</em> to request and receive my Driving Record from <span style="color:red">*</span>:</label>
                               <select ng-model="formData.requestDriverRecord.authorize" class="form-control" name="drivingRecordState" id="state">
                                  <option ng-repeat="state in states" value="{{state}}">{{state}}</option>
                               </select>
@@ -1498,7 +1498,7 @@
   
   
   <h4>Volunteer Driver Weekly Schedule</h4>
-  <p>ITN<em>Gateway</em> will work with your schedule.</p>
+  <p>ITN<em>{{affiliate}}</em> will work with your schedule.</p>
   <p>We provide transportation 24 hours a day 7 days a week.</p>
   
   <br><label for="hours available">What hours are you available on these days? </label><br>
@@ -1529,7 +1529,7 @@
   {{formData.requestDriverRecord.dob}}
   <br><label for="license number">Driver's License Number <span style="color:red">*</span>:</label><br>
   {{formData.requestDriverRecord.licenseNumber}}
-  <br><label for="license number">I authorize ITN<em>Gateway</em> to request and receive my Driving Record from <span style="color:red">*</span>:</label>
+  <br><label for="license number">I authorize ITN<em>{{affiliate}}</em> to request and receive my Driving Record from <span style="color:red">*</span>:</label>
   {{formData.requestDriverRecord.authorize}}
   
   <p><strong>I certify that I have not been convicted or forfeited bond or collateral because of a moving violation during the last three years.</strong></p>
