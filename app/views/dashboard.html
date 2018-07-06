@@ -33,15 +33,19 @@
             <td>{{rider.streetAddress}}, {{rider.city}}, {{rider.state}} {{rider.zip}}</td>
             <td>{{rider.primaryPhone}}</td>
             <td>
-              <button type="button" class="btn btn-danger btn-sm" ng-click="deleteForm('memberapp', rider)" data-toggle="tooltip" title="Delete Form">
-               <span class="glyphicon glyphicon-trash"></span>
-             </button>
              <a ui-sref="view-form({formObj: {{rider}}, formType: 'memberapp'})" class="btn btn-info btn-sm" data-toggle="tooltip" title="View details">
                <span class="glyphicon glyphicon-eye-open"></span>
              </a>
              <button type="button" class="btn btn-success btn-sm" data-toggle="tooltip" title="Download PDF" ng-click="base64ToPDF('memberapp', rider)">
                <span class="glyphicon glyphicon-download"></span>
              </button>
+             <br>
+             <button type="button" class="btn btn-success btn-sm" data-toggle="tooltip" title="Generate new PDF" ng-click="regenerateMultiPagePDF(rider, 'memberapp')">
+               <span class="glyphicon glyphicon-repeat"></span>
+             </button>
+             <button type="button" class="btn btn-danger btn-sm" ng-click="askBeforeDelete('memberapp', rider)" data-toggle="tooltip" title="Delete Form">
+              <span class="glyphicon glyphicon-trash"></span>
+            </button>
             </td>
           </tr>
         </tbody>
@@ -79,15 +83,19 @@
             <td>{{driver.streetAddress}}, {{driver.city}}, {{driver.state}} {{driver.zip}}</td>
             <td>{{driver.homePhone}}</td>
             <td>
-              <button type="button" class="btn btn-danger btn-sm" ng-click="deleteForm('volunteerapp', driver)" data-toggle="tooltip" title="Delete Form">
-               <span class="glyphicon glyphicon-trash"></span>
-             </button>
              <a ui-sref="view-form({formObj: {{driver}}, formType: 'volunteerapp'})" class="btn btn-info btn-sm" data-toggle="tooltip" title="View details">
                <span class="glyphicon glyphicon-eye-open"></span>
              </a>
              <button type="button" class="btn btn-success btn-sm" data-toggle="tooltip" title="Download PDF" ng-click="base64ToPDF('volunteerapp', driver)">
                <span class="glyphicon glyphicon-download"></span>
              </button>
+             <br>
+             <button type="button" class="btn btn-success btn-sm" data-toggle="tooltip" title="Generate new PDF" ng-click="regenerateMultiPagePDF(driver, 'volunteerapp')">
+               <span class="glyphicon glyphicon-repeat"></span>
+             </button>
+             <button type="button" class="btn btn-danger btn-sm" ng-click="askBeforeDelete('volunteerapp', driver)" data-toggle="tooltip" title="Delete Form">
+              <span class="glyphicon glyphicon-trash"></span>
+            </button>
             </td>
           </tr>
         </tbody>
@@ -129,15 +137,16 @@
             <td>{{nonrider.address1}}, {{nonrider.city}}, {{nonrider.state}} {{nonrider.zip}}</td>
             <td>{{nonrider.phone}}</td>
             <td>
-              <button type="button" class="btn btn-danger btn-sm" ng-click="deleteForm('nonriderapp', nonrider)" data-toggle="tooltip" title="Delete Form">
-               <span class="glyphicon glyphicon-trash"></span>
-             </button>
              <a ui-sref="view-form({formObj: {{nonrider}}, formType: 'nonriderapp'})" class="btn btn-info btn-sm" data-toggle="tooltip" title="View details">
                <span class="glyphicon glyphicon-eye-open"></span>
              </a>
              <button type="button" class="btn btn-success btn-sm" data-toggle="tooltip" title="Download PDF" ng-click="base64ToPDF('nonriderapp', nonrider)">
                <span class="glyphicon glyphicon-download"></span>
              </button>
+             <br>
+             <button type="button" class="btn btn-danger btn-sm" ng-click="askBeforeDelete('nonriderapp', nonrider)" data-toggle="tooltip" title="Delete Form">
+              <span class="glyphicon glyphicon-trash"></span>
+            </button>
             </td>
           </tr>
         </tbody>
@@ -175,12 +184,12 @@
             <td>{{person.phone}}</td>
             <td><strong>{{person.subject}}</strong></td>
             <td>
-              <button type="button" class="btn btn-danger btn-sm" ng-click="deleteForm('contactform', person)" data-toggle="tooltip" title="Delete Form">
-               <span class="glyphicon glyphicon-trash"></span>
-             </button>
              <a ui-sref="view-form({formObj: {{person}}, formType: 'contactform'})" class="btn btn-info btn-sm" data-toggle="tooltip" title="View details">
                <span class="glyphicon glyphicon-eye-open"></span>
              </a>
+             <button type="button" class="btn btn-danger btn-sm" ng-click="askBeforeDelete('contactform', person)" data-toggle="tooltip" title="Delete Form">
+              <span class="glyphicon glyphicon-trash"></span>
+            </button>
             </td>
           </tr>
         </tbody>
@@ -218,7 +227,7 @@
             <td>{{person | timestamp | date}}</td>
             <td>{{person.email}}</td>
             <td>
-              <button type="button" class="btn btn-danger btn-sm" ng-click="deleteForm('newsletterform', person)" data-toggle="tooltip" title="Delete Form">
+              <button type="button" class="btn btn-danger btn-sm" ng-click="askBeforeDelete('newsletterform', person)" data-toggle="tooltip" title="Delete Form">
                <span class="glyphicon glyphicon-trash"></span>
              </button>
              <a ui-sref="view-form({formObj: {{person}}, formType: 'newsletterform'})" class="btn btn-info btn-sm" data-toggle="tooltip" title="View details">
@@ -243,6 +252,29 @@
     
   </div><!--row-->
   
+  <!-- Modal -->
+<div class="modal fade" id="deleteAppModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content" style="font-size:25px">
+      <div class="modal-header" style="background:#529ba8;color:white">
+        <h3 class="modal-title" id="exampleModalLabel">Subscribe to our newsletter</h3>
+        <button type="button" style="margin-top: -30px" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+          <div class="form-group ta-center">
+            <label for="delete app confirmation" style="margin-bottom:15px">Are you sure you would like to delete this application?</label>
+          </div> 
+      </div>
+      <div class="modal-footer">
+        <button type="button" ng-click="deleteForm(formType, formData)" class="btn btn-lg btn-danger" style="background:#e05944">Delete</button>
+        <button type="button" class="btn btn-lg btn-secondary" data-dismiss="modal" aria-label="Cancel">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div><!--end modal-->
+  
   
 </div><!--container-->
 
@@ -253,6 +285,11 @@ $(document).ready(function(){
 </script>
 
 <style>
+  .btn-sm {
+    font-size:16px !important;
+    padding: 5px 10px !important;
+    margin: 3px !important;
+  }
   .dashboard .row .col-md-6 {padding:2%}
   .dashboard tr td {max-width:150px}
   .dashboard a {

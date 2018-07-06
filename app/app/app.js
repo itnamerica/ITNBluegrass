@@ -1,4 +1,3 @@
-
 var myApp = angular.module('myApp', ['ui.router', 'ngAnimate','angularUtils.directives.dirPagination']);
 
 myApp.config(function($stateProvider, $urlRouterProvider, $locationProvider){
@@ -121,6 +120,10 @@ myApp.config(function($stateProvider, $urlRouterProvider, $locationProvider){
           formType: null
         }
       })
+      .state('backup-pdf', {
+        url: '/backup-pdf',
+        templateUrl: viewsPath + 'backup-pdf.html'
+      })
       .state('wildcard', {
         url: '/*',
         templateUrl: viewsPath + 'home.html'
@@ -152,7 +155,7 @@ myApp.config(function($stateProvider, $urlRouterProvider, $locationProvider){
     }
   ]);
 
-myApp.controller('MainController', ['$scope', '$transitions','$http', '$anchorScroll', '$location', '$stateParams', '$timeout', '$state', '$rootScope', '$window', 'FormService', function ($scope, $transitions, $http, $anchorScroll, $location, $stateParams, $timeout, $state, $rootScope, $window, FormService)  {
+myApp.controller('MainController', ['$scope', '$transitions','$http', '$anchorScroll', '$location', '$stateParams', '$timeout', '$state', '$rootScope', '$window', 'FormService', '$sce', function ($scope, $transitions, $http, $anchorScroll, $location, $stateParams, $timeout, $state, $rootScope, $window, FormService, $sce)  {
   console.log('inside main controller');
 
   $scope.assetsPath = "assets";
@@ -243,6 +246,7 @@ myApp.controller('MainController', ['$scope', '$transitions','$http', '$anchorSc
       vehicleDescription: {},
       changeOfStatus: {},
       drivingExperience: {},
+      references: {},
       firstReference: {},
       secondReference: {},
       thirdReference: {},
@@ -258,18 +262,19 @@ myApp.controller('MainController', ['$scope', '$transitions','$http', '$anchorSc
   
 
   $transitions.onSuccess({}, function(transition){
+    if (transition.from().name !== 'dashboard'){
       $scope.resetFormData();
-      if (transition.from().name === 'keyword-pages'){
-        angular.element(document).ready(function () {
-          $scope.searchKeyword();
-          $scope.scrollToTop();
-          $scope.urlsWithKeyword = [];
-          // $scope.keyword = '';
-        });
-      }
-      if (!$stateParams.anchor) {
+    }
+    if (transition.from().name === 'keyword-pages'){
+      angular.element(document).ready(function () {
+        $scope.searchKeyword();
         $scope.scrollToTop();
-      }
+        $scope.urlsWithKeyword = [];
+      });
+    }
+    if (!$stateParams.anchor) {
+      $scope.scrollToTop();
+    }
   });
   
   //use this function instead of ng-href as ng-href is not compatible with html5mode
@@ -442,6 +447,7 @@ myApp.controller('MainController', ['$scope', '$transitions','$http', '$anchorSc
       $scope.pdfUrl = URL.createObjectURL(currentBlob);
       // $("#output").append($("<a/>").attr({href: $scope.pdfUrl}).append("Download"));
       // $scope.redirectToURL($scope.pdfUrl);
+      console.log('redirecting to pdf', formType, formObj);
       window.location.href = $scope.pdfUrl;
     }
     else {
@@ -485,7 +491,21 @@ myApp.controller('MainController', ['$scope', '$transitions','$http', '$anchorSc
     console.log('formobj is ', $scope.formObj);
   };
   
+  $scope.askBeforeDelete = function(formType, formObj){
+    $scope.formData = formObj;
+    $scope.formType = formType;
+    $(document).ready(function(){
+      $('#deleteAppModal').modal('show');
+    })
+  }
+  
   $scope.deleteForm = function(formType, formObj){
+    console.log('inside deleteform, form type', formType, 'form obj', formObj);
+    if (formType === 'memberapp' || formType === 'volunteerapp'){
+      $(document).ready(function(){
+        $('#deleteAppModal').modal('hide');
+      })
+    }
     FormService.deleteForm(formType, formObj).then(function(data){
       console.log('record successfully deleted ', data);
       $scope.getApps();
@@ -680,6 +700,21 @@ $scope.checkRequiredFields = function(formType){
   $scope.validateContactInputs = function(){
     return ($scope.formData.name && $scope.formData.email && $scope.formData.phone && $scope.formData.subject && $scope.formData.messageBody ) ? true : false;
   };
+  
+  
+  $scope.removeIfEmpty = function(formField){
+    console.log('form field is ', formField, 'type is ', typeof(formField), 'length is ', formField.length)
+    if ((formField.constructor === Object) && (Object.keys(formField).length < 1)){
+      console.log('false1');
+      return false;
+    } else if ((formField.constructor === String) && (formField.length < 1)){
+      console.log('false2');
+      return false;
+    } else {
+      console.log('true');
+      return true;
+    }
+  };
 
   //for contact and newsletter forms
   $scope.submitForm = function(formType){
@@ -817,7 +852,33 @@ $scope.checkRequiredFields = function(formType){
           $scope.serverMessage = 'There was an error submitting your form. Please contact us, or consider submitting your form by paper instead.';
         });
       });
-  }
+  };
+  
+  $scope.regenerateMultiPagePDF = function(formObj, formType) {
+    console.log('inside renegerate pdf');
+    $scope.formData = formObj;
+    $scope.formType = formType;
+    console.log("formdata is ", $scope.formData);
+    $state.go('backup-pdf')
+      .then(function(){
+        console.log('begin kendo drawing');
+        kendo.drawing.drawDOM($("#backupPdf"), {
+              paperSize: "A4",
+              margin: { left: "3cm", top: "1cm", right: "1cm", bottom: "1cm" },
+              template: $("#page-template").html()
+          }).then(function (group) {
+            console.log('kendo complete, exporting pdf ', group);
+              return kendo.drawing.exportPDF(group);
+          }).catch(function(err){
+            console.log('could not generate kendo, error is ', err);
+          })
+          .done(function (data) {
+            console.log('data is ', data);
+            // $scope.dataPDF = data;
+            $scope.base64ToPDF($scope.formType, $scope.formData);
+          });
+      })
+}
   
 }]);
 
@@ -874,6 +935,13 @@ myApp.filter('filterLongObj', function($filter){
   }
 });
 
+myApp.filter('newlines', function ($sce) {
+    return function(formObj) {
+      if (formObj){
+        return $sce.trustAsHtml(formObj.replace(/,/g,'<br>'));
+      }
+    }
+});
 
 myApp.filter('timestamp', function(){
   return function(formObj){

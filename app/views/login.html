@@ -6,7 +6,7 @@
       
       <div class="form-group ta-center" ng-class="{ 'has-error' : itnForm.username.$invalid && !itnForm.username.$pristine }">
         <label for="username" style="margin-bottom:15px">Username:</label><br>
-        <input type="text" class="form-control center-block" id="username" name="username" ng-model="formData.username" style="width:70%" required>
+        <input type="text" autofocus="autofocus" class="form-control center-block" id="username" name="username" ng-model="formData.username" style="width:70%" required>
         <span ng-if="itnForm.username.$error.required && !itnForm.username.$pristine" class="help-block">{{errorMessages.required}}</span>
       </div> 
       
