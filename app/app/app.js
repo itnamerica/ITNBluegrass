@@ -501,7 +501,7 @@ myApp.controller('MainController', ['$scope', '$transitions','$http', '$anchorSc
   
   $scope.deleteForm = function(formType, formObj){
     console.log('inside deleteform, form type', formType, 'form obj', formObj);
-    if (formType === 'memberapp' || formType === 'volunteerapp'){
+    if (formType !== 'other'){
       $(document).ready(function(){
         $('#deleteAppModal').modal('hide');
       })
@@ -949,6 +949,12 @@ myApp.filter('timestamp', function(){
     var date = new Date( parseInt( timestamp, 16 ) * 1000 );
     return date;
   }
+});
+
+myApp.filter('reverse', function() {
+  return function(items) {
+    return items.slice().reverse();
+  };
 });
 
 myApp.filter('tableToFormName', function(){

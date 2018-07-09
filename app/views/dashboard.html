@@ -16,7 +16,9 @@
         <thead>
           <tr>
             <th>Count</th>
-            <th>Date Submited</th>
+            <th ng-click="sort('date')">Date Submited
+              <span class="glyphicon sort-icon" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+            </th>
             <th ng-click="sort('riderName')">Rider Name
               <span class="glyphicon sort-icon" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
             </th>
@@ -26,7 +28,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr dir-paginate="rider in memberFormData|orderBy:sortKey:reverse|filter:filterTable|itemsPerPage:10" pagination-id="membership">
+          <tr dir-paginate="rider in memberFormData|orderBy:sortKey:reverse|filter:filterTable|itemsPerPage:10|reverse" pagination-id="membership">
             <td>{{memberFormData.length - $index}}</td>
             <td>{{rider | timestamp | date}}</td>
             <td>{{rider.riderName}}</td>
@@ -66,7 +68,9 @@
         <thead>
           <tr>
             <th>Count</th>
-            <th>Date Submited</th>
+            <th ng-click="sort('date')">Date Submited
+              <span class="glyphicon sort-icon" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+            </th>
             <th ng-click="sort('riderName')">Rider Name
               <span class="glyphicon sort-icon" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
             </th>
@@ -76,7 +80,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr dir-paginate="driver in volunteerFormData|orderBy:sortKey:reverse|filter:filterTable2|itemsPerPage:10" pagination-id="volunteer">
+          <tr dir-paginate="driver in volunteerFormData|orderBy:sortKey:reverse|filter:filterTable2|itemsPerPage:10|reverse" pagination-id="volunteer">
             <td>{{volunteerFormData.length - $index}}</td>
             <td>{{driver | timestamp | date}}</td>
             <td>{{driver.riderName}}</td>
@@ -120,7 +124,9 @@
         <thead>
           <tr>
             <th>Count</th>
-            <th>Date Submited</th>
+            <th ng-click="sort('date')">Date Submited
+              <span class="glyphicon sort-icon" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+            </th>
             <th ng-click="sort('lastName')">Rider Name
               <span class="glyphicon sort-icon" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
             </th>
@@ -130,7 +136,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr dir-paginate="nonrider in nonRiderFormData|orderBy:sortKey:reverse|filter:filterTable3|itemsPerPage:10" pagination-id="nonrider">
+          <tr dir-paginate="nonrider in nonRiderFormData|orderBy:sortKey:reverse|filter:filterTable3|itemsPerPage:10|reverse" pagination-id="nonrider">
             <td>{{nonRiderFormData.length - $index}}</td>
             <td>{{nonrider | timestamp | date}}</td>
             <td>{{nonrider.firstName}} {{nonrider.lastName}}</td>
@@ -167,7 +173,9 @@
         <thead>
           <tr>
             <th>Count</th>
-            <th>Date Submited</th>
+            <th ng-click="sort('date')">Date Submited
+              <span class="glyphicon sort-icon" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+            </th>
             <th ng-click="sort('name')">Rider Name
               <span class="glyphicon sort-icon" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
             </th>
@@ -177,7 +185,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr dir-paginate="person in contactFormData|orderBy:sortKey:reverse|filter:filterTable4|itemsPerPage:10" pagination-id="contact">
+          <tr dir-paginate="person in contactFormData|orderBy:sortKey:reverse|filter:filterTable4|itemsPerPage:10|reverse" pagination-id="contact">
             <td>{{contactFormData.length - $index}}</td>
             <td>{{person | timestamp | date}}</td>
             <td>{{person.name}}</td>
@@ -214,7 +222,9 @@
         <thead>
           <tr>
             <th>Count</th>
-            <th>Date Submited</th>
+            <th ng-click="sort('date')">Date Submited
+              <span class="glyphicon sort-icon" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+            </th>
             <th ng-click="sort('email')">Email
               <span class="glyphicon sort-icon" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
             </th>
@@ -222,7 +232,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr dir-paginate="person in newsletterFormData|orderBy:sortKey:reverse|filter:filterTable5|itemsPerPage:10" pagination-id="newsletter">
+          <tr dir-paginate="person in newsletterFormData|orderBy:sortKey:reverse|filter:filterTable5|itemsPerPage:10|reverse" pagination-id="newsletter">
             <td>{{newsletterFormData.length - $index}}</td>
             <td>{{person | timestamp | date}}</td>
             <td>{{person.email}}</td>
@@ -257,14 +267,14 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content" style="font-size:25px">
       <div class="modal-header" style="background:#529ba8;color:white">
-        <h3 class="modal-title" id="exampleModalLabel">Subscribe to our newsletter</h3>
+        <h3 class="modal-title" id="exampleModalLabel">Delete form submission</h3>
         <button type="button" style="margin-top: -30px" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
           <div class="form-group ta-center">
-            <label for="delete app confirmation" style="margin-bottom:15px">Are you sure you would like to delete this application?</label>
+            <label for="delete app confirmation" style="margin-bottom:15px">Are you sure you would like to delete this form?</label>
           </div> 
       </div>
       <div class="modal-footer">
