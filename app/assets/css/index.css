@@ -1340,8 +1340,8 @@ form textarea.form-control {font-size:25px}
 .member-app .checkbox-inline, .volunteer-app .checkbox-inline {line-height: 1}
 #pdfVersion {
   display:none;
-  padding: 5%;
-  font-size:14px;
+  padding: 2%;
+  font-size:11px;
 };
 #pdfVersion label {margin-right: 15px;}
 .volunteer-drive {
@@ -1742,16 +1742,25 @@ h2,h3 {line-height:1.7}
     background-size: 20% 200px;
     height: auto;
   }
-.slick-slide {
-  width: 60%;
-  text-align: center;
-  color: #419be0;
-  background:transparent;
-}
-.slick-prev:before, .slick-next:before {
-  font-size:50px !important;
-  color: red !important;
-}
+  .slick-slide {
+    width: 60%;
+    text-align: center;
+    color: #419be0;
+    background:transparent;
+  }
+  .slick-prev:before, .slick-next:before {
+    font-size:50px !important;
+    color: red !important;
+  }
+  .slick-prev:hover, .slick-next:hover {
+    height:100%;
+    width:100%;
+    left:52%;
+    top: 54%;
+  }
+  .slick-prev:hover {
+    left:-50%;
+  }
 
 
 /* RESPONSIVE */
