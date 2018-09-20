@@ -696,7 +696,7 @@
                             </div>
                           </div>
                           
-                          <button type="button" ng-click="nextTabMemberApp()" ng-disabled="formData.memberOfProfessionalOrgOrUnion.radio === undefined ||  formData.customerInfo.servedInMiliary.radio === undefined|| formData.customerInfo.specialNeeds.radio === undefined" class="next-tab btn btn-lg  btn-primary pull-right itn-green-bg"  style="margin-left:2%;margin-top:-50px">Next</button>
+                          <button type="button" ng-click="nextTabMemberApp()" ng-disabled="!formData.memberOfProfessionalOrgOrUnion || !formData.customerInfo.servedInMilitary || !formData.customerInfo.specialNeeds" class="next-tab btn btn-lg  btn-primary pull-right itn-green-bg"  style="margin-left:2%;margin-top:-50px">Next</button>
                           
                           <button type="button" ng-click="nextTabMemberApp('prev')" class="next-tab btn btn-lg btn-primary pull-right itn-green-bg"  style="margin:-50px 0 30px 2%">Previous</button>  
                           
@@ -750,7 +750,7 @@
                             <span ng-if="itnForm.specialNeeds.$error.required && !itnForm.specialNeeds.$pristine" class="help-block">{{errorMessages.required}}</span>
                           </div>
                           
-                          <button type="button" ng-click="nextTabMemberApp()" ng-disabled="formData.memberOfProfessionalOrgOrUnion === undefined ||  formData.customerInfo.servedInMiliary === undefined|| formData.customerInfo.specialNeeds === undefined" class="next-tab btn btn-lg  btn-primary pull-right itn-green-bg"  style="margin-left:2%">Next</button>
+                          <button type="button" ng-click="nextTabMemberApp()" ng-disabled="!formData.memberOfProfessionalOrgOrUnion || !formData.customerInfo.servedInMilitary || !formData.customerInfo.specialNeeds" class="next-tab btn btn-lg  btn-primary pull-right itn-green-bg"  style="margin-left:2%;margin-top:-50px">Next</button>
                           
                           <button type="button" ng-click="nextTabMemberApp('prev')" class="next-tab btn btn-lg btn-primary pull-right itn-green-bg"  style="margin-left:2%">Previous</button>  
                           
