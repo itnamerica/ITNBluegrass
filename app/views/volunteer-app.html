@@ -112,7 +112,7 @@
                         </div>
                       </div>
                       
-                      <button type="button" ng-click="nextTabMemberApp()" class="next-tab btn btn-lg btn-primary pull-right itn-green-bg"  style="margin-left:2%;margin-top:-50px">Next</button>
+                      <button type="button" ng-click="nextTabMemberApp()" ng-disabled="!formData.riderName || formData.riderGender === undefined || !formData.streetAddress || !formData.zip ||  !formData.state ||  !formData.city ||  !formData.preferredPhone || formData.drivingExperience.adequateVision  === undefined || formData.currentEmployment  === undefined || !formData.firstEmergencyContact.name || !formData.firstEmergencyContact.relationship || !formData.firstEmergencyContact.street || !formData.firstEmergencyContact.city ||  !formData.firstEmergencyContact.state ||  !formData.firstEmergencyContact.zip ||  !formData.firstEmergencyContact.preferredPhone" class="next-tab btn btn-lg  btn-primary pull-right itn-green-bg" class="next-tab btn btn-lg btn-primary pull-right itn-green-bg"  style="margin-left:2%;margin-top:-50px">Next</button>
                   
                       
                       
@@ -308,9 +308,7 @@
                           <div class="ta-center required-warning"><em>Please enter all required fields with an asterik (<span style="color:red">*</span>) before going to the next page.</em></div>
 
                           
-                          <!-- <button type="button" ng-click="nextTabMemberApp()" ng-disabled="itnForm.memberFor.$invalid ||  itnForm.adequateVision.$invalid || itnForm.currentEmployment.$invalid || itnForm.gender.$invalid || itnForm.riderName.$invalid ||  itnForm.street.$invalid || itnForm.city.$invalid || itnForm.state.$invalid || itnForm.zip.$invalid || itnForm.preferredPhone.$invalid || itnForm.firstEmName.$invalid  || itnForm.firstEmRelationship.$invalid || itnForm.firstEmPreferredPhone.$invalid || itnForm.firstEmState.$invalid || itnForm.firstEmCity.$invalid || itnForm.firstEmZip.$invalid || itnForm.firstEmStreet.$invalid " class="next-tab btn btn-lg btn-primary pull-right itn-green-bg"  style="margin-left:2%">Next</button> -->
-                          
-                          <button type="button" ng-click="nextTabMemberApp()" class="next-tab btn btn-lg btn-primary pull-right itn-green-bg"  style="margin-left:2%;">Next</button>
+                          <button type="button" ng-click="nextTabMemberApp()" ng-disabled="!formData.riderName || formData.riderGender === undefined || !formData.streetAddress || !formData.zip ||  !formData.state ||  !formData.city ||  !formData.preferredPhone || formData.drivingExperience.adequateVision  === undefined || formData.currentEmployment  === undefined || !formData.firstEmergencyContact.name || !formData.firstEmergencyContact.relationship || !formData.firstEmergencyContact.street || !formData.firstEmergencyContact.city ||  !formData.firstEmergencyContact.state ||  !formData.firstEmergencyContact.zip ||  !formData.firstEmergencyContact.preferredPhone" class="next-tab btn btn-lg  btn-primary pull-right itn-green-bg" class="next-tab btn btn-lg btn-primary pull-right itn-green-bg"  style="margin-left:2%">Next</button>
                     </div><!--tab 1-->
                     
                     <div class="member-tabs" ng-if="tab===2" id="tab2">
@@ -342,8 +340,8 @@
                         </div>
                       </div>
                       
-                      <!-- <button type="button" ng-click="nextTabMemberApp()" ng-disabled="itnForm.criminalConviction.$invalid ||  itnForm.movingViolation.$invalid || itnForm.firstRefName.$invalid || itnForm.firstRefPhoneOrMailing.$invalid || itnForm.firstRefEmail.$invalid ||  itnForm.firstRefAcquainted.$invalid || itnForm.secondRefName.$invalid || itnForm.secondRefPhoneOrMailing.$invalid || itnForm.secondRefEmail.$invalid ||  itnForm.secondRefAcquainted.$invalid || itnForm.thirdRefName.$invalid || itnForm.thirdRefPhoneOrMailing.$invalid || itnForm.thirdRefEmail.$invalid ||  itnForm.thirdRefAcquainted.$invalid || itnForm.signature1.$invalid || itnForm.date1.$invalid || itnForm.agree1.$invalid" class="next-tab btn btn-lg btn-primary pull-right itn-green-bg"  style="margin-left:2%;margin-top:-50px">Next</button> -->
-                      <button type="button" ng-click="nextTabMemberApp()" class="next-tab btn btn-lg btn-primary pull-right itn-green-bg"  style="margin-left:2%;margin-top:-50px">Next</button>
+                      <button type="button" ng-click="nextTabMemberApp()" ng-disabled="formData.criminalConviction === undefined || formData.movingViolation === undefined || !formData.firstReference.name || !formData.firstReference.phoneOrMailing || !formData.secondReference.name || !formData.secondReference.phoneOrMailing|| !formData.thirdReference.name || !formData.thirdReference.phoneOrMailing|| !formData.thirdReference.acquainted || !formData.references.signature || formData.agree === undefined " class="next-tab btn btn-lg  btn-primary pull-right itn-green-bg" class="next-tab btn btn-lg btn-primary pull-right itn-green-bg"  style="margin-left:2%;margin-top:-50px">Next</button>
+                      
                       <button type="button" ng-click="nextTabMemberApp('prev')" class="next-tab btn btn-lg  btn-primary pull-right itn-green-bg"  style="margin-left:2%;margin-top:-50px">Previous</button>  
                       
                       <h2>References</h2>
@@ -497,8 +495,8 @@
                       <div class="ta-center required-warning"><em>Please enter all required fields with an asterik (<span style="color:red">*</span>) before going to the next page.</em></div>
 
 
-                      <!-- <button type="button" ng-click="nextTabMemberApp()" ng-disabled="itnForm.criminalConviction.$invalid ||  itnForm.movingViolation.$invalid || itnForm.firstRefName.$invalid || itnForm.firstRefPhoneOrMailing.$invalid || itnForm.firstRefEmail.$invalid ||  itnForm.firstRefAcquainted.$invalid || itnForm.secondRefName.$invalid || itnForm.secondRefPhoneOrMailing.$invalid || itnForm.secondRefEmail.$invalid ||  itnForm.secondRefAcquainted.$invalid || itnForm.thirdRefName.$invalid || itnForm.thirdRefPhoneOrMailing.$invalid || itnForm.thirdRefEmail.$invalid ||  itnForm.thirdRefAcquainted.$invalid || itnForm.signature1.$invalid || itnForm.date1.$invalid || itnForm.agree1.$invalid" class="next-tab btn btn-lg btn-primary pull-right itn-green-bg"  style="margin-left:2%">Next</button> -->
-                      <button type="button" ng-click="nextTabMemberApp()" class="next-tab btn btn-lg btn-primary pull-right itn-green-bg"  style="margin-left:2%;">Next</button>
+                      <button type="button" ng-click="nextTabMemberApp()" ng-disabled="formData.criminalConviction === undefined || formData.movingViolation === undefined || !formData.firstReference.name || !formData.firstReference.phoneOrMailing || !formData.secondReference.name || !formData.secondReference.phoneOrMailing|| !formData.thirdReference.name || !formData.thirdReference.phoneOrMailing|| !formData.thirdReference.acquainted || !formData.references.signature || formData.agree === undefined " class="next-tab btn btn-lg  btn-primary pull-right itn-green-bg" class="next-tab btn btn-lg btn-primary pull-right itn-green-bg"  style="margin-left:2%">Next</button>
+                      
                       <button type="button" ng-click="nextTabMemberApp('prev')" class="next-tab btn btn-lg  btn-primary pull-right itn-green-bg"  style="margin-left:2%">Previous</button>  
                             
                           </div><!--tab2-->
@@ -534,8 +532,8 @@
                               </div>
                             </div>
                             
-                            <!-- <button type="button" ng-click="nextTabMemberApp()" ng-disabled="itnForm.memberOfProfessionalOrgOrUnion.$invalid || itnForm.servedInMilitary.$invalid " class="next-tab btn btn-lg  btn-primary pull-right itn-green-bg"  style="margin-left:2%;margin-top:-50px">Next</button> -->
-                            <button type="button" ng-click="nextTabMemberApp()" class="next-tab btn btn-lg btn-primary pull-right itn-green-bg"  style="margin-left:2%;margin-top:-50px">Next</button>
+                            <button type="button" ng-click="nextTabMemberApp()" ng-disabled="formData.memberOfProfessionalOrgOrUnion === undefined || formData.servedInMilitary === undefined" class="next-tab btn btn-lg  btn-primary pull-right itn-green-bg" class="next-tab btn btn-lg btn-primary pull-right itn-green-bg"  style="margin-left:2%;margin-top:-50px">Next</button>
+                            
                             <button type="button" ng-click="nextTabMemberApp('prev')" class="next-tab btn btn-lg btn-primary pull-right itn-green-bg"  style="margin-left:2%;margin-top:-50px">Previous</button>  
                             
                             <h2>Volunteering with ITN</h2>
@@ -694,8 +692,8 @@
                 
                 <div class="ta-center required-warning"><em>Please enter all required fields with an asterik (<span style="color:red">*</span>) before going to the next page.</em></div>
 
-                <!-- <button type="button" ng-click="nextTabMemberApp()" ng-disabled="itnForm.memberOfProfessionalOrgOrUnion.$invalid || itnForm.servedInMilitary.$invalid " class="next-tab btn btn-lg  btn-primary pull-right itn-green-bg"  style="margin-left:2%">Next</button> -->
-                <button type="button" ng-click="nextTabMemberApp()" class="next-tab btn btn-lg btn-primary pull-right itn-green-bg"  style="margin-left:2%">Next</button>
+                <button type="button" ng-click="nextTabMemberApp()" ng-disabled="formData.memberOfProfessionalOrgOrUnion === undefined || formData.servedInMilitary === undefined" class="next-tab btn btn-lg  btn-primary pull-right itn-green-bg" class="next-tab btn btn-lg btn-primary pull-right itn-green-bg"  style="margin-left:2%">Next</button>
+                
                 <button type="button" ng-click="nextTabMemberApp('prev')" class="next-tab btn btn-lg btn-primary pull-right itn-green-bg"  style="margin-left:2%">Previous</button>  
                 
                 </div><!--tab3-->
@@ -730,8 +728,8 @@
                               </div>
                             </div>
                             
-                            <!-- <button type="button" ng-click="nextTabMemberApp()" ng-disabled="itnForm.name2.$invalid || itnForm.dob1.$invalid || itnForm.licenseNumber.$invalid || itnForm.drivingRecordState.$invalid || itnForm.signature2.$invalid || itnForm.date2.$invalid || itnForm.agree2.$invalid || itnForm.criminalRecordState.$invalid || itnForm.name3.$invalid || itnForm.dob3.$invalid ||itnForm.signature3.$invalid ||  itnForm.date3.$invalid || itnForm.agree3.$invalid" class="next-tab btn btn-lg  btn-primary pull-right itn-green-bg"  style="margin-left:2%;margin-top:-50px">Next</button> -->
-                            <button type="button" ng-click="nextTabMemberApp()" class="next-tab btn btn-lg btn-primary pull-right itn-green-bg"  style="margin-left:2%;margin-top:-50px">Next</button>
+                            <button type="button" ng-click="nextTabMemberApp()" ng-disabled="!formData.requestDriverRecord.name || !formData.requestDriverRecord.dob || !formData.requestDriverRecord.licenseNumber || !formData.requestDriverRecord.authorize || !formData.requestDriverRecord.signature || !formData.requestDriverRecord.date || formData.requestDriverRecord.agree === undefined || !formData.requestCriminalRecord.name || !formData.requestCriminalRecord.dob || !formData.requestCriminalRecord.date || !formData.requestCriminalRecord.signature || formData.requestCriminalRecord.agree === undefined" class="next-tab btn btn-lg  btn-primary pull-right itn-green-bg" class="next-tab btn btn-lg btn-primary pull-right itn-green-bg"  style="margin-left:2%;margin-top:-50px">Next</button>
+                            
                             <button type="button" ng-click="nextTabMemberApp('prev')" class="next-tab btn btn-lg btn-primary pull-right itn-green-bg"  style="margin-left:2%;margin-top:-50px">Previous</button>  
                             
                             
@@ -861,8 +859,8 @@
                             
                             <div class="ta-center required-warning"><em>Please enter all required fields with an asterik (<span style="color:red">*</span>) before going to the next page.</em></div>
                           
-                            <!-- <button type="button" ng-click="nextTabMemberApp()" ng-disabled="itnForm.name2.$invalid || itnForm.dob1.$invalid || itnForm.licenseNumber.$invalid || itnForm.drivingRecordState.$invalid || itnForm.signature2.$invalid || itnForm.date2.$invalid || itnForm.agree2.$invalid || itnForm.criminalRecordState.$invalid || itnForm.name3.$invalid || itnForm.dob3.$invalid ||itnForm.signature3.$invalid ||  itnForm.date3.$invalid || itnForm.agree3.$invalid" class="next-tab btn btn-lg btn-primary pull-right itn-green-bg"  style="margin-left:2%">Next</button> -->
-                            <button type="button" ng-click="nextTabMemberApp()" class="next-tab btn btn-lg btn-primary pull-right itn-green-bg"  style="margin-left:2%;">Next</button>
+                            <button type="button" ng-click="nextTabMemberApp()" ng-disabled="!formData.requestDriverRecord.name || !formData.requestDriverRecord.dob || !formData.requestDriverRecord.licenseNumber || !formData.requestDriverRecord.authorize || !formData.requestDriverRecord.signature || !formData.requestDriverRecord.date || formData.requestDriverRecord.agree === undefined || !formData.requestCriminalRecord.name || !formData.requestCriminalRecord.dob || !formData.requestCriminalRecord.date || !formData.requestCriminalRecord.signature || formData.requestCriminalRecord.agree === undefined" class="next-tab btn btn-lg  btn-primary pull-right itn-green-bg" class="next-tab btn btn-lg btn-primary pull-right itn-green-bg"  style="margin-left:2%">Next</button>
+                            
                             <button type="button" ng-click="nextTabMemberApp('prev')" class="next-tab btn btn-lg btn-primary pull-right itn-green-bg"  style="margin-left:2%">Previous</button>  
 
                         </div><!--tab4-->
@@ -900,8 +898,8 @@
                             </div>
                           </div>
                           
-                          <!-- <button type="button" ng-click="nextTabMemberApp()" ng-disabled="itnForm.vehicleOwner.$invalid || itnForm.make1.$invalid || itnForm.model1.$invalid || itnForm.year1.$invalid || itnForm.registrationPlate1.$invalid || itnForm.numberOfDoors1.$invalid || itnForm.registrationExpiration1.$invalid || itnForm.insuranceCompany1.$invalid || itnForm.agent1.$invalid || itnForm.agentAddress1.$invalid || itnForm.canTransportWalker.$invalid ||  itnForm.canTransportWheelChair.$invalid || itnForm.passengerCapacity.$invalid || itnForm.generalCondition.$invalid || itnForm.canTransportPets.$invalid || itnForm.hasLargeTrunk.$invalid || itnForm.hasCoveredTruckBed.$invalid ||  itnForm.onlyVehicle.$invalid || itnForm.signature4.$invalid || itnForm.date4.$invalid ||  itnForm.agree4.$invalid" class="next-tab btn btn-lg  btn-primary pull-right itn-green-bg"  style="margin-left:2%;margin-top:-50px">Next</button> -->
-                          <button type="button" ng-click="nextTabMemberApp()" class="next-tab btn btn-lg btn-primary pull-right itn-green-bg"  style="margin-left:2%;margin-top:-50px">Next</button>
+                          <button type="button" ng-click="nextTabMemberApp()" ng-disabled="formData.vehicleDescription.vehicleOwner === undefined || !formData.vehicleDescription.make || !formData.vehicleDescription.model || !formData.vehicleDescription.year || !formData.vehicleDescription.registrationPlate || !formData.vehicleDescription.numberOfDoors || !formData.vehicleDescription.registrationExpiration || !formData.vehicleDescription.insuranceCompany || !formData.vehicleDescription.agent || !formData.vehicleDescription.agentEmailAddress || formData.vehicleDescription.canTransportWheelChair === undefined || formData.vehicleDescription.canTransportWalker === undefined || !formData.vehicleDescription.generalCondition || !formData.vehicleDescription.passengerCapacity || formData.vehicleDescription.canTransportPets === undefined || formData.vehicleDescription.hasLargeTrunk === undefined || formData.vehicleDescription.hasCoveredTruckBed === undefined || formData.vehicleDescription.onlyVehicle === undefined || !formData.vehicleDescription.signature || !formData.vehicleDescription.date || formData.vehicleDescription.authorize === undefined" class="next-tab btn btn-lg  btn-primary pull-right itn-green-bg" class="next-tab btn btn-lg btn-primary pull-right itn-green-bg"  style="margin-left:2%;margin-top:-50px">Next</button>
+                          
                           <button type="button" ng-click="nextTabMemberApp('prev')" class="next-tab btn btn-lg btn-primary pull-right itn-green-bg"  style="margin-left:2%;margin-top:-50px">Previous</button>  
                           
                           <h2>Vehicle Description Information</h2>
@@ -1230,8 +1228,8 @@
                           
                           <div class="ta-center required-warning"><em>Please enter all required fields with an asterik (<span style="color:red">*</span>) before going to the next page.</em></div>
                           
-                          <!-- <button type="button" ng-click="nextTabMemberApp()" ng-disabled="itnForm.vehicleOwner.$invalid || itnForm.make1.$invalid || itnForm.model1.$invalid || itnForm.year1.$invalid || itnForm.registrationPlate1.$invalid || itnForm.numberOfDoors1.$invalid || itnForm.registrationExpiration1.$invalid || itnForm.insuranceCompany1.$invalid || itnForm.agent1.$invalid || itnForm.agentAddress1.$invalid || itnForm.canTransportWalker.$invalid ||  itnForm.canTransportWheelChair.$invalid || itnForm.passengerCapacity.$invalid || itnForm.generalCondition.$invalid || itnForm.canTransportPets.$invalid || itnForm.hasLargeTrunk.$invalid || itnForm.hasCoveredTruckBed.$invalid ||  itnForm.onlyVehicle.$invalid || itnForm.signature4.$invalid || itnForm.date4.$invalid ||  itnForm.agree4.$invalid" class="next-tab btn btn-lg btn-primary pull-right itn-green-bg"  style="margin-left:2%">Next</button> -->
-                          <button type="button" ng-click="nextTabMemberApp()" class="next-tab btn btn-lg btn-primary pull-right itn-green-bg"  style="margin-left:2%;">Next</button>
+                          <button type="button" ng-click="nextTabMemberApp()" ng-disabled="formData.vehicleDescription.vehicleOwner === undefined || !formData.vehicleDescription.make || !formData.vehicleDescription.model || !formData.vehicleDescription.year || !formData.vehicleDescription.registrationPlate || !formData.vehicleDescription.numberOfDoors || !formData.vehicleDescription.registrationExpiration || !formData.vehicleDescription.insuranceCompany || !formData.vehicleDescription.agent || !formData.vehicleDescription.agentEmailAddress || formData.vehicleDescription.canTransportWheelChair === undefined || formData.vehicleDescription.canTransportWalker === undefined || !formData.vehicleDescription.generalCondition || !formData.vehicleDescription.passengerCapacity || formData.vehicleDescription.canTransportPets === undefined || formData.vehicleDescription.hasLargeTrunk === undefined || formData.vehicleDescription.hasCoveredTruckBed === undefined || formData.vehicleDescription.onlyVehicle === undefined || !formData.vehicleDescription.signature || !formData.vehicleDescription.date || formData.vehicleDescription.authorize === undefined" class="next-tab btn btn-lg  btn-primary pull-right itn-green-bg" class="next-tab btn btn-lg btn-primary pull-right itn-green-bg"  style="margin-left:2%">Next</button>
+                          
                           <button type="button" ng-click="nextTabMemberApp('prev')" class="next-tab btn btn-lg btn-primary pull-right itn-green-bg"  style="margin-left:2%">Previous</button>  
                           
                         </div><!--tab5-->
