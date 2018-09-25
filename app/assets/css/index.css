@@ -1885,6 +1885,7 @@ h2,h3 {line-height:1.7}
 @media (max-width: 1210px) {
   .carousel-inner .item, .carousel-inner .item img {height:400px;}
   .family #gift-cert-img1, .family #gift-cert-img2 {visibility:hidden;}
+  .reg-img img {width:auto !important}
 }
 
 @media (max-width: 768px) {
@@ -1900,6 +1901,10 @@ h2,h3 {line-height:1.7}
   .navbar-collapse {margin-top:0;}
   .carousel-inner .item .carousel-statement {font-size:30px;}
   .homepage .progress {height: 500px;}
+  .reg-img img {
+    margin:10% auto !important;
+    display: block !important;
+  }
 }
 
 @media (min-width: 768px) and (max-width: 1533px) {
