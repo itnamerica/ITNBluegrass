@@ -1687,8 +1687,8 @@
     <div class="page-template">
       <div class="header">
       </div>
-      <div class="watermark"><img ng-src="{{assetsPath}}/images/itnlanier_white_bg.png" style="margin:auto;display:block" alt="main logo"/></div>
-      <div class="watermark"><img ng-src="{{assetsPath}}/images/itnlanier_white_bg.png" style="margin:auto;display:block" alt="main logo"/></div>
+      <div class="watermark"><img ng-src="assets/images/itnlanier_white_bg.png" style="margin:auto;display:block" alt="main logo"/></div>
+      <div class="watermark"><img ng-src="assets/images/itnlanier_white_bg.png" style="margin:auto;display:block" alt="main logo"/></div>
       <div class="footer">
         Page #: pageNum # of #: totalPages #
       </div>
@@ -1716,122 +1716,4 @@
 });
 
   </script>
-  
-  <style>
-        
-.s-stepper {
-  display: flex;
-  box-shadow: 0 2px 4px 0px #aaa;
-  counter-reset: section;
-  background-color: #fff;
-  margin-top:-60px;
-  margin-bottom:70px;
-}
-.s-stepper small {
-  font-size:60%;
-  /* font-weight:bold; */
-}
-  
-.s-stepper .s-step {
-  display: flex;
-  flex: 1;
-  padding: 15px;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  cursor:default;
-  color: rgba(0, 0, 0, 0.6);
-  position: relative;
-}
-.s-stepper .s-step:hover {
-  cursor: pointer;
-  background:#80808030;
-}
-.s-stepper .s-step:first-child:before {
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 0;
-  height: 0;
-  content: "";
-  border-top: none;
-  border-bottom: none;
-}
-.s-stepper .s-step.active, .s-stepper .s-step.done {
-  position: relative;
-  background-color: green;
-  color: rgba(255, 255, 255, 0.7);
-}
-.s-stepper .s-step.active:last-child:after {
-  border: none;
-}
-.s-stepper .s-step.active:after {
-  position: absolute;
-  right: 0;
-  top: 0;
-  margin-right: -50px;
-  width: 0;
-  height: 0;
-  content: "";
-  border-top: 50px solid transparent;
-  border-bottom: 50px solid transparent;
-  border-left: 50px solid green;
-  transition: all 900ms ease-in-out;
-}
-.s-stepper .s-step.active .s-step-counter:after {
-  content: "";
-  font-family: FontAwesome;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  width: 45px;
-  height: 45px;
-  border-radius: 9999px;
-  border: 1px solid rgba(255, 255, 255, 0.6);
-  color: rgba(255, 255, 255, 0.6);
-}
-.s-stepper .s-step.done .s-step-counter:after {
-  content: "";
-  font-family: FontAwesome;
-  border-color: rgba(255, 255, 255, 0.6);
-  color: rgba(255, 255, 255, 0.6);
-}
-.s-stepper .s-step .s-step-counter:after {
-  counter-increment: section;
-  content: counter(section);
-  display: flex;
-  font-size: 18px;
-  border: 1px solid rgba(0, 0, 0, 0.6);
-  width: 45px;
-  height: 45px;
-  justify-content: center;
-  border-radius: 999px;
-  align-items: center;
-  margin-bottom: 5px;
-}
-
-@media screen and (max-width: 1024px) {
-  .s-step small {
-    display: none;
-  }
-  .s-step.active:after {
-    border-top: 41px solid transparent !important;
-    border-bottom: 41px solid transparent !important;
-    border-left: 40px solid green !important;
-    margin-right: -40px !important;
-  }
-  .s-step.active:last-child:after {
-    border: none !important;
-  }
-}
-@media screen and (max-width: 550px) {
-  .s-stepper {
-    display: none;
-  }
-}
-
-
-  
-  </style>
 
