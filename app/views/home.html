@@ -14,14 +14,14 @@
 <!-- Wrapper for slides -->
 <div class="carousel-inner" style="background:black">
 
-<div class="item active">
+<div class="item pptx active">
   <img ng-src="{{assetsPath}}/images/pp-final/Slide1.gif" id="mainImage" name="mainImage" width="100%" height="100%" style="object-fit:scale-down" alt="slides from itnbluegrass anniversary">
   <div class='slide-btns' style="text-align:center;margin:auto;margin-top:-100px;">
-    <button class="btn btn-lg" ng-click="swapImage(currentIndex-1);"><i class="fa fa-icon-left"></i>Prev</button>
-    <button class="btn btn-lg" ng-click="swapImage(currentIndex+1);"><i class="fa fa-icon-right"></i>Next</button>
+    <button class="btn" ng-click="swapImage(currentIndex-1)" style="background-color:transparent"><i class="fa fa-arrow-left"></i> Prev</button>
+    <button class="btn" ng-click="swapImage(currentIndex+1)" style="background-color:transparent"><i class="fa fa-arrow-right"></i> Next</button>
   </div>
 </div>
-<!-- 
+
   <div class="item">
     <img ng-src="{{assetsPath}}/images/dark/medium-res/highres-beach_small.jpeg" id="highres-beach" alt="beach">
     <h2 class="carousel-statement">
@@ -45,13 +45,13 @@
     </h2>
   </div>
 
-  <div class="item">
+  <div class="item last">
     <img ng-src="{{assetsPath}}/images/dark/i-know-expo.jpg" alt="happy black couple">
     <h2 class="carousel-statement">
       ITN<em>{{affiliate}}</em> participates in the I Know Expo a special event for seniors and those caring for loved ones.
       <a href="http://www.iknowexpo.org/">Find out more</a>
     </h2>
-  </div> -->
+  </div>
 </div><!--carousel-inner-->
 
 <!-- Left and right controls -->
@@ -178,6 +178,7 @@
   new WOW().init();
 
   $(document).ready(function() {
+    
     $('.carousel').carousel({
       interval: 4500
     })
@@ -205,25 +206,15 @@
          }
        }
     });
+
+    $('.hp-carousel .carousel-indicators').hide();
+    
+    $('#myCarousel').bind('slide.bs.carousel', function (e) {
+        $('.hp-carousel .carousel-indicators').show();
+    });
+
+
   });
 
-</script>
-
-<script type="text/javascript">
-    // var currentIndex = 1;
-    // var maxIndex=93;
-    // function swapImage(imageIndex){
-    //     if(imageIndex>maxIndex){
-    //         currentIndex=maxIndex;
-    //         return;
-    //     }
-    //     if(imageIndex<1){
-    //         currentIndex=1;
-    //         return;
-    //     }
-    //     currentIndex=imageIndex;
-    //     document.getElementById("mainImage").src='Slide' +  currentIndex  + '.gif';
-    //     return;
-    // }
 </script>
 
