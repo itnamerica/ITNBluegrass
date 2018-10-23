@@ -166,7 +166,7 @@ nav .dropdown-menu li.divider{
   text-decoration:underline;
 }
 
-.carousel-inner .item .carousel-statement {
+.carousel-inner .item .carousel-statement, .slide-btns {
   margin-top: -300px;
   margin-left: 10%;
   z-index: 998;

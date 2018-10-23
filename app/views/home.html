@@ -12,17 +12,20 @@
 </ol>
 
 <!-- Wrapper for slides -->
-<div class="carousel-inner">
-  <div class="item active">
-    <!-- <iframe src="https://itnamerica005-my.sharepoint.com/personal/sguergenenov_itnamerica_org/_layouts/15/Doc.aspx?sourcedoc={5d10c9ea-82b3-4b2b-b3ee-de88c2eb916d}&amp;action=embedview&amp;wdAr=1.7777777777777777" width="1186px" height="691px" frameborder="0">This is an embedded <a target="_blank" href="https://office.com">Microsoft Office</a> presentation, powered by <a target="_blank" href="https://office.com/webapps">Office Online</a>.</iframe> -->
-    <iframe src="https://itnamerica005-my.sharepoint.com/:p:/g/personal/sguergenenov_itnamerica_org/EerJEF2zgitLs-7eiMLrkW0BMW9Zq8gtJodUR45gOGvVug?e=Sup71Y" width="1186px" height="691px" frameborder="0">This is an embedded <a target="_blank" href="https://office.com">Microsoft Office</a> presentation, powered by <a target="_blank" href="https://office.com/webapps">Office Online</a>.</iframe>
-</div>
+<div class="carousel-inner" style="background:black">
 
+<div class="item active">
+  <img ng-src="{{assetsPath}}/images/pp-final/Slide1.gif" id="mainImage" name="mainImage" width="100%" height="100%" style="object-fit:scale-down" alt="slides from itnbluegrass anniversary">
+  <div class='slide-btns' style="text-align:center;margin:auto;margin-top:-100px;">
+    <button class="btn btn-lg" ng-click="swapImage(currentIndex-1);"><i class="fa fa-icon-left"></i>Prev</button>
+    <button class="btn btn-lg" ng-click="swapImage(currentIndex+1);"><i class="fa fa-icon-right"></i>Next</button>
+  </div>
+</div>
+<!-- 
   <div class="item">
     <img ng-src="{{assetsPath}}/images/dark/medium-res/highres-beach_small.jpeg" id="highres-beach" alt="beach">
     <h2 class="carousel-statement">
       ITN<em>{{affiliate}}</em> offers rides to seniors and adults with visual impairments anywhere in Fayette and northern Jessamine Counties. 
-      <!-- <a ui-sref="what-we-do">Find out more</a> -->
     </h2>
   </div>
 
@@ -48,7 +51,7 @@
       ITN<em>{{affiliate}}</em> participates in the I Know Expo a special event for seniors and those caring for loved ones.
       <a href="http://www.iknowexpo.org/">Find out more</a>
     </h2>
-  </div>
+  </div> -->
 </div><!--carousel-inner-->
 
 <!-- Left and right controls -->
@@ -176,7 +179,7 @@
 
   $(document).ready(function() {
     $('.carousel').carousel({
-      interval: 3500
+      interval: 4500
     })
     
     var firstTime = true;
@@ -202,6 +205,25 @@
          }
        }
     });
-
   });
+
 </script>
+
+<script type="text/javascript">
+    // var currentIndex = 1;
+    // var maxIndex=93;
+    // function swapImage(imageIndex){
+    //     if(imageIndex>maxIndex){
+    //         currentIndex=maxIndex;
+    //         return;
+    //     }
+    //     if(imageIndex<1){
+    //         currentIndex=1;
+    //         return;
+    //     }
+    //     currentIndex=imageIndex;
+    //     document.getElementById("mainImage").src='Slide' +  currentIndex  + '.gif';
+    //     return;
+    // }
+</script>
+

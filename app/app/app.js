@@ -900,6 +900,22 @@ $scope.checkRequiredFields = function(formType){
           $scope.ridesData = data.data;
         })
     };
+    
+    $scope.currentIndex = 1;
+    $scope.swapImage = function(imageIndex){
+      var maxIndex=93;
+        if(imageIndex>maxIndex){
+            $scope.currentIndex=maxIndex;
+            return;
+        }
+        if(imageIndex<1){
+            $scope.currentIndex=1;
+            return;
+        }
+        $scope.currentIndex=imageIndex;
+        document.getElementById("mainImage").src=$scope.assetsPath + '/images/pp-final/Slide' +  $scope.currentIndex  + '.gif';
+        return;
+    }
   
 }]);
 
