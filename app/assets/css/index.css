@@ -457,7 +457,7 @@ nav .dropdown-menu li.divider{
   color: #b95856;
   font-weight: bold;
   line-height: 2;
-  font-size: 25px;  
+  font-size: 25px;
 }
 
 .news .news-content ul li a{color: #b95856;}
@@ -532,8 +532,8 @@ nav .dropdown-menu li.divider{
   margin-top: 150px;
 }
 .donate .description #checkbook-icon {
-  vertical-align:top; 
-  display:inline-block; 
+  vertical-align:top;
+  display:inline-block;
   margin-right:7%;
 }
 .donate .form-area {
@@ -562,8 +562,8 @@ nav .dropdown-menu li.divider{
 }
 
 .corporate .corp-slogan h2 {
-  text-align:center; 
-  font-style:italic; 
+  text-align:center;
+  font-style:italic;
   color: #399eaa;
 }
 .corporate .description .container {
@@ -680,8 +680,8 @@ nav .dropdown-menu li.divider{
   background: #399eaa24 !important;
 }
 .organization #start .start-itn {
-    font-size:30px; 
-    font-style:italic; 
+    font-size:30px;
+    font-style:italic;
     /*line-height: 150px;*/
     color:black;
     font-weight:bold;
@@ -1301,8 +1301,8 @@ nav .dropdown-menu li.divider{
 }
 
 .member-app .app-title, .volunteer-app .app-title {
-  margin-bottom: 25px; 
-  text-align: center; 
+  margin-bottom: 25px;
+  text-align: center;
   font-size: 30px;
   color:black;
 }
@@ -1456,7 +1456,7 @@ form textarea.form-control {font-size:25px}
 
 .member-app #pdfVersion, .volunteer-app #pdfVersion {
   font-size: 12px !important;
-} 
+}
 
 .first-hero h1 {
   font-family: Tahoma !important;
@@ -1476,7 +1476,7 @@ form textarea.form-control {font-size:25px}
 .s-stepper small {
   font-size:78%;
 }
-  
+
 .s-stepper .s-step {
   display: flex;
   flex: 1;
@@ -1576,8 +1576,51 @@ form textarea.form-control {font-size:25px}
   }
 }
 
+#first-hero-wheels {
+  background-image: url('../images/dark/walking-crowd.jpg') !important;
+  background-attachment: fixed;
+  background-position: center center !important;
+  background-size: cover !important;
+  background-repeat: no-repeat !important;
+  height: 400px !important;
+}
+#first-hero-wheels h1{
+  color:white !important;
+  text-shadow: 2px 2px #529ba8;
+  margin-top:170px !important;
+  margin-left: 5% !important;
+}
+.wheels .container {
+  width:80%;
+  margin-left:auto;
+  margin-right:auto;
+  display:block;
+  float:none;
+  background:white;
+  color:#399eaa;
+}
+.wheels .container p {
+  line-height:1.7;
+  margin-top:2%;
+  margin-bottom:2%;
+  font-weight:bold;
+  float:left;
+}
+.wheels .container h2 {
+  float:left;
+  padding-bottom: 3%;
+  text-decoration:underline;
+}
+.wheels .container img {
+  height:300px;
+}
+.wheels .container form {
+  font-size: 25px;
+  font-weight: bold;
+  margin-top:5%;
+}
 
-    
+
 #footer {
     width:100%;
     height:250px;
@@ -1607,7 +1650,7 @@ form textarea.form-control {font-size:25px}
   height: 1px;
   border-color: #e05944;
   background-color: #e05944;
-  color: #e05944; 
+  color: #e05944;
   width: 80px;
   margin-left: 0;
 }
@@ -1946,22 +1989,22 @@ h2,h3 {line-height:1.7}
 }
 
 /*@media(max-width: 885px) {
-  
+
 }*/
 
 
 /* MOBILE */
 
 @media (max-width: 450px) {
-  
+
   .navbar-collapse {
     max-height: 1000px;
   }
-  
+
   .rider-stories .intro, .rider-stories .cards-wrapper, .corporate .form-area, .member-programs .featurettes, .community .shop-ride .container {
     width:100%;
   }
-  
+
   .homepage .item #walking-crowd {
     object-position: 19% 50%;
   }
@@ -1976,7 +2019,7 @@ h2,h3 {line-height:1.7}
   .homepage .rider-stories .container {
     width:100%;
     padding:0;
-  } 
+  }
   .regeneron .container {width:100%;}
   .regeneron .container .reg-img{
     margin-top:50px;
@@ -2052,7 +2095,7 @@ h2,h3 {line-height:1.7}
   }
   .volunteer-app .jumbotron {padding:0}
   form input, form textarea.form-control {font-size:15px !important}
-  
+
   .non-rider .btn-lg {margin-bottom:25px}
   .community img, .member-programs img {display:none}
   .community .featurette-divider, .member-programs .featurette-divider {margin:0}
@@ -2077,11 +2120,11 @@ h2,h3 {line-height:1.7}
   }
   .family .carousel-inner .item, .family .text-carousel {height:auto}
   .family .carousel-inner .item .carousel-content {width:200px}
-  
+
   .family .text-carousel p {
     width:100%;
   }
-  .family .text-carousel2 { 
+  .family .text-carousel2 {
     margin-top:10px;
   }
   .family .carousel .col-xs-offset-3 {
@@ -2099,8 +2142,8 @@ h2,h3 {line-height:1.7}
   }
 
   #footer .search {display:none}
-  
-  
+
+
 }
 
 
